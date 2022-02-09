@@ -58,5 +58,11 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV{   // UUS
 	}
 
 
+	@Override
+	public void naytaAsiakasMaaraX(int asiakasMaaraX) {
+		Platform.runLater(()->ui.setAsiakasMaaraX(asiakasMaaraX)); 
+	}
+
+
 
 }

@@ -2,6 +2,7 @@ package simu.model;
 
 import java.util.stream.Collectors;
 
+import controller.IKontrolleriMtoV;
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
 import simu.framework.Kello;
@@ -16,7 +17,8 @@ public class OmaMoottori extends Moottori {
 	private int xAsiakasMaara;
 	private int yAsiakasMaara;
 
-	public OmaMoottori() {
+	public OmaMoottori(IKontrolleriMtoV kontrolleri) {
+		super(kontrolleri);
 
 		palvelupisteet = new Palvelupiste[4];
 
@@ -46,6 +48,7 @@ public class OmaMoottori extends Moottori {
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.X));
 			saapumisprosessiX.generoiSeuraava();
 			xAsiakasMaara++;
+			kontrolleri.naytaAsiakasMaaraX(xAsiakasMaara);
 			break;
 		case YARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.Y));
@@ -77,6 +80,7 @@ public class OmaMoottori extends Moottori {
 			break;
 		}
 	}
+	
 
 	@Override
 	protected void tulokset() {
@@ -90,6 +94,9 @@ public class OmaMoottori extends Moottori {
 		for (Palvelupiste palvelupiste : palvelupisteet) {
 			System.out.println(palvelupiste);
 		}
+		
+		// UUTTA graafista
+		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
 
 	}
 }

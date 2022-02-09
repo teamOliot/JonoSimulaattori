@@ -29,6 +29,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	// Käyttöliittymäkomponentit:
 	private TextField aika;
 	private TextField viive;
+	private Label xLabel;
+	private Label xTulos;
 	private Label tulos;
 	private Label aikaLabel;
 	private Label viiveLabel;
@@ -100,6 +102,13 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        tulos = new Label();
 	        tulos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	        tulos.setPrefWidth(150);
+	        
+	        //
+	        xLabel = new Label("x asiakkaat:");
+	        xLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        xTulos = new Label();
+	        xTulos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	        xTulos.setPrefWidth(150);
 
 	        HBox hBox = new HBox();
 	        hBox.setPadding(new Insets(15, 12, 15, 12)); // marginaalit ylä, oikea, ala, vasen
@@ -119,6 +128,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(kaynnistaButton,0, 3);  // sarake, rivi
 	        grid.add(nopeutaButton, 0, 4);   // sarake, rivi
 	        grid.add(hidastaButton, 1, 4);   // sarake, rivi
+	        //
+	        grid.add(xLabel, 0, 5);      // sarake, rivi
+	        grid.add(xTulos, 1, 5); 
 	        
 	        naytto = new Visualisointi2(400,200);
 
@@ -154,7 +166,12 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 		 DecimalFormat formatter = new DecimalFormat("#0.00");
 		 this.tulos.setText(formatter.format(aika));
 	}
-
+	
+	@Override
+	public void setAsiakasMaaraX(int asiakasMaaraX) {
+		// TODO Auto-generated method stub
+		this.xTulos.setText(asiakasMaaraX + "");
+	}
 
 	@Override
 	public IVisualisointi getVisualisointi() {
@@ -168,5 +185,4 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 		launch(args);
 	}
 
-	
 }
