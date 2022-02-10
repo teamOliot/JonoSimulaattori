@@ -10,6 +10,9 @@ public interface ISimulaattorinUI {
 	public void setLoppuaika(double aika);
 	
 	public void setAsiakasMaaraX(int asiakasMaaraX);
+	public void setAsiakasMaaraY(int asiakasMaaraY);
+	public void setAsiakasMaara(int asiakasMaara);
+	public void setPalvellut(int asiakasMaara);
 	
 	// Kontrolleri tarvitsee  
 	public IVisualisointi getVisualisointi();
