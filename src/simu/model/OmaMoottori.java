@@ -14,8 +14,8 @@ public class OmaMoottori extends Moottori {
 
 	private Saapumisprosessi saapumisprosessiX;
 	private Saapumisprosessi saapumisprosessiY;
-	private int xAsiakasMaara;
-	private int yAsiakasMaara;
+	private int asiakasMaaraX;
+	private int asiakasMaaraY;
 
 	public OmaMoottori(IKontrolleriMtoV kontrolleri) {
 		super(kontrolleri);
@@ -47,13 +47,14 @@ public class OmaMoottori extends Moottori {
 		case XARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.X));
 			saapumisprosessiX.generoiSeuraava();
-			xAsiakasMaara++;
-			kontrolleri.naytaAsiakasMaaraX(xAsiakasMaara);
+			asiakasMaaraX++;
+			kontrolleri.naytaAsiakasMaaraX(asiakasMaaraX);
 			break;
 		case YARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.Y));
 			saapumisprosessiY.generoiSeuraava();
-			yAsiakasMaara++;
+			asiakasMaaraY++;
+			kontrolleri.naytaAsiakasMaaraY(asiakasMaaraY);
 			break;
 		case PP1DEP:
 			a = palvelupisteet[0].otaJonosta();
@@ -62,11 +63,9 @@ public class OmaMoottori extends Moottori {
 		case PP2DEP:
 			a = palvelupisteet[1].otaJonosta();
 			if (a.getTyyppi().equals(AsiakasTyyppi.X)) {
-				System.out.println("toimiix");
 				palvelupisteet[2].lisaaJonoon(a);
 				break;
 			}
-			System.out.println("toimii yyy");
 			palvelupisteet[3].lisaaJonoon(a);
 			break;
 		case PP3DEP:
@@ -84,19 +83,33 @@ public class OmaMoottori extends Moottori {
 
 	@Override
 	protected void tulokset() {
-		System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika()); // onko tämä T?
+		//Simuloinnin kokonaisaika T
+		//System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
 		System.out.println("Tulokset:");
-		System.out.println("Saapuneiden X asiakkaiden määrä on: " + xAsiakasMaara);
-		System.out.println("Saapuneiden Y asiakkaiden määrä on: " + yAsiakasMaara);
-		System.out.println("Saapuneiden asiakkaiden yht määrä on: " + (yAsiakasMaara + xAsiakasMaara));
-		System.out.println("Kaljajonossa käyneet asiakkaat: " + palvelupisteet[2].getPalvellutAsiakkaat());
-		System.out.println("Koko simulaation suoritusteho on: "+(palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika())); // Kello, miten pitäisi laskea?
+		System.out.println("Saapuneiden X asiakkaiden määrä on: " + asiakasMaaraX);
+		System.out.println("Saapuneiden Y asiakkaiden määrä on: " + asiakasMaaraY);
+		System.out.println("Saapuneiden asiakkaiden yht määrä on: " + (asiakasMaaraY + asiakasMaaraX));
+		System.out.println("Kaljapisteellä käyneet asiakkaat: " + palvelupisteet[2].getPalvellutAsiakkaat());
+		//Koko simulaation suoritusteho X=C/T
+		System.out.println("Koko simulaation suoritusteho on: "+(palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika()));
 		for (Palvelupiste palvelupiste : palvelupisteet) {
 			System.out.println(palvelupiste);
 		}
+		//Keskimääräinen läpimenoaika R=W/C
+		System.out.println("X asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaX()/asiakasMaaraX));
+		System.out.println("Y asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaY()/asiakasMaaraY));
 		
 		// UUTTA graafista
+		// Palvellut asiakkaat
+		kontrolleri.naytaPalvellut(palvelupisteet[2].getPalvellutAsiakkaat());
+		//Saapuneiden asiakkaiden lukumäärä A
+		kontrolleri.naytaAsiakasMaara((asiakasMaaraX+asiakasMaaraY));
 		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
+		
+		//Kokonaisoleskeluaika kaikissa palvelupisteissä yhteensä W
+		
+		//Keskimääräinen jononpituus N = W/T
+		
 
 	}
 }

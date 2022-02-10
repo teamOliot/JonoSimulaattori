@@ -11,14 +11,16 @@ public class Asiakas {
 	private double poistumisaika;
 	private int id;
 	private static int i = 1;
-	private static long sum = 0;
+	private static long summaXY = 0;
+	private static long summaX = 0;
+	private static long summaY = 0;
 	@SuppressWarnings("unused")
 	private AsiakasTyyppi tyyppi;
+	
 	
 	public Asiakas(AsiakasTyyppi tyyppi){
 	    id = i++;
 	    this.tyyppi = tyyppi;
-	    
 		saapumisaika = Kello.getInstance().getAika();
 		Trace.out(Trace.Level.INFO, "Uusi asiakas nro " + id + " saapui klo "+saapumisaika);
 	}
@@ -50,14 +52,35 @@ public class Asiakas {
 	public void setTyyppi(AsiakasTyyppi tyyppi) {
 		this.tyyppi = tyyppi;
 	}
+	
+	public static long getSummaXY() {
+		return summaXY;
+	}
+
+	public static long getSummaX() {
+		return summaX;
+	}
+
+	public static long getSummaY() {
+		return summaY;
+	}
+	
 
 	public void raportti(){
 		Trace.out(Trace.Level.INFO, "\nAsiakas "+id+ " tyyppi: " + this.tyyppi + " valmis! ");
 		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " tyyppi: " + this.tyyppi + "   saapui: " +saapumisaika);
 		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " tyyppi: " + this.tyyppi +  " poistui: " +poistumisaika);
 		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " tyyppi: " + this.tyyppi + " viipyi: " +(poistumisaika-saapumisaika));
-		sum += (poistumisaika-saapumisaika);
-		double keskiarvo = sum/id;
+		summaXY += (poistumisaika-saapumisaika);
+		double keskiarvo = summaXY/id;
+
+		if(this.tyyppi.equals(AsiakasTyyppi.X)) {
+			summaX+=(poistumisaika-saapumisaika);
+		}
+		
+		if(this.tyyppi.equals(AsiakasTyyppi.Y)) {
+			summaY+=(poistumisaika-saapumisaika);
+		}
 		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo tähän asti "+ keskiarvo);
 	}
 

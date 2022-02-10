@@ -169,9 +169,19 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	
 	@Override
 	public void setAsiakasMaaraX(int asiakasMaaraX) {
-		// TODO Auto-generated method stub
 		this.xTulos.setText(asiakasMaaraX + "");
 	}
+	
+	@Override
+	public void setAsiakasMaaraY(int asiakasMaaraY) {
+		System.out.println("SimuGUI Asiakas Y "+asiakasMaaraY);	
+	}
+	
+	@Override
+	public void setAsiakasMaara(int asiakasMaara) {
+		System.out.println("SimuGUI saapuneet asiakkaat yht "+asiakasMaara);	
+	}
+
 
 	@Override
 	public IVisualisointi getVisualisointi() {
@@ -184,5 +194,13 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	@Override
+	public void setPalvellut(int asiakasMaara) {
+		System.out.println("SimuGUI Palvellut asiakkaat yhteensä "+asiakasMaara);	
+		
+	}
+
+
 
 }

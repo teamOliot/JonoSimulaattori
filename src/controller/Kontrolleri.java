@@ -64,5 +64,25 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV{   // UUS
 	}
 
 
+	@Override
+	public void naytaAsiakasMaaraY(int asiakasMaaraY) {
+		Platform.runLater(()->ui.setAsiakasMaaraY(asiakasMaaraY)); 
+	}
+
+
+	@Override
+	public void naytaAsiakasMaara(int asiakasMaara) {
+		Platform.runLater(()->ui.setAsiakasMaara(asiakasMaara)); 
+		
+	}
+
+
+	@Override
+	public void naytaPalvellut(int asiakasMaara) {
+		Platform.runLater(()->ui.setPalvellut(asiakasMaara));
+		
+	}
+
+
 
 }
