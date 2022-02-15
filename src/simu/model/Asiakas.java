@@ -14,6 +14,8 @@ public class Asiakas {
 	private static long summaXY = 0;
 	private static long summaX = 0;
 	private static long summaY = 0;
+	private static int lapimenneetX = 0;
+	private static int lapimenneetY = 0;
 	@SuppressWarnings("unused")
 	private AsiakasTyyppi tyyppi;
 	
@@ -65,7 +67,14 @@ public class Asiakas {
 		return summaY;
 	}
 	
+	public static int getLapimenneetX() {
+		return lapimenneetX;
+	}
 
+	public static int getLapimenneetY() {
+		return lapimenneetY;
+	}
+	
 	public void raportti(){
 		Trace.out(Trace.Level.INFO, "\nAsiakas "+id+ " tyyppi: " + this.tyyppi + " valmis! ");
 		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " tyyppi: " + this.tyyppi + "   saapui: " +saapumisaika);
@@ -76,10 +85,12 @@ public class Asiakas {
 
 		if(this.tyyppi.equals(AsiakasTyyppi.X)) {
 			summaX+=(poistumisaika-saapumisaika);
+			lapimenneetX++;
 		}
 		
 		if(this.tyyppi.equals(AsiakasTyyppi.Y)) {
 			summaY+=(poistumisaika-saapumisaika);
+			lapimenneetY++;
 		}
 		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo tähän asti "+ keskiarvo);
 	}

@@ -41,6 +41,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	private Button nopeutaButton;
 
 	private IVisualisointi naytto;
+	private IVisualisointi naytto2;
 
 
 	@Override
@@ -132,10 +133,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(xLabel, 0, 5);      // sarake, rivi
 	        grid.add(xTulos, 1, 5); 
 	        
-	        naytto = new Visualisointi2(400,200);
+	        naytto = new Visualisointi(200,300);
+	        naytto2 = new Visualisointi(200, 300);
 
 	        // Täytetään boxi:
-	        hBox.getChildren().addAll(grid, (Canvas)naytto);
+	        hBox.getChildren().addAll(grid, (Canvas)naytto, (Canvas)naytto2);
 	        
 	        Scene scene = new Scene(hBox);
 	        primaryStage.setScene(scene);

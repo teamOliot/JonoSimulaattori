@@ -49,12 +49,14 @@ public class OmaMoottori extends Moottori {
 			saapumisprosessiX.generoiSeuraava();
 			asiakasMaaraX++;
 			kontrolleri.naytaAsiakasMaaraX(asiakasMaaraX);
+			kontrolleri.visualisoiAsiakas(palvelupisteet[0]);
 			break;
 		case YARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.Y));
 			saapumisprosessiY.generoiSeuraava();
 			asiakasMaaraY++;
 			kontrolleri.naytaAsiakasMaaraY(asiakasMaaraY);
+			kontrolleri.visualisoiAsiakas(palvelupisteet[0]);
 			break;
 		case PP1DEP:
 			a = palvelupisteet[0].otaJonosta();
@@ -72,6 +74,8 @@ public class OmaMoottori extends Moottori {
 			a = palvelupisteet[2].otaJonosta();
 			a.setPoistumisaika(Kello.getInstance().getAika());
 			a.raportti();
+			kontrolleri.visualisoiAsiakas(palvelupisteet[0]);
+			//kontrolleri.visualisoiAsiakkaanPoisto();
 			break;
 		case PP4DEP:
 			a = palvelupisteet[3].otaJonosta();
@@ -96,9 +100,9 @@ public class OmaMoottori extends Moottori {
 			System.out.println(palvelupiste);
 		}
 		//Keskimääräinen läpimenoaika R=W/C
-		System.out.println("X asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaX()/asiakasMaaraX));
-		System.out.println("Y asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaY()/asiakasMaaraY));
-		
+		System.out.println("X asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaX()/Asiakas.getLapimenneetX()));
+		System.out.println("Y asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaY()/Asiakas.getLapimenneetY()));
+		System.out.println("kaikkien keskmääräinen läpimeno aika: " + Asiakas.getSummaXY()/(Asiakas.getLapimenneetX()+Asiakas.getLapimenneetY()));
 		// UUTTA graafista
 		// Palvellut asiakkaat
 		kontrolleri.naytaPalvellut(palvelupisteet[2].getPalvellutAsiakkaat());
