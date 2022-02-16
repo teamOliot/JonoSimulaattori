@@ -53,19 +53,24 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 	public void visualisoiAsiakas(ArrayList<Palvelupiste> palvelupisteet) {
 		Platform.runLater(new Runnable() {
 			public void run() {
+				
 				ui.getPP1Visualisointi().tyhjennaNaytto();
+				ui.getPP2Visualisointi().tyhjennaNaytto();
+				ui.getPP3Visualisointi().tyhjennaNaytto();
+				ui.getPP4Visualisointi().tyhjennaNaytto();
+				
 				for (Asiakas asiakas : palvelupisteet.get(0).getJono()) {
 					ui.getPP1Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
-				ui.getPP2Visualisointi().tyhjennaNaytto();
+				
 				for (Asiakas asiakas : palvelupisteet.get(1).getJono()) {
 					ui.getPP2Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
-				ui.getPP3Visualisointi().tyhjennaNaytto();
+				
 				for (Asiakas asiakas : palvelupisteet.get(2).getJono()) {
 					ui.getPP3Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
-				ui.getPP4Visualisointi().tyhjennaNaytto();
+				
 				for (Asiakas asiakas : palvelupisteet.get(3).getJono()) {
 					ui.getPP4Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
