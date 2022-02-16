@@ -40,7 +40,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	private Button hidastaButton;
 	private Button nopeutaButton;
 
-	private IVisualisointi naytto;
+	private IVisualisointi pp1Naytto;
+	private IVisualisointi pp2Naytto;
 
 
 	@Override
@@ -132,10 +133,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        grid.add(xLabel, 0, 5);      // sarake, rivi
 	        grid.add(xTulos, 1, 5); 
 	        
-	        naytto = new Visualisointi2(400,200);
+	        pp1Naytto = new Visualisointi(200,300);
+	        pp2Naytto = new Visualisointi(200, 300);
 
 	        // Täytetään boxi:
-	        hBox.getChildren().addAll(grid, (Canvas)naytto);
+	        hBox.getChildren().addAll(grid, (Canvas)pp1Naytto, (Canvas)pp2Naytto);
 	        
 	        Scene scene = new Scene(hBox);
 	        primaryStage.setScene(scene);
@@ -184,11 +186,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 
 	@Override
-	public IVisualisointi getVisualisointi() {
-		 return naytto;
+	public IVisualisointi getPP1Visualisointi() {
+		 return pp1Naytto;
 	}
 	
-	
+	@Override
+	public IVisualisointi getPP2Visualisointi() {
+		return pp2Naytto;
+	}
+		
 	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
 
 	public static void main(String[] args) {
@@ -200,7 +206,5 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 		System.out.println("SimuGUI Palvellut asiakkaat yhteensä "+asiakasMaara);	
 		
 	}
-
-
 
 }

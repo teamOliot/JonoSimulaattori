@@ -15,6 +15,7 @@ public interface ISimulaattorinUI {
 	public void setPalvellut(int asiakasMaara);
 	
 	// Kontrolleri tarvitsee  
-	public IVisualisointi getVisualisointi();
+	public IVisualisointi getPP1Visualisointi();
+	public IVisualisointi getPP2Visualisointi();
 
 }
