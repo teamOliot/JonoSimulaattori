@@ -65,6 +65,10 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 				for (Asiakas asiakas : palvelupisteet.get(2).getJono()) {
 					ui.getPP3Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
+				ui.getPP4Visualisointi().tyhjennaNaytto();
+				for (Asiakas asiakas : palvelupisteet.get(3).getJono()) {
+					ui.getPP4Visualisointi().uusiAsiakas(asiakas.getTyyppi());
+				}
 			}
 		});
 	}

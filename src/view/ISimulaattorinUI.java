@@ -18,5 +18,5 @@ public interface ISimulaattorinUI {
 	public IVisualisointi getPP1Visualisointi();
 	public IVisualisointi getPP2Visualisointi();
 	public IVisualisointi getPP3Visualisointi();
-
+	public IVisualisointi getPP4Visualisointi();
 }
