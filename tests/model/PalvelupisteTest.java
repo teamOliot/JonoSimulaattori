@@ -2,13 +2,11 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AsiakasTest {
+class PalvelupisteTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -19,27 +17,17 @@ class AsiakasTest {
 	}
 
 	@Test
-	final void testAsiakas() {
+	final void testPalvelupiste() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	final void testSetPoistumisaika() {
+	final void testLisaaJonoon() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	final void testGetLapimenneetX() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	final void testGetLapimenneetY() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	final void testRaportti() {
+	final void testOtaJonosta() {
 		fail("Not yet implemented"); // TODO
 	}
 
