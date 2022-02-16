@@ -1,5 +1,6 @@
 package simu.model;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import controller.IKontrolleriMtoV;
@@ -16,6 +17,7 @@ public class OmaMoottori extends Moottori {
 	private Saapumisprosessi saapumisprosessiY;
 	private int asiakasMaaraX;
 	private int asiakasMaaraY;
+	private ArrayList<Palvelupiste> kaikkiPalvelupisteet;
 
 	public OmaMoottori(IKontrolleriMtoV kontrolleri) {
 		super(kontrolleri);
@@ -26,7 +28,13 @@ public class OmaMoottori extends Moottori {
 		palvelupisteet[1] = new Palvelupiste(new Normal(10, 10), tapahtumalista, TapahtumanTyyppi.PP2DEP, "Turvatarkastus");
 		palvelupisteet[2] = new Palvelupiste(new Normal(5, 3), tapahtumalista, TapahtumanTyyppi.PP3DEP,"Kaljatiski");
 		palvelupisteet[3] = new Palvelupiste(new Normal(5, 3), tapahtumalista, TapahtumanTyyppi.PP4DEP, "Vessa");
-
+		
+		kaikkiPalvelupisteet = new ArrayList<>(); 
+		for (Palvelupiste palvelupiste : palvelupisteet) {
+			kaikkiPalvelupisteet.add(palvelupiste);
+		}
+		
+		
 		saapumisprosessiX = new Saapumisprosessi(new Negexp(15, 5), tapahtumalista, TapahtumanTyyppi.XARR);
 		saapumisprosessiY = new Saapumisprosessi(new Negexp(20, 5), tapahtumalista, TapahtumanTyyppi.YARR);
 
@@ -49,37 +57,41 @@ public class OmaMoottori extends Moottori {
 			saapumisprosessiX.generoiSeuraava();
 			asiakasMaaraX++;
 			kontrolleri.naytaAsiakasMaaraX(asiakasMaaraX);
-			kontrolleri.visualisoiAsiakas(palvelupisteet[0]);
+			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case YARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.Y));
 			saapumisprosessiY.generoiSeuraava();
 			asiakasMaaraY++;
 			kontrolleri.naytaAsiakasMaaraY(asiakasMaaraY);
-			kontrolleri.visualisoiAsiakas(palvelupisteet[0]);
+			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case PP1DEP:
 			a = palvelupisteet[0].otaJonosta();
 			palvelupisteet[1].lisaaJonoon(a);
+			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case PP2DEP:
 			a = palvelupisteet[1].otaJonosta();
 			if (a.getTyyppi().equals(AsiakasTyyppi.X)) {
 				palvelupisteet[2].lisaaJonoon(a);
+				kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 				break;
 			}
 			palvelupisteet[3].lisaaJonoon(a);
+			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case PP3DEP:
 			a = palvelupisteet[2].otaJonosta();
 			a.setPoistumisaika(Kello.getInstance().getAika());
 			a.raportti();
-			kontrolleri.visualisoiAsiakas(palvelupisteet[0]);
+			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			//kontrolleri.visualisoiAsiakkaanPoisto();
 			break;
 		case PP4DEP:
 			a = palvelupisteet[3].otaJonosta();
 			palvelupisteet[2].lisaaJonoon(a);
+			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		}
 	}

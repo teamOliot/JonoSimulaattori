@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javafx.application.Platform;
 import simu.framework.IMoottori;
 import simu.model.Asiakas;
@@ -23,7 +25,7 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 		moottori = new OmaMoottori(this); // luodaan uusi moottorisäie jokaista simulointia varten
 		moottori.setSimulointiaika(ui.getAika());
 		moottori.setViive(ui.getViive());
-		ui.getVisualisointi().tyhjennaNaytto();
+		ui.getPP1Visualisointi().tyhjennaNaytto();
 		((Thread) moottori).start();
 		// ((Thread)moottori).run(); // Ei missään tapauksessa näin. Miksi?
 	}
@@ -48,12 +50,16 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 	}
 
 	@Override
-	public void visualisoiAsiakas(Palvelupiste palvelupiste) {
+	public void visualisoiAsiakas(ArrayList<Palvelupiste> palvelupisteet) {
 		Platform.runLater(new Runnable() {
 			public void run() {
-				ui.getVisualisointi().tyhjennaNaytto();
-				for (Asiakas asiakas : palvelupiste.getJono()) {
-					ui.getVisualisointi().uusiAsiakas(asiakas.getTyyppi());
+				ui.getPP1Visualisointi().tyhjennaNaytto();
+				for (Asiakas asiakas : palvelupisteet.get(0).getJono()) {
+					ui.getPP1Visualisointi().uusiAsiakas(asiakas.getTyyppi());
+				}
+				ui.getPP2Visualisointi().tyhjennaNaytto();
+				for (Asiakas asiakas : palvelupisteet.get(1).getJono()) {
+					ui.getPP2Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
 			}
 		});
