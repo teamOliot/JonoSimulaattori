@@ -17,5 +17,6 @@ public interface ISimulaattorinUI {
 	// Kontrolleri tarvitsee  
 	public IVisualisointi getPP1Visualisointi();
 	public IVisualisointi getPP2Visualisointi();
+	public IVisualisointi getPP3Visualisointi();
 
 }

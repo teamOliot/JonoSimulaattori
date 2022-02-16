@@ -42,6 +42,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 
 	private IVisualisointi pp1Naytto;
 	private IVisualisointi pp2Naytto;
+	private IVisualisointi pp3Naytto;
 
 
 	@Override
@@ -135,9 +136,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	        
 	        pp1Naytto = new Visualisointi(200,300);
 	        pp2Naytto = new Visualisointi(200, 300);
+	        pp3Naytto = new Visualisointi(200, 300);
 
 	        // Täytetään boxi:
-	        hBox.getChildren().addAll(grid, (Canvas)pp1Naytto, (Canvas)pp2Naytto);
+	        hBox.getChildren().addAll(grid, (Canvas)pp1Naytto, (Canvas)pp2Naytto, (Canvas)pp3Naytto);
 	        
 	        Scene scene = new Scene(hBox);
 	        primaryStage.setScene(scene);
@@ -194,6 +196,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 	public IVisualisointi getPP2Visualisointi() {
 		return pp2Naytto;
 	}
+	
+	@Override
+	public IVisualisointi getPP3Visualisointi() {
+		return pp3Naytto;
+	}
 		
 	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
 
@@ -206,5 +213,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI{
 		System.out.println("SimuGUI Palvellut asiakkaat yhteensä "+asiakasMaara);	
 		
 	}
+
 
 }
