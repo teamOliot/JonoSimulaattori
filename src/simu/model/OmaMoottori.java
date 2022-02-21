@@ -11,6 +11,10 @@ import simu.framework.Moottori;
 import simu.framework.Saapumisprosessi;
 import simu.framework.Tapahtuma;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 public class OmaMoottori extends Moottori {
 
 	private Saapumisprosessi saapumisprosessiX;
@@ -18,7 +22,11 @@ public class OmaMoottori extends Moottori {
 	private int asiakasMaaraX;
 	private int asiakasMaaraY;
 	private ArrayList<Palvelupiste> kaikkiPalvelupisteet;
-
+	
+	
+	/**
+	 * @param kontrolleri is controller object 
+	 */
 	public OmaMoottori(IKontrolleriMtoV kontrolleri) {
 		super(kontrolleri);
 
@@ -37,18 +45,27 @@ public class OmaMoottori extends Moottori {
 		
 		saapumisprosessiX = new Saapumisprosessi(new Negexp(15, 5), tapahtumalista, TapahtumanTyyppi.XARR);
 		saapumisprosessiY = new Saapumisprosessi(new Negexp(20, 5), tapahtumalista, TapahtumanTyyppi.YARR);
+		
 
 	}
 
+	/**
+	 * Method alustukset() generates first customers to queue.
+	 */
 	@Override
 	protected void alustukset() {
 		saapumisprosessiX.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 		saapumisprosessiY.generoiSeuraava();
+		
 	}
 
+	
+	/**
+	 * Method, that executes events (B-type) and moves customers from service point to another.
+	 * Shows and visualizes customers and amount of customer types (x,y).
+	 */
 	@Override
 	protected void suoritaTapahtuma(Tapahtuma t) { // B-vaiheen tapahtumat
-
 		Asiakas a;
 		switch (t.getTyyppi()) {
 
@@ -93,7 +110,9 @@ public class OmaMoottori extends Moottori {
 			palvelupisteet[2].lisaaJonoon(a);
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
+			
 		}
+		
 	}
 	
 
