@@ -6,16 +6,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import simu.framework.Saapumisprosessi;
+
 class OmaMoottoriTest {
 	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
+	private Saapumisprosessi saapuminen;
+	
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() {
+		
 	}
-
 
 	@Test
 	final void testAlustukset() {
@@ -37,10 +37,6 @@ class OmaMoottoriTest {
 		fail("Not yet implemented"); // TODO
 	}
 
-	@Test
-	final void testRun() {
-		fail("Not yet implemented"); // TODO
-	}
 
 	@Test
 	final void testMoottori() {
