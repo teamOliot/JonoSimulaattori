@@ -11,22 +11,30 @@ import org.junit.jupiter.api.Test;
 
 import eduni.distributions.Normal;
 import simu.framework.*;
+import simu.framework.Trace.Level;
 import simu.model.*;
 
 class PalvelupisteTest {
 	
 	Tapahtumalista serviceList;
-	Asiakas customer = new Asiakas (AsiakasTyyppi.X);
+
 	LinkedList<Asiakas> queueList = new LinkedList<Asiakas>();
 	Palvelupiste servicepoint = new Palvelupiste(new Normal(10, 6), serviceList, TapahtumanTyyppi.PP1DEP, "CHECKPOINT");
+	
+	private static Asiakas asiakas;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		Trace.setTraceLevel(Level.INFO);
+		Kello.getInstance().getAika();
+		asiakas = new Asiakas(AsiakasTyyppi.X);
+		Kello.getInstance().setAika(5);
 	}
+
 
 	@BeforeEach
 	void setUp() throws Exception {
-
+		queueList.add(asiakas);
 	}
 	
     @AfterEach
@@ -42,14 +50,12 @@ class PalvelupisteTest {
 
 	@Test
 	public void testLisaaJonoon() {
-		System.out.println(queueList.add(customer));
-		assertEquals(customer, queueList.getFirst(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
+		assertEquals(asiakas, queueList.getFirst(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
 	}
 
 	@Test
 	final void testOtaJonosta() {
-		System.out.println(queueList.add(customer));
-		assertEquals(queueList.getFirst(), queueList.peek(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
+		assertEquals(asiakas, queueList.peek(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
 	}
 
 }
