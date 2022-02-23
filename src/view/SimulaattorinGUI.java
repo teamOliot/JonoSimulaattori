@@ -179,14 +179,14 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			viive.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			viive.setMaxWidth(100);
 
-			xAsiakkaidenParamLabel = new Label("Parametrit X: ");
+			xAsiakkaidenParamLabel = new Label("Parametri X: ");
 			xAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xAsiakkaidenParam = new TextField("");
 			xAsiakkaidenParam.setPromptText("Syötä arvo");
 			xAsiakkaidenParam.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xAsiakkaidenParam.setMaxWidth(100);
 
-			yAsiakkaidenParamLabel = new Label("Parametrit Y: ");
+			yAsiakkaidenParamLabel = new Label("Parametri Y: ");
 			yAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			yAsiakkaidenParam = new TextField("");
 			yAsiakkaidenParam.setPromptText("Syötä arvo");
@@ -392,6 +392,16 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	@Override
 	public long getViive() {
 		return Long.parseLong(viive.getText());
+	}
+	
+	@Override
+	public double getXParam() {
+		return Double.parseDouble(xAsiakkaidenParam.getText());
+	}
+
+	@Override
+	public double getYParam() {
+		return Double.parseDouble(yAsiakkaidenParam.getText());
 	}
 
 	@Override

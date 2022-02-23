@@ -5,6 +5,8 @@ public interface ISimulaattorinUI {
 	// Kontrolleri tarvitsee syötteitä, jotka se välittää Moottorille
 	public double getAika();
 	public long getViive();
+	public double getXParam();
+	public double getYParam();
 	
 	// Kontrolleri tarvitsee syötteiksi myös X-asiakkaiden saapumisten parametrit ja Y-asiakkaiden saapumisten parametrit
 	// Näille pitäisi tehdä metodit

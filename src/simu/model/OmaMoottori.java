@@ -22,7 +22,8 @@ public class OmaMoottori extends Moottori {
 	private int asiakasMaaraX;
 	private int asiakasMaaraY;
 	private ArrayList<Palvelupiste> kaikkiPalvelupisteet;
-	
+	private double xParam = 5;
+	private double yParam = 5;
 	
 	/**
 	 * @param kontrolleri is controller object 
@@ -41,11 +42,6 @@ public class OmaMoottori extends Moottori {
 		for (Palvelupiste palvelupiste : palvelupisteet) {
 			kaikkiPalvelupisteet.add(palvelupiste);
 		}
-		
-		
-		saapumisprosessiX = new Saapumisprosessi(new Negexp(15, 5), tapahtumalista, TapahtumanTyyppi.XARR);
-		saapumisprosessiY = new Saapumisprosessi(new Negexp(20, 5), tapahtumalista, TapahtumanTyyppi.YARR);
-		
 
 	}
 
@@ -54,6 +50,9 @@ public class OmaMoottori extends Moottori {
 	 */
 	@Override
 	protected void alustukset() {
+		saapumisprosessiX = new Saapumisprosessi(new Negexp(xParam, 5), tapahtumalista, TapahtumanTyyppi.XARR);
+		saapumisprosessiY = new Saapumisprosessi(new Negexp(yParam, 5), tapahtumalista, TapahtumanTyyppi.YARR);
+		
 		saapumisprosessiX.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 		saapumisprosessiY.generoiSeuraava();
 		
@@ -74,6 +73,7 @@ public class OmaMoottori extends Moottori {
 			saapumisprosessiX.generoiSeuraava();
 			asiakasMaaraX++;
 			kontrolleri.naytaAsiakasMaaraX(asiakasMaaraX);
+			kontrolleri.naytaAsiakasMaara((asiakasMaaraX+asiakasMaaraY));
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case YARR:
@@ -81,6 +81,7 @@ public class OmaMoottori extends Moottori {
 			saapumisprosessiY.generoiSeuraava();
 			asiakasMaaraY++;
 			kontrolleri.naytaAsiakasMaaraY(asiakasMaaraY);
+			kontrolleri.naytaAsiakasMaara((asiakasMaaraX+asiakasMaaraY));
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case PP1DEP:
@@ -103,6 +104,9 @@ public class OmaMoottori extends Moottori {
 			a.setPoistumisaika(Kello.getInstance().getAika());
 			a.raportti();
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
+			kontrolleri.naytaPalvellutX(Asiakas.getLapimenneetX());
+			kontrolleri.naytaPalvellutY(Asiakas.getLapimenneetY());
+			kontrolleri.naytaPalvellut(palvelupisteet[2].getPalvellutAsiakkaat());
 			//kontrolleri.visualisoiAsiakkaanPoisto();
 			break;
 		case PP4DEP:
@@ -134,17 +138,24 @@ public class OmaMoottori extends Moottori {
 		System.out.println("X asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaX()/Asiakas.getLapimenneetX()));
 		System.out.println("Y asiakkaiden keskimääräinen läpimenoaika"+(Asiakas.getSummaY()/Asiakas.getLapimenneetY()));
 		System.out.println("kaikkien keskmääräinen läpimeno aika: " + Asiakas.getSummaXY()/(Asiakas.getLapimenneetX()+Asiakas.getLapimenneetY()));
-		// UUTTA graafista
-		// Palvellut asiakkaat
-		kontrolleri.naytaPalvellut(palvelupisteet[2].getPalvellutAsiakkaat());
-		//Saapuneiden asiakkaiden lukumäärä A
-		kontrolleri.naytaAsiakasMaara((asiakasMaaraX+asiakasMaaraY));
+		
 		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
 		
 		//Kokonaisoleskeluaika kaikissa palvelupisteissä yhteensä W
 		
 		//Keskimääräinen jononpituus N = W/T
 		
+		System.out.println("XParametri: " + xParam + " YParametri: " + yParam);
 
+	}
+
+	@Override
+	public void setXParam(double xParam) {
+		this.xParam = xParam;
+	}
+
+	@Override
+	public void setYParam(double yParam) {
+		this.yParam = yParam;
 	}
 }
