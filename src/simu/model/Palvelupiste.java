@@ -1,5 +1,6 @@
 package simu.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import eduni.distributions.ContinuousGenerator;
@@ -19,6 +20,7 @@ import simu.framework.Trace;
 public class Palvelupiste {
 
 	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>(); // Tietorakennetoteutus
+	private ArrayList<Palvelutapahtuma> palvelutapahtumat = new ArrayList<Palvelutapahtuma>();
 	
 	private ContinuousGenerator generator;
 	private Tapahtumalista tapahtumalista;
@@ -30,7 +32,7 @@ public class Palvelupiste {
 	private int palvellutAsiakkaat;
 	private double kokonaisPalveluaika;
 	private String palvelupisteenNimi;
-	private double kokonaisOleskeluaika; // W
+
 
 
 	/**
@@ -44,7 +46,6 @@ public class Palvelupiste {
 		this.generator = generator;
 		this.skeduloitavanTapahtumanTyyppi = tyyppi;
 		this.palvelupisteenNimi = palvelupisteenNimi;
-		this.kokonaisOleskeluaika = 0;
 	}
 
 
@@ -53,16 +54,22 @@ public class Palvelupiste {
 	 */
 	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
 		jono.add(a);
-		
+		palvelutapahtumat.add(new Palvelutapahtuma(a.getId()));
 	}
 
 	/**
-	 * @return will return and remove first customer from queue (jono) list.
+	 * @return will return and remove first customer from queue (jono) list. Will also set departure time for a customer.
 	 */
 	public Asiakas otaJonosta(){
 		palvellutAsiakkaat++;
 		varattu = false;
-		return jono.poll();
+		Asiakas asiakas = jono.poll();
+		for(Palvelutapahtuma palvelutapahtuma : palvelutapahtumat) {
+			if(asiakas.getId() == palvelutapahtuma.getAsiakkaanId()) {
+				palvelutapahtuma.setPoistumisaika(Kello.getInstance().getAika());
+			}
+		}
+		return asiakas;
 		
 	}
 
@@ -83,7 +90,7 @@ public class Palvelupiste {
 			double palveluaika = generator.sample(); // B busy time
 			tapahtumalista.lisaa(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+palveluaika));
 			kokonaisPalveluaika+=palveluaika;
-			
+
 	}
 
 	
@@ -107,16 +114,18 @@ public class Palvelupiste {
 	 * @return time  which all customers have spent in service point.
 	 */
 	public double getKokonaisOleskeluaika() {
+		double kokonaisOleskeluaika = 0; // W
+		for(Palvelutapahtuma palvelutapahtuma : palvelutapahtumat) {
+			kokonaisOleskeluaika+=palvelutapahtuma.asiakkaanKokonaisoleskeluaika();
+		}
 		return kokonaisOleskeluaika;
 	}
 
 
-	/**
-	 * @param asiakkaanOleskeluaika is a time which all customers have spent in service point.
-	 */
-	public void setKokonaisOleskeluaika(double asiakkaanOleskeluaika) {
-		this.kokonaisOleskeluaika += asiakkaanOleskeluaika;
-		
+
+
+	public String getPalvelupisteenNimi() {
+		return palvelupisteenNimi;
 	}
 
 
@@ -133,6 +142,7 @@ public class Palvelupiste {
 	public LinkedList<Asiakas> getJono() {
 		return jono;
 	}
+	
 
 
 	@Override

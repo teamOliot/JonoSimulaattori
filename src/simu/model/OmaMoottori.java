@@ -133,6 +133,7 @@ public class OmaMoottori extends Moottori {
 		//Koko simulaation suoritusteho X=C/T
 		System.out.println("Koko simulaation suoritusteho on: "+(palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika()));
 		for (Palvelupiste palvelupiste : palvelupisteet) {
+			System.out.println("Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" kokonaisoleskeluaika on :"+palvelupiste.getKokonaisOleskeluaika());
 			System.out.println(palvelupiste);
 		}
 		//Keskimääräinen läpimenoaika R=W/C
