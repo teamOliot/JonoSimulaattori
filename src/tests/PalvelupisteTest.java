@@ -16,10 +16,10 @@ import simu.model.*;
 
 class PalvelupisteTest {
 	
-	Tapahtumalista serviceList;
+	Tapahtumalista tapahtumalista;
 
-	LinkedList<Asiakas> queueList = new LinkedList<Asiakas>();
-	Palvelupiste servicepoint = new Palvelupiste(new Normal(10, 6), serviceList, TapahtumanTyyppi.PP1DEP, "CHECKPOINT");
+	LinkedList<Asiakas> jono = new LinkedList<Asiakas>();
+	Palvelupiste servicepoint = new Palvelupiste(new Normal(10, 6), tapahtumalista, TapahtumanTyyppi.PP1DEP, "CHECKPOINT");
 	
 	private static Asiakas asiakas;
 
@@ -34,12 +34,12 @@ class PalvelupisteTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		queueList.add(asiakas);
+		jono.add(asiakas);
 	}
 	
     @AfterEach
     public void tearDown() {
-    	queueList.clear();
+    	jono.clear();
     }
 
 	@Test
@@ -50,12 +50,17 @@ class PalvelupisteTest {
 
 	@Test
 	public void testLisaaJonoon() {
-		assertEquals(asiakas, queueList.getFirst(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
+		assertEquals(asiakas, jono.getFirst(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
 	}
 
 	@Test
 	final void testOtaJonosta() {
-		assertEquals(asiakas, queueList.peek(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
+		assertEquals(asiakas, jono.peek(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
+	}
+	
+	@Test
+	public void testOnJonossa() {
+		assertEquals(1, jono.size(), "Listan koko on eri kuin listalle lisättyjen olioiden määrä");
 	}
 
 }
