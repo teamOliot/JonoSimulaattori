@@ -30,6 +30,7 @@ public class Palvelupiste {
 	private int palvellutAsiakkaat;
 	private double kokonaisPalveluaika;
 	private String palvelupisteenNimi;
+	private double kokonaisOleskeluaika; // W
 
 
 	/**
@@ -43,7 +44,7 @@ public class Palvelupiste {
 		this.generator = generator;
 		this.skeduloitavanTapahtumanTyyppi = tyyppi;
 		this.palvelupisteenNimi = palvelupisteenNimi;
-		
+		this.kokonaisOleskeluaika = 0;
 	}
 
 
@@ -78,9 +79,8 @@ public class Palvelupiste {
 	 */
 	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
 			Trace.out(Trace.Level.INFO, "Aloitetaan uusi palvelu asiakkaalle " + jono.peek().getId());
-			
 			varattu = true;
-			double palveluaika = generator.sample();
+			double palveluaika = generator.sample(); // B busy time
 			tapahtumalista.lisaa(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+palveluaika));
 			kokonaisPalveluaika+=palveluaika;
 			
@@ -101,6 +101,22 @@ public class Palvelupiste {
 	 */
 	public boolean onVarattu(){
 		return varattu;
+	}
+	
+	/**
+	 * @return time  which all customers have spent in service point.
+	 */
+	public double getKokonaisOleskeluaika() {
+		return kokonaisOleskeluaika;
+	}
+
+
+	/**
+	 * @param asiakkaanOleskeluaika is a time which all customers have spent in service point.
+	 */
+	public void setKokonaisOleskeluaika(double asiakkaanOleskeluaika) {
+		this.kokonaisOleskeluaika += asiakkaanOleskeluaika;
+		
 	}
 
 

@@ -88,6 +88,7 @@ public class OmaMoottori extends Moottori {
 			a = palvelupisteet[0].otaJonosta();
 			palvelupisteet[1].lisaaJonoon(a);
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
+			
 			break;
 		case PP2DEP:
 			a = palvelupisteet[1].otaJonosta();
