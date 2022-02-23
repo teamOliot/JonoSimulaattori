@@ -6,12 +6,19 @@ public interface ISimulaattorinUI {
 	public double getAika();
 	public long getViive();
 	
-	//Kontrolleri antaa käyttöliittymälle tuloksia, joita Moottori tuottaa 
+	// Kontrolleri tarvitsee syötteiksi myös X-asiakkaiden saapumisten parametrit ja Y-asiakkaiden saapumisten parametrit
+	// Näille pitäisi tehdä metodit
+	
+	// Kontrolleri antaa käyttöliittymälle tuloksia, joita Moottori tuottaa 
 	public void setLoppuaika(double aika);
 	
 	public void setAsiakasMaaraX(int asiakasMaaraX);
 	public void setAsiakasMaaraY(int asiakasMaaraY);
-	public void setAsiakasMaara(int asiakasMaara);
+	public void setAsiakasMaaraYht(int asiakasMaara);
+	
+	// Lisätty setPalvellutX ja setPalvellutY
+	public void setPalvellutX(int asiakasMaaraX);
+	public void setPalvellutY(int asiakasMaaraY);
 	public void setPalvellut(int asiakasMaara);
 	
 	// Kontrolleri tarvitsee  
