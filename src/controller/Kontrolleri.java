@@ -25,6 +25,8 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 		moottori = new OmaMoottori(this); // luodaan uusi moottorisäie jokaista simulointia varten
 		moottori.setSimulointiaika(ui.getAika());
 		moottori.setViive(ui.getViive());
+		moottori.setXParam(ui.getXParam());
+		moottori.setYParam(ui.getYParam());
 		ui.getPP1Visualisointi().tyhjennaNaytto();
 		((Thread) moottori).start();
 		// ((Thread)moottori).run(); // Ei missään tapauksessa näin. Miksi?
