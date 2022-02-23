@@ -3,9 +3,11 @@ package simu.model;
 import simu.framework.Kello;
 import simu.framework.Trace;
 
+/**
+ * @author Dahlman, Lappi, Laamo
+ *
+ */
 
-// TODO:
-// Asiakas koodataan simulointimallin edellyttämällä tavalla (data!)
 public class Asiakas {
 	private double saapumisaika;
 	private double poistumisaika;
@@ -20,61 +22,104 @@ public class Asiakas {
 	private AsiakasTyyppi tyyppi;
 	
 	
+	/**
+	 * @param tyyppi
+	 */
 	public Asiakas(AsiakasTyyppi tyyppi){
-	    id = i++;
+	    id = i;
+	    i++;
 	    this.tyyppi = tyyppi;
 		saapumisaika = Kello.getInstance().getAika();
 		Trace.out(Trace.Level.INFO, "Uusi asiakas nro " + id + " saapui klo "+saapumisaika);
 	}
 
+	/**
+	 * @return double
+	 */
 	public double getPoistumisaika() {
 		return poistumisaika;
 	}
 
+	/**
+	 * @param poistumisaika
+	 */
 	public void setPoistumisaika(double poistumisaika) {
 		this.poistumisaika = poistumisaika;
 	}
 
+	/**
+	 * @return double
+	 */
 	public double getSaapumisaika() {
 		return saapumisaika;
 	}
 
+	/**
+	 * @param saapumisaika
+	 */
 	public void setSaapumisaika(double saapumisaika) {
 		this.saapumisaika = saapumisaika;
 	}
 	
+	/**
+	 * @return int
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * @return AsiakasTyyppi
+	 */
 	public AsiakasTyyppi getTyyppi() {
 		return tyyppi;
 	}
 
+	/**
+	 * @param tyyppi
+	 */
 	public void setTyyppi(AsiakasTyyppi tyyppi) {
 		this.tyyppi = tyyppi;
 	}
 	
+	/**
+	 * @return long
+	 */
 	public static long getSummaXY() {
 		return summaXY;
 	}
 
+	/**
+	 * @return long
+	 */
 	public static long getSummaX() {
 		return summaX;
 	}
 
+	/**
+	 * @return long
+	 */
 	public static long getSummaY() {
 		return summaY;
 	}
 	
+	/**
+	 * @return int
+	 */
 	public static int getLapimenneetX() {
 		return lapimenneetX;
 	}
 
+	/**
+	 * @return int
+	 */
 	public static int getLapimenneetY() {
 		return lapimenneetY;
 	}
 	
+	/**
+	 * 
+	 */
 	public void raportti(){
 		Trace.out(Trace.Level.INFO, "\nAsiakas "+id+ " tyyppi: " + this.tyyppi + " valmis! ");
 		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " tyyppi: " + this.tyyppi + "   saapui: " +saapumisaika);
