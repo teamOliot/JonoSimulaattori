@@ -175,14 +175,15 @@ public class OmaMoottori extends Moottori {
 		
 		System.out.println(raportti.toString());
 		
-	/*	List<TietokantaRaportti> raportit = tietokantaraporttiDAO.readRaportit();
+		boolean res = tietokantaraporttiDAO.createRaportti(raportti);
+		System.out.println("toteutuiko: " + res);
+		
+		TietokantaRaportti[] raportit = tietokantaraporttiDAO.readRaportit();
 		for (TietokantaRaportti r : raportit) {
 			System.out.println("tämä tulee tietokannasta" + r);
 		}
-		*/
+		
 	}
-	
-	
 
 	@Override
 	public void setXParam(double xParam) {
