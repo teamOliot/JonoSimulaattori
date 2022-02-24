@@ -7,7 +7,7 @@ public interface ITietokantaRaporttiDAO {
 
 	//public abstract TietokantaRaportti readRaportti(int id);
 
-	public abstract List<TietokantaRaportti> readRaportit();
+	public abstract TietokantaRaportti[] readRaportit();
 
 	public abstract boolean deleteRaportti(int id);
 }

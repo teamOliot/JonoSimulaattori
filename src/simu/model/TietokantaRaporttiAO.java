@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
@@ -31,35 +32,10 @@ public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
 		
 		@Override
 		public boolean createRaportti(TietokantaRaportti raportti) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public List<TietokantaRaportti> readRaportit() {
-			// TODO Auto-generated method stub
-			List<TietokantaRaportti> result;
-			try (Session session = sessionFactory.openSession()) {
-				result = session.createQuery("from Loppuraportti").getResultList();
-			} catch (Exception e) {
-				throw e;
-			}
-
-			return result;
-		}
-
-		@Override
-		public boolean deleteRaportti(int id) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-/*		@Override
-		public boolean createValuutta(Valuutta valuutta) {
 			Transaction transaktio = null;
-			try (Session istunto = istuntotehdas.openSession()) {
-				transaktio = istunto.beginTransaction();
-				istunto.save(valuutta);
+			try (Session session = sessionFactory.openSession()) {
+				transaktio = session.beginTransaction();
+				session.save(raportti);
 				transaktio.commit();
 				return true;
 			} catch (Exception e) {
@@ -69,20 +45,25 @@ public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
 			}
 		}
 
-
 		@Override
-		public Valuutta[] readValuutat() {
-			List<Valuutta> result;
-			try (Session istunto = istuntotehdas.openSession()) {
-				result = istunto.createQuery("from Valuutta").getResultList();
+		public TietokantaRaportti[] readRaportit() {
+			List<TietokantaRaportti> result;
+			try (Session session = sessionFactory.openSession()) {
+				result = session.createQuery("from TietokantaRaportti").getResultList();
 			} catch (Exception e) {
 				throw e;
 			}
-			Valuutta[] returnArray = new Valuutta[result.size()];
-			return (Valuutta[]) result.toArray(returnArray);
+			TietokantaRaportti[] returnArray = new TietokantaRaportti[result.size()];
+			return (TietokantaRaportti[]) result.toArray(returnArray);
+		}
+		
+		@Override
+		public boolean deleteRaportti(int id) {
+			// TODO Auto-generated method stub
+			return false;
 		}
 
-
+		/*
 		@Override
 		public boolean deleteValuutta(String tunnus) {
 			Transaction transaktio = null;
@@ -98,6 +79,5 @@ public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
 				return false;
 			}
 		}*/
-
 
 }
