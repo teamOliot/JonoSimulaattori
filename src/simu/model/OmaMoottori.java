@@ -1,6 +1,7 @@
 package simu.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import controller.IKontrolleriMtoV;
@@ -16,6 +17,7 @@ import simu.framework.Tapahtuma;
  *
  */
 public class OmaMoottori extends Moottori {
+	static ITietokantaRaporttiDAO tietokantaraporttiDAO = new TietokantaRaporttiAO();
 
 	private Saapumisprosessi saapumisprosessiX;
 	private Saapumisprosessi saapumisprosessiY;
@@ -149,7 +151,11 @@ public class OmaMoottori extends Moottori {
 		//Keskimääräinen jononpituus N = W/T
 		
 		System.out.println("XParametri: " + xParam + " YParametri: " + yParam);
-
+		List<TietokantaRaportti> raportit = tietokantaraporttiDAO.readRaportit();
+		for (TietokantaRaportti raportti : raportit) {
+			System.out.println("tämä tulee tietokannasta" + raportti);
+		}
+		
 	}
 
 	@Override
