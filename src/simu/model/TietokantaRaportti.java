@@ -70,13 +70,13 @@ public class TietokantaRaportti {
 	public TietokantaRaportti() {}
 	
 
-	public TietokantaRaportti(LocalDateTime paivamaara, double simulaationKokonaisaika, double xParam, double yParam,
+	public TietokantaRaportti(double simulaationKokonaisaika, double xParam, double yParam,
 			double simulaationSuoritusteho, double asiakasMaaraX, double asiakasMaaraY, double xAsiakkaidenLapimenoaika,
 			double yAsiakkaidenLapimenoaika, double asiakkaidenLapimenoaikaYht, double oleskeluaikaPP1,
 			double oleskeluaikaPP2, double oleskeluaikaPP3, double oleskeluaikaPP4, double jononPituusPP1,
 			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4) {
 		super();
-		this.paivamaara = paivamaara;
+		this.paivamaara = java.time.LocalDateTime.now();
 		this.simulaationKokonaisaika = simulaationKokonaisaika;
 		this.xParam = xParam;
 		this.yParam = yParam;
@@ -241,4 +241,20 @@ public class TietokantaRaportti {
 	public void setJononPituusPP4(double jononPituusPP4) {
 		this.jononPituusPP4 = jononPituusPP4;
 	}
+
+
+	@Override
+	public String toString() {
+		return "TietokantaRaportti [paivamaara=" + paivamaara + ", simulaationKokonaisaika=" + simulaationKokonaisaika
+				+ ", xParam=" + xParam + ", yParam=" + yParam + ", simulaationSuoritusteho=" + simulaationSuoritusteho
+				+ ", asiakasMaaraX=" + asiakasMaaraX + ", asiakasMaaraY=" + asiakasMaaraY
+				+ ", xAsiakkaidenLapimenoaika=" + xAsiakkaidenLapimenoaika + ", yAsiakkaidenLapimenoaika="
+				+ yAsiakkaidenLapimenoaika + ", asiakkaidenLapimenoaikaYht=" + asiakkaidenLapimenoaikaYht
+				+ ", oleskeluaikaPP1=" + oleskeluaikaPP1 + ", oleskeluaikaPP2=" + oleskeluaikaPP2 + ", oleskeluaikaPP3="
+				+ oleskeluaikaPP3 + ", oleskeluaikaPP4=" + oleskeluaikaPP4 + ", jononPituusPP1=" + jononPituusPP1
+				+ ", jononPituusPP2=" + jononPituusPP2 + ", jononPituusPP3=" + jononPituusPP3 + ", jononPituusPP4="
+				+ jononPituusPP4 + "]";
+	}
+	
+	
 }
