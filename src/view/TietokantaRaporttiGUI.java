@@ -7,10 +7,12 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import simu.model.TietokantaRaportti;
 
@@ -31,7 +33,12 @@ public class TietokantaRaporttiGUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		// Created a table view
 		TableView tbv = new TableView();
+        final Label label = new Label("Loppuraportti tietokannasta");
+        label.setFont(new Font("Arial", 20));
+		
+		// Added all columns to table view
 //		TableColumn<Integer, TietokantaRaportti> cl1 = new TableColumn<>("Id");
 //		cl1.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		TableColumn<LocalDate, TietokantaRaportti> cl2 = new TableColumn<>("Päivämäärä");
@@ -51,12 +58,12 @@ public class TietokantaRaporttiGUI extends Application {
 		TableColumn<Double, TietokantaRaportti> cl8 = new TableColumn<>("Saapuneet Y asiakkaat");
 		cl8.setCellValueFactory(new PropertyValueFactory<>("asiakasMaaraY"));
 		cl8.setMinWidth(150);
-		TableColumn<Double, TietokantaRaportti> cl9 = new TableColumn<>("X as läpimenoaika");
-		cl9.setCellValueFactory(new PropertyValueFactory<>("xAsiakkaidenLapimenoaika"));
-		cl9.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl10 = new TableColumn<>("Y as läpimenoaika");
-		cl10.setCellValueFactory(new PropertyValueFactory<>("yAsiakkaidenLapimenoaika"));
-		cl10.setMinWidth(120);
+//		TableColumn<Double, TietokantaRaportti> cl9 = new TableColumn<>("X as läpimenoaika");
+//		cl9.setCellValueFactory(new PropertyValueFactory<>("xAsiakkaidenLapimenoaika"));
+//		cl9.setMinWidth(120);
+//		TableColumn<Double, TietokantaRaportti> cl10 = new TableColumn<>("Y as läpimenoaika");
+//		cl10.setCellValueFactory(new PropertyValueFactory<>("yAsiakkaidenLapimenoaika"));
+//		cl10.setMinWidth(120);
 		TableColumn<Double, TietokantaRaportti> cl11 = new TableColumn<>("As läpimenoaika yht");
 		cl11.setCellValueFactory(new PropertyValueFactory<>("asiakkaidenLapimenoaikaYht"));
 		cl11.setMinWidth(150);
@@ -93,8 +100,8 @@ public class TietokantaRaporttiGUI extends Application {
 		tbv.getColumns().add(cl6);
 		tbv.getColumns().add(cl7);
 		tbv.getColumns().add(cl8);
-		tbv.getColumns().add(cl9);
-		tbv.getColumns().add(cl10);
+//		tbv.getColumns().add(cl9);
+//		tbv.getColumns().add(cl10);
 		tbv.getColumns().add(cl11);
 		tbv.getColumns().add(cl13);
 		tbv.getColumns().add(cl14);
@@ -110,7 +117,7 @@ public class TietokantaRaporttiGUI extends Application {
 			tbv.getItems().add(dbList);
 		}
 		VBox vbox = new VBox();
-		vbox.getChildren().addAll(tbv);
+		vbox.getChildren().addAll(label,tbv);
 		vbox.setSpacing(10);
 		vbox.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(vbox);
