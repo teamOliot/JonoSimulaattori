@@ -16,6 +16,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import simu.model.TietokantaRaportti;
 
+
+/**
+ * @author Dahlman
+ *
+ */
 public class TietokantaRaporttiGUI extends Application {
 
 
@@ -117,6 +122,7 @@ public class TietokantaRaporttiGUI extends Application {
 		for (TietokantaRaportti dbList : tietokantaRaportti) {
 			tbv.getItems().add(dbList);
 		}
+		
 		VBox vbox = new VBox();
 		vbox.getChildren().addAll(label,tbv);
 		vbox.setSpacing(10);
@@ -124,5 +130,7 @@ public class TietokantaRaporttiGUI extends Application {
 		Scene scene = new Scene(vbox);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		
 	}
 }
