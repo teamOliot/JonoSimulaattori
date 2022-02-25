@@ -20,21 +20,22 @@ public class TietokantaRaporttiGUI extends Application {
 
 
 	private static List<TietokantaRaportti> tietokantaRaportti = new ArrayList<TietokantaRaportti>();
-	TietokantaRaportti raportti = new TietokantaRaportti(500.0789207815674, 15.0, 25.0, 0.10,33.0, 22.0, 
+	TietokantaRaportti raportti = new TietokantaRaportti(500.0789207815674, 15, 25, 0.10,33.0, 22.0, 
             				 12, 26, 17, 101.1,183.3 , 376.8, 300.1, 0.2, 0.3, 0.7, 0.6);
 
 	public static void main(String[] args) {
 		launch(args);
 	}
 
-	public static void setManager(List<TietokantaRaportti> dbList) {
-		tietokantaRaportti = dbList;
-	}
+//	public static void setManager(List<TietokantaRaportti> dbList) {
+//		tietokantaRaportti = dbList;
+//	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// Created a table view
 		TableView tbv = new TableView();
+		// voisi tehdä myös toisen table view?? Sitten pitää myös miettiä miten loppaa rapsan tiedot, kts. for loop rivi 117
         final Label label = new Label("Loppuraportti tietokannasta");
         label.setFont(new Font("Arial", 20));
 		
