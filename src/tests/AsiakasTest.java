@@ -1,4 +1,4 @@
-package simu.model;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import simu.framework.Kello;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
+import simu.model.Asiakas;
+import simu.model.AsiakasTyyppi;
 
 class AsiakasTest {
 
