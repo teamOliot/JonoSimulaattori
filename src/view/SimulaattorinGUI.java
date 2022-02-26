@@ -77,12 +77,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	private Label simuKokonaisaikaLabel;
 	private Label simuKokonaisaikaTulos;
 
+	private TietokantaRaporttiGUI raporttiGui;
+
 	@Override
 	public void init() {
 
 		Trace.setTraceLevel(Level.INFO);
 
 		kontrolleri = new Kontrolleri(this);
+		raporttiGui = new TietokantaRaporttiGUI();
 	}
 
 	@Override
@@ -115,6 +118,18 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			tarkasteleRaporttejaButton = new Button("Tarkastele simulointiraportteja");
 			tarkasteleRaporttejaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			tarkasteleRaporttejaButton.setPrefWidth(260);
+			tarkasteleRaporttejaButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					try {
+						Stage raporttiStage = new Stage();
+						raporttiGui.start(raporttiStage);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
 
 			// Tarkastele simulointiraportteja -painikkeelle lisättävä vielä OnAction
 
@@ -131,14 +146,12 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 					alert.setTitle("Simulaattorin käyttöohjeet");
 					alert.setHeaderText(null);
-					alert.setContentText(
-					"1. Syötä Simulointiaika-kenttään arvo. \n" + 
-					"2. Syötä Viive-kenttään arvo. \n" + 
-					"3. Syötä Parametrit X -kenttään arvo. \n" + 
-					"4. Syötä Parametrit Y -kenttään arvo. \n" + 
-					"5. Klikkaa Käynnistä simulointi -painiketta. \n" + 
-					"6. Voit simuloinnin ollessa käynnissä nopeuttaa tai hidastaa simuloinnin viivettä. \n" + 
-					"7. Voit tarkastella tallennettuja simulointiraportteja.");
+					alert.setContentText("1. Syötä Simulointiaika-kenttään arvo. \n"
+							+ "2. Syötä Viive-kenttään arvo. \n" + "3. Syötä Parametrit X -kenttään arvo. \n"
+							+ "4. Syötä Parametrit Y -kenttään arvo. \n"
+							+ "5. Klikkaa Käynnistä simulointi -painiketta. \n"
+							+ "6. Voit simuloinnin ollessa käynnissä nopeuttaa tai hidastaa simuloinnin viivettä. \n"
+							+ "7. Voit tarkastella tallennettuja simulointiraportteja.");
 
 					alert.showAndWait();
 				}
@@ -155,7 +168,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			Region tyhjaTila2 = new Region();
 			HBox.setHgrow(tyhjaTila2, Priority.ALWAYS);
 
-			// GUI:n ylimmällä rivillä tyhjä tila, painike keskellä, tyhjä tila ja painike oikeassa reunassa
+			// GUI:n ylimmällä rivillä tyhjä tila, painike keskellä, tyhjä tila ja painike
+			// oikeassa reunassa
 			hBox.getChildren().addAll(tyhjaTila1, tarkasteleRaporttejaButton, tyhjaTila2, stack);
 
 			GridPane grid = new GridPane();
@@ -197,7 +211,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			kaynnistaButton.setText("Käynnistä simulointi");
 			kaynnistaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kaynnistaButton.setMaxWidth(160.0);
-			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen alueelle
+			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen
+															// alueelle
 
 			kaynnistaButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -393,7 +408,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	public long getViive() {
 		return Long.parseLong(viive.getText());
 	}
-	
+
 	@Override
 	public double getXParam() {
 		return Double.parseDouble(xAsiakkaidenParam.getText());
