@@ -55,7 +55,7 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 	public void visualisoiAsiakas(ArrayList<Palvelupiste> palvelupisteet) {
 		Platform.runLater(new Runnable() {
 			public void run() {
-				
+				ui.setProgressBarAika();
 				ui.getPP1Visualisointi().tyhjennaNaytto();
 				ui.getPP2Visualisointi().tyhjennaNaytto();
 				ui.getPP3Visualisointi().tyhjennaNaytto();

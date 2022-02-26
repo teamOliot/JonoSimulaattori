@@ -28,4 +28,7 @@ public interface ISimulaattorinUI {
 	public IVisualisointi getPP2Visualisointi();
 	public IVisualisointi getPP3Visualisointi();
 	public IVisualisointi getPP4Visualisointi();
+	
+	// Päivittää progressBarin aikaa
+	public void setProgressBarAika();
 }
