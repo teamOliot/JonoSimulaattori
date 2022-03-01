@@ -16,3 +16,4 @@ local.properties
 /bin
 
 /src/hibernate.cfg.xml
+/tests/hibernate.cfg.xml
