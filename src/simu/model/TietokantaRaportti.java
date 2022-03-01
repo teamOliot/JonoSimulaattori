@@ -66,6 +66,12 @@ public class TietokantaRaportti {
 
 	@Column(name = "JononPituusPP4")
 	double jononPituusPP4;
+	
+	@Column(name = "LapimenneetX")
+	int lapimenneetX;
+	
+	@Column(name = "LapimenneetY")
+	int lapimenneetY;
 
 	public TietokantaRaportti() {}
 	
@@ -74,7 +80,7 @@ public class TietokantaRaportti {
 			double simulaationSuoritusteho, double asiakasMaaraX, double asiakasMaaraY, double xAsiakkaidenLapimenoaika,
 			double yAsiakkaidenLapimenoaika, double asiakkaidenLapimenoaikaYht, double oleskeluaikaPP1,
 			double oleskeluaikaPP2, double oleskeluaikaPP3, double oleskeluaikaPP4, double jononPituusPP1,
-			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4) {
+			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4, int lapimenneetX, int lapimenneetY) {
 		super();
 		this.paivamaara = java.time.LocalDateTime.now();
 		this.simulaationKokonaisaika = simulaationKokonaisaika;
@@ -94,8 +100,9 @@ public class TietokantaRaportti {
 		this.jononPituusPP2 = jononPituusPP2;
 		this.jononPituusPP3 = jononPituusPP3;
 		this.jononPituusPP4 = jononPituusPP4;
+		this.lapimenneetX = lapimenneetX;
+		this.lapimenneetY = lapimenneetY;
 	}
-
 
 	public LocalDateTime getPaivamaara() {
 		return paivamaara;
@@ -241,7 +248,25 @@ public class TietokantaRaportti {
 	public void setJononPituusPP4(double jononPituusPP4) {
 		this.jononPituusPP4 = jononPituusPP4;
 	}
+	
+	public int getLapimenneetX() {
+		return lapimenneetX;
+	}
 
+
+	public void setLapimenneetX(int lapimenneetX) {
+		this.lapimenneetX = lapimenneetX;
+	}
+
+
+	public int getLapimenneetY() {
+		return lapimenneetY;
+	}
+
+
+	public void setLapimenneetY(int lapimenneetY) {
+		this.lapimenneetY = lapimenneetY;
+	}
 
 	@Override
 	public String toString() {
@@ -253,8 +278,7 @@ public class TietokantaRaportti {
 				+ ", oleskeluaikaPP1=" + oleskeluaikaPP1 + ", oleskeluaikaPP2=" + oleskeluaikaPP2 + ", oleskeluaikaPP3="
 				+ oleskeluaikaPP3 + ", oleskeluaikaPP4=" + oleskeluaikaPP4 + ", jononPituusPP1=" + jononPituusPP1
 				+ ", jononPituusPP2=" + jononPituusPP2 + ", jononPituusPP3=" + jononPituusPP3 + ", jononPituusPP4="
-				+ jononPituusPP4 + "]";
+				+ jononPituusPP4 + ", lapimenneetX=" + lapimenneetX + ", lapimenneetY=" + lapimenneetY + "]";
 	}
-	
 	
 }

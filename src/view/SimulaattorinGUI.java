@@ -231,10 +231,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			pp4Label = new Label("PP4 WC");
 			pp4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
-			pp1Naytto = new Visualisointi(200, 260); // leveys, korkeus
-			pp2Naytto = new Visualisointi(200, 260);
-			pp3Naytto = new Visualisointi(200, 260);
-			pp4Naytto = new Visualisointi(200, 260);
+			pp1Naytto = new Visualisointi(200, 260, "graphics/PP1_L.png"); // leveys, korkeus
+			pp2Naytto = new Visualisointi(200, 260, "graphics/PP2_T.png");
+			pp3Naytto = new Visualisointi(200, 260, "graphics/PP3_B.png");
+			pp4Naytto = new Visualisointi(200, 260, "graphics/PP4_WC.png");
 
 			xSaapuneetLabel = new Label("Saapuneet X:");
 			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
@@ -425,13 +425,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 		this.yhtSaapuneetTulos.setText(asiakasMaaraYht + "");
 	}
 
-	// Tämä ei näy vielä GUI:ssa
 	@Override
 	public void setPalvellutX(int asiakasMaaraX) {
 		this.xLapiSysteeminTulos.setText(asiakasMaaraX + "");
 	}
 
-	// Tämä ei näy vielä GUI:ssa
 	@Override
 	public void setPalvellutY(int asiakasMaaraY) {
 		this.yLapiSysteeminTulos.setText(asiakasMaaraY + "");
