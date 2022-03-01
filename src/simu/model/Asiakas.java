@@ -117,6 +117,26 @@ public class Asiakas {
 		return lapimenneetY;
 	}
 	
+	public static void setSummaXY(long summaXY) {
+		Asiakas.summaXY = summaXY;
+	}
+
+	public static void setSummaX(long summaX) {
+		Asiakas.summaX = summaX;
+	}
+
+	public static void setSummaY(long summaY) {
+		Asiakas.summaY = summaY;
+	}
+
+	public static void setLapimenneetX(int lapimenneetX) {
+		Asiakas.lapimenneetX = lapimenneetX;
+	}
+
+	public static void setLapimenneetY(int lapimenneetY) {
+		Asiakas.lapimenneetY = lapimenneetY;
+	}
+
 	/**
 	 * 
 	 */
