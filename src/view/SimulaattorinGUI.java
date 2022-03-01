@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import simu.framework.Kello;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
 import javafx.scene.*;
@@ -55,6 +56,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	private IVisualisointi pp2Naytto;
 	private IVisualisointi pp3Naytto;
 	private IVisualisointi pp4Naytto;
+	
+	private ProgressBar progressBar;
 
 	private Label xSaapuneetLabel;
 	private Label xSaapuneetTulos;
@@ -77,12 +80,15 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	private Label simuKokonaisaikaLabel;
 	private Label simuKokonaisaikaTulos;
 
+	private TietokantaRaporttiGUI raporttiGui;
+
 	@Override
 	public void init() {
 
 		Trace.setTraceLevel(Level.INFO);
 
 		kontrolleri = new Kontrolleri(this);
+		raporttiGui = new TietokantaRaporttiGUI();
 	}
 
 	@Override
@@ -115,6 +121,18 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			tarkasteleRaporttejaButton = new Button("Tarkastele simulointiraportteja");
 			tarkasteleRaporttejaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			tarkasteleRaporttejaButton.setPrefWidth(260);
+			tarkasteleRaporttejaButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					try {
+						Stage raporttiStage = new Stage();
+						raporttiGui.start(raporttiStage);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
 
 			// Tarkastele simulointiraportteja -painikkeelle lisättävä vielä OnAction
 
@@ -131,14 +149,12 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 					alert.setTitle("Simulaattorin käyttöohjeet");
 					alert.setHeaderText(null);
-					alert.setContentText(
-					"1. Syötä Simulointiaika-kenttään arvo. \n" + 
-					"2. Syötä Viive-kenttään arvo. \n" + 
-					"3. Syötä Parametrit X -kenttään arvo. \n" + 
-					"4. Syötä Parametrit Y -kenttään arvo. \n" + 
-					"5. Klikkaa Käynnistä simulointi -painiketta. \n" + 
-					"6. Voit simuloinnin ollessa käynnissä nopeuttaa tai hidastaa simuloinnin viivettä. \n" + 
-					"7. Voit tarkastella tallennettuja simulointiraportteja.");
+					alert.setContentText("1. Syötä Simulointiaika-kenttään arvo. \n"
+							+ "2. Syötä Viive-kenttään arvo. \n" + "3. Syötä Parametrit X -kenttään arvo. \n"
+							+ "4. Syötä Parametrit Y -kenttään arvo. \n"
+							+ "5. Klikkaa Käynnistä simulointi -painiketta. \n"
+							+ "6. Voit simuloinnin ollessa käynnissä nopeuttaa tai hidastaa simuloinnin viivettä. \n"
+							+ "7. Voit tarkastella tallennettuja simulointiraportteja.");
 
 					alert.showAndWait();
 				}
@@ -155,7 +171,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			Region tyhjaTila2 = new Region();
 			HBox.setHgrow(tyhjaTila2, Priority.ALWAYS);
 
-			// GUI:n ylimmällä rivillä tyhjä tila, painike keskellä, tyhjä tila ja painike oikeassa reunassa
+			// GUI:n ylimmällä rivillä tyhjä tila, painike keskellä, tyhjä tila ja painike
+			// oikeassa reunassa
 			hBox.getChildren().addAll(tyhjaTila1, tarkasteleRaporttejaButton, tyhjaTila2, stack);
 
 			GridPane grid = new GridPane();
@@ -197,7 +214,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			kaynnistaButton.setText("Käynnistä simulointi");
 			kaynnistaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kaynnistaButton.setMaxWidth(160.0);
-			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen alueelle
+			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen
+															// alueelle
 
 			kaynnistaButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -236,6 +254,8 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			pp3Naytto = new Visualisointi(200, 260, "graphics/PP3_B.png");
 			pp4Naytto = new Visualisointi(200, 260, "graphics/PP4_WC.png");
 
+			progressBar = new ProgressBar(0);
+      
 			xSaapuneetLabel = new Label("Saapuneet X:");
 			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
@@ -336,42 +356,44 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			grid.add((Canvas) pp3Naytto, 3, 9);
 
 			// Saapuneet, systeemin läpi ja kokonaisaika
+			progressBar.setMaxWidth(Double.MAX_VALUE);
+			grid.add(progressBar, 0, 10, 4, 1);
 
-			grid.add(xSaapuneetLabel, 0, 10);
+			grid.add(xSaapuneetLabel, 0, 11);
 			GridPane.setHalignment(xSaapuneetLabel, HPos.CENTER);
-			grid.add(xSaapuneetTulos, 1, 10);
+			grid.add(xSaapuneetTulos, 1, 11);
 			GridPane.setHalignment(xSaapuneetTulos, HPos.CENTER);
 
-			grid.add(ySaapuneetLabel, 0, 11);
+			grid.add(ySaapuneetLabel, 0, 12);
 			GridPane.setHalignment(ySaapuneetLabel, HPos.CENTER);
-			grid.add(ySaapuneetTulos, 1, 11);
+			grid.add(ySaapuneetTulos, 1, 12);
 			GridPane.setHalignment(ySaapuneetTulos, HPos.CENTER);
 
-			grid.add(yhtSaapuneetLabel, 0, 12);
+			grid.add(yhtSaapuneetLabel, 0, 13);
 			GridPane.setHalignment(yhtSaapuneetLabel, HPos.CENTER);
-			grid.add(yhtSaapuneetTulos, 1, 12);
+			grid.add(yhtSaapuneetTulos, 1, 13);
 			GridPane.setHalignment(yhtSaapuneetTulos, HPos.CENTER);
 
-			grid.add(xLapiSysteeminLabel, 2, 10);
+			grid.add(xLapiSysteeminLabel, 2, 11);
 			GridPane.setHalignment(xLapiSysteeminLabel, HPos.CENTER);
-			grid.add(xLapiSysteeminTulos, 3, 10);
+			grid.add(xLapiSysteeminTulos, 3, 11);
 			GridPane.setHalignment(xLapiSysteeminTulos, HPos.CENTER);
 
-			grid.add(yLapiSysteeminLabel, 2, 11);
+			grid.add(yLapiSysteeminLabel, 2, 12);
 			GridPane.setHalignment(yLapiSysteeminLabel, HPos.CENTER);
-			grid.add(yLapiSysteeminTulos, 3, 11);
+			grid.add(yLapiSysteeminTulos, 3, 12);
 			GridPane.setHalignment(yLapiSysteeminTulos, HPos.CENTER);
 
-			grid.add(yhtLapiSysteeminLabel, 2, 12);
+			grid.add(yhtLapiSysteeminLabel, 2, 13);
 			GridPane.setHalignment(yhtLapiSysteeminLabel, HPos.CENTER);
-			grid.add(yhtLapiSysteeminTulos, 3, 12);
+			grid.add(yhtLapiSysteeminTulos, 3, 13);
 			GridPane.setHalignment(yhtLapiSysteeminTulos, HPos.CENTER);
 
-			// Välissä tyhjä rivi 13
+			// Välissä tyhjä rivi 14
 
-			grid.add(simuKokonaisaikaLabel, 0, 14);
+			grid.add(simuKokonaisaikaLabel, 0, 15);
 			GridPane.setHalignment(simuKokonaisaikaLabel, HPos.CENTER);
-			grid.add(simuKokonaisaikaTulos, 1, 14);
+			grid.add(simuKokonaisaikaTulos, 1, 15);
 			GridPane.setHalignment(simuKokonaisaikaTulos, HPos.CENTER);
 
 			// Käytettävissä olevat fontit
@@ -393,7 +415,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	public long getViive() {
 		return Long.parseLong(viive.getText());
 	}
-	
+
 	@Override
 	public double getXParam() {
 		return Double.parseDouble(xAsiakkaidenParam.getText());
@@ -439,6 +461,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	public void setPalvellut(int asiakasMaara) {
 		this.yhtLapiSysteeminTulos.setText(asiakasMaara + "");
 	}
+	
+	public void setProgressBarAika() {
+		System.out.println(Kello.getInstance().getAika() / getAika());
+		progressBar.setProgress(Kello.getInstance().getAika() / getAika());
+	}
 
 	@Override
 	public IVisualisointi getPP1Visualisointi() {
@@ -459,7 +486,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	public IVisualisointi getPP4Visualisointi() {
 		return pp4Naytto;
 	}
-
+	
 	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
 	public static void main(String[] args) {
 		launch(args);

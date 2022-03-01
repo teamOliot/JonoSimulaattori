@@ -194,4 +194,5 @@ public class OmaMoottori extends Moottori {
 	public void setYParam(double yParam) {
 		this.yParam = yParam;
 	}
+	
 }

@@ -3,11 +3,17 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import simu.model.Palvelutapahtuma;
+
+
+
+/**
+ * @author Dahlman
+ *
+ */
 
 class PalvelutapahtumaTest {
 	
@@ -15,49 +21,58 @@ class PalvelutapahtumaTest {
 	 private static final double SAAPUMISAIKA = 2.0;
 	 private static final double POISTUMISAIKA= 5.0;
 	 Palvelutapahtuma tapahtuma = new Palvelutapahtuma(ASIAKKAANID);
+	 
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
 
 	@BeforeEach
 	void setUp() throws Exception {
 		 tapahtuma.setSaapumisaika(SAAPUMISAIKA);
 		 tapahtuma.setPoistumisaika(POISTUMISAIKA);
+		 tapahtuma.setAsiakkaanId(ASIAKKAANID);
+		 
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		 tapahtuma.setSaapumisaika(0);
+		 tapahtuma.setPoistumisaika(0);
+		 tapahtuma.setAsiakkaanId(ASIAKKAANID);
 	}
 
 	@Test
 	final void testPalvelutapahtuma() {
-
+		 Palvelutapahtuma tapahtuma2 = new Palvelutapahtuma(2);
+		 assertEquals(2, tapahtuma2.getAsiakkaanId(), "Asiakkaan ID ei täsmää");
+		 assertFalse(tapahtuma2.equals(null), "Olion luominen ei onnistunut, olio palauttaa NULL eli on tyhjä.");
+		 
 	}
 
 	@Test
 	final void testGetAsiakkaanId() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(ASIAKKAANID, tapahtuma.getAsiakkaanId(), "Asiakkaan ID ei täsmää");
 	}
 
 	@Test
 	final void testSetAsiakkaanId() {
-		fail("Not yet implemented"); // TODO
+		tapahtuma.setAsiakkaanId(5);
+		assertEquals(5, tapahtuma.getAsiakkaanId(), "Asiakkaan ID ei täsmää");
+		
 	}
 
 	@Test
 	final void testGetSaapumisaika() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(SAAPUMISAIKA, tapahtuma.getSaapumisaika(), "Asiakkaan saapumisaika ei täsmää saapumisaikaan");
 	}
 
 	@Test
 	final void testSetSaapumisaika() {
-		fail("Not yet implemented"); // TODO
+		tapahtuma.setSaapumisaika(3.5);
+		assertEquals(3.5, tapahtuma.getSaapumisaika(), "Asiakkaan poistumisaika ei täsmää saapumisaikaan");
 	}
 
 	@Test
 	final void testGetPoistumisaika() {
-		assertEquals(POISTUMISAIKA, tapahtuma.getPoistumisaika(), "Asiakkaan poistumisaika ei täsmää saapumisaikaan");
+		assertEquals(POISTUMISAIKA, tapahtuma.getPoistumisaika(), "Asiakkaan haettu poistumisaika ei täsmää poistumisaikaan");
 	}
 
 	@Test
@@ -68,7 +83,8 @@ class PalvelutapahtumaTest {
 
 	@Test
 	final void testAsiakkaanKokonaisoleskeluaika() {
-		fail("Not yet implemented"); // TODO
+		double oleskelu = tapahtuma.asiakkaanKokonaisoleskeluaika();
+		assertEquals(3.0, oleskelu, "Asiakkaan kokonaisoleskeluaika ei täsmää oikeaan oleskeluaikaan");
 	}
 
 }
