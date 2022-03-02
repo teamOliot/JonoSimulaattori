@@ -80,15 +80,17 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	private Label simuKokonaisaikaLabel;
 	private Label simuKokonaisaikaTulos;
 
-	private TietokantaRaporttiGUI raporttiGui;
+	private TietokantaRaporttiGUI tietokantaraporttiGUI;
+	private LoppuraporttiGUI loppuraporttiGUI;
 
 	@Override
 	public void init() {
 
 		Trace.setTraceLevel(Level.INFO);
-
-		kontrolleri = new Kontrolleri(this);
-		raporttiGui = new TietokantaRaporttiGUI();
+		
+		loppuraporttiGUI = new LoppuraporttiGUI();
+		kontrolleri = new Kontrolleri(this, loppuraporttiGUI);
+		tietokantaraporttiGUI = new TietokantaRaporttiGUI();
 	}
 
 	@Override
@@ -126,7 +128,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 				public void handle(ActionEvent event) {
 					try {
 						Stage raporttiStage = new Stage();
-						raporttiGui.start(raporttiStage);
+						tietokantaraporttiGUI.start(raporttiStage);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -398,7 +400,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			// Käytettävissä olevat fontit
 			System.out.println(javafx.scene.text.Font.getFamilies());
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -463,7 +465,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	}
 	
 	public void setProgressBarAika() {
-		System.out.println(Kello.getInstance().getAika() / getAika());
+		//System.out.println("simulaattoriGUI setProgressBarAika" + Kello.getInstance().getAika() / getAika());
 		progressBar.setProgress(Kello.getInstance().getAika() / getAika());
 	}
 
@@ -490,6 +492,17 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	@Override
+	public void kaynnistaLoppuraporttiGUI() {
+		System.out.println("simulaattorinGUI naytaLoppuraportti");
+		try {
+			Stage loppuraporttiStage = new Stage();
+			loppuraporttiGUI.start(loppuraporttiStage);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -3,19 +3,24 @@ package controller;
 import java.util.ArrayList;
 
 import javafx.application.Platform;
+import javafx.stage.Stage;
 import simu.framework.IMoottori;
 import simu.model.Asiakas;
 import simu.model.OmaMoottori;
 import simu.model.Palvelupiste;
+import simu.model.TietokantaRaportti;
+import view.ILoppuraporttiUI;
 import view.ISimulaattorinUI;
 
 public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 
 	private IMoottori moottori;
 	private ISimulaattorinUI ui;
+	private ILoppuraporttiUI loppuraporttiUi;
 
-	public Kontrolleri(ISimulaattorinUI ui) {
+	public Kontrolleri(ISimulaattorinUI ui, ILoppuraporttiUI loppuraporttiUi) {
 		this.ui = ui;
+		this.loppuraporttiUi = loppuraporttiUi;
 	}
 
 	// Moottorin ohjausta:
@@ -110,6 +115,20 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 	@Override
 	public void naytaPalvellut(int asiakasMaara) {
 		Platform.runLater(() -> ui.setPalvellut(asiakasMaara));
+	}
+
+	@Override
+	public void naytaLoppuraportti(TietokantaRaportti raportti) {
+		//Platform.runLater(() -> loppuraporttiUi.setSimulaationKokonaisaika(raportti.getSimulaationKokonaisaika()));
+		Platform.runLater(() -> loppuraporttiUi.setxParam(10));
+		try {
+			Thread.sleep(1000);
+			Platform.runLater(() -> ui.kaynnistaLoppuraporttiGUI());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

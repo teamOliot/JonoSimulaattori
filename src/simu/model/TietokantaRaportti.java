@@ -39,7 +39,7 @@ public class TietokantaRaportti {
 
 	@Column(name = "YAsiakkaidenLapimenoaika")
 	double yAsiakkaidenLapimenoaika;
-	
+
 	@Column(name = "AsiakkaidenLapimenoaikaYht")
 	double asiakkaidenLapimenoaikaYht;
 
@@ -66,15 +66,15 @@ public class TietokantaRaportti {
 
 	@Column(name = "JononPituusPP4")
 	double jononPituusPP4;
-	
+
 	@Column(name = "LapimenneetX")
 	int lapimenneetX;
-	
+
 	@Column(name = "LapimenneetY")
 	int lapimenneetY;
 
-	public TietokantaRaportti() {}
-	
+	public TietokantaRaportti() {
+	}
 
 	public TietokantaRaportti(double simulaationKokonaisaika, double xParam, double yParam,
 			double simulaationSuoritusteho, double asiakasMaaraX, double asiakasMaaraY, double xAsiakkaidenLapimenoaika,
@@ -109,7 +109,7 @@ public class TietokantaRaportti {
 	}
 
 	public void setPaivamaara(LocalDateTime paivamaara) {
-		 //java.time.LocalDateTime.now();
+		// java.time.LocalDateTime.now();
 		this.paivamaara = paivamaara;
 	}
 
@@ -121,19 +121,19 @@ public class TietokantaRaportti {
 		this.simulaationKokonaisaika = simulaationKokonaisaika;
 	}
 
-	public double getxParam() {
+	public double getXParam() {
 		return xParam;
 	}
 
-	public void setxParam(double xParam) {
+	public void setXParam(double xParam) {
 		this.xParam = xParam;
 	}
 
-	public double getyParam() {
+	public double getYParam() {
 		return yParam;
 	}
 
-	public void setyParam(double yParam) {
+	public void setYParam(double yParam) {
 		this.yParam = yParam;
 	}
 
@@ -161,19 +161,19 @@ public class TietokantaRaportti {
 		this.asiakasMaaraY = asiakasMaaraY;
 	}
 
-	public double getxAsiakkaidenLapimenoaika() {
+	public double getXAsiakkaidenLapimenoaika() {
 		return xAsiakkaidenLapimenoaika;
 	}
 
-	public void setxAsiakkaidenLapimenoaika(double xAsiakkaidenLapimenoaika) {
+	public void setXAsiakkaidenLapimenoaika(double xAsiakkaidenLapimenoaika) {
 		this.xAsiakkaidenLapimenoaika = xAsiakkaidenLapimenoaika;
 	}
 
-	public double getyAsiakkaidenLapimenoaika() {
+	public double getYAsiakkaidenLapimenoaika() {
 		return yAsiakkaidenLapimenoaika;
 	}
 
-	public void setyAsiakkaidenLapimenoaika(double yAsiakkaidenLapimenoaika) {
+	public void setYAsiakkaidenLapimenoaika(double yAsiakkaidenLapimenoaika) {
 		this.yAsiakkaidenLapimenoaika = yAsiakkaidenLapimenoaika;
 	}
 
@@ -248,21 +248,18 @@ public class TietokantaRaportti {
 	public void setJononPituusPP4(double jononPituusPP4) {
 		this.jononPituusPP4 = jononPituusPP4;
 	}
-	
+
 	public int getLapimenneetX() {
 		return lapimenneetX;
 	}
-
 
 	public void setLapimenneetX(int lapimenneetX) {
 		this.lapimenneetX = lapimenneetX;
 	}
 
-
 	public int getLapimenneetY() {
 		return lapimenneetY;
 	}
-
 
 	public void setLapimenneetY(int lapimenneetY) {
 		this.lapimenneetY = lapimenneetY;
@@ -280,5 +277,5 @@ public class TietokantaRaportti {
 				+ ", jononPituusPP2=" + jononPituusPP2 + ", jononPituusPP3=" + jononPituusPP3 + ", jononPituusPP4="
 				+ jononPituusPP4 + ", lapimenneetX=" + lapimenneetX + ", lapimenneetY=" + lapimenneetY + "]";
 	}
-	
+
 }
