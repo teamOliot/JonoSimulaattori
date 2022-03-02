@@ -101,15 +101,14 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	
 	private Button tarkasteleRaporttejaButton;
 	
+	private TietokantaRaporttiGUI tietokantaraporttiGUI;
+	
 	/*
 	@Override
 	public void init() {
-
-		Trace.setTraceLevel(Level.INFO);
-
-		kontrolleri = new Kontrolleri(this);
-	}
-	*/
+		tietokantaraporttiGUI = new TietokantaRaporttiGUI();
+	}*/
+	
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -281,19 +280,21 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 			// Tsekkaa painikkeen OnAction
 			
-			/*
+			
 			tarkasteleRaporttejaButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
 					try {
+						tietokantaraporttiGUI = new TietokantaRaporttiGUI();
 						Stage raporttiStage = new Stage();
-						raporttiGUI.start(raporttiStage);
+						tietokantaraporttiGUI.start(raporttiStage);
 					} catch (Exception e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
 			});
-			*/
+			
 			
 			// Järjestele grid
 			grid.add(simuLoppuraporttiLabel, 0, 0); // sarake, rivi, leveys, korkeus

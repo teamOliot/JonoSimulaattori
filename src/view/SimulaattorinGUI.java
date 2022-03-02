@@ -465,7 +465,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	}
 	
 	public void setProgressBarAika() {
-		System.out.println(Kello.getInstance().getAika() / getAika());
+		//System.out.println("simulaattoriGUI setProgressBarAika" + Kello.getInstance().getAika() / getAika());
 		progressBar.setProgress(Kello.getInstance().getAika() / getAika());
 	}
 

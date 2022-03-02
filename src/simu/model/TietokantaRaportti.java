@@ -121,21 +121,27 @@ public class TietokantaRaportti {
 		this.simulaationKokonaisaika = simulaationKokonaisaika;
 	}
 
+
+
 	public double getxParam() {
 		return xParam;
 	}
+
 
 	public void setxParam(double xParam) {
 		this.xParam = xParam;
 	}
 
+
 	public double getyParam() {
 		return yParam;
 	}
 
+
 	public void setyParam(double yParam) {
 		this.yParam = yParam;
 	}
+
 
 	public double getSimulaationSuoritusteho() {
 		return simulaationSuoritusteho;
