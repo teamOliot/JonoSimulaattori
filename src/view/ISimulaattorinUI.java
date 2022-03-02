@@ -31,4 +31,7 @@ public interface ISimulaattorinUI {
 	
 	// Päivittää progressBarin aikaa
 	public void setProgressBarAika();
+	
+	// Käynnistää loppuraporttiGUI:n
+	public void kaynnistaLoppuraporttiGUI();
 }

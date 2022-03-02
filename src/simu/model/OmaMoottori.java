@@ -173,15 +173,17 @@ public class OmaMoottori extends Moottori {
 				palvelupisteet[0].getKokonaisOleskeluaika(), palvelupisteet[1].getKokonaisOleskeluaika(), palvelupisteet[2].getKokonaisOleskeluaika(), palvelupisteet[3].getKokonaisOleskeluaika(),
 				jononPituusPP1, jononPituusPP2, jononPituusPP3, jononPituusPP4, Asiakas.getLapimenneetX(), Asiakas.getLapimenneetY());
 		
-		System.out.println(raportti.toString());
 		
+		System.out.println(raportti.toString());
+		kontrolleri.naytaLoppuraportti(raportti);
 		boolean res = tietokantaraporttiDAO.createRaportti(raportti);
-		System.out.println("toteutuiko: " + res);
+		//System.out.println("toteutuiko: " + res);
 		
 		TietokantaRaportti[] raportit = tietokantaraporttiDAO.readRaportit();
 		for (TietokantaRaportti r : raportit) {
 			System.out.println("tämä tulee tietokannasta" + r);
 		}
+		
 		
 	}
 
