@@ -18,6 +18,8 @@ public class Asiakas {
 	private static long summaY = 0;
 	private static int lapimenneetX = 0;
 	private static int lapimenneetY = 0;
+	private static int saapuneetX = 0;
+	private static int saapuneetY = 0;
 	@SuppressWarnings("unused")
 	private AsiakasTyyppi tyyppi;
 	
@@ -30,6 +32,12 @@ public class Asiakas {
 	    i++;
 	    this.tyyppi = tyyppi;
 		saapumisaika = Kello.getInstance().getAika();
+		if (this.tyyppi == AsiakasTyyppi.X) {
+			saapuneetX++;
+		}
+		if (this.tyyppi == AsiakasTyyppi.Y) {
+			saapuneetY++;
+		}
 		Trace.out(Trace.Level.INFO, "Uusi asiakas nro " + id + " saapui klo "+saapumisaika);
 	}
 
@@ -117,6 +125,38 @@ public class Asiakas {
 		return lapimenneetY;
 	}
 	
+	
+	
+	/**
+	 * @return amount of x type customers created
+	 */
+	public static int getSaapuneetX() {
+		return saapuneetX;
+		
+	}
+
+	/**
+	 * @param saapuneetX parameter for setting amount of customers coming in to simulation
+	 */
+	public static void setSaapuneetX(int saapuneetX) {
+		Asiakas.saapuneetX = saapuneetX;
+	}
+	
+	/**
+	 * @return amount of Y type customers created
+	 */
+
+	public static int getSaapuneetY() {
+		return saapuneetY;
+	}
+	/**
+	 * @param saapuneetY parameter for setting amount of customers coming in to simulation
+	 */
+
+	public static void setSaapuneetY(int saapuneetY) {
+		Asiakas.saapuneetY = saapuneetY;
+	}
+
 	public static void setSummaXY(long summaXY) {
 		Asiakas.summaXY = summaXY;
 	}
@@ -136,6 +176,37 @@ public class Asiakas {
 	public static void setLapimenneetY(int lapimenneetY) {
 		Asiakas.lapimenneetY = lapimenneetY;
 	}
+	
+	/**
+	 * @return lead time for customer type X
+	 */
+	public static double getXAsiakkaidenLapimenoaika() {
+		return Asiakas.getSummaX()/Asiakas.getLapimenneetX();
+		
+	}
+	/**
+	 * @return lead time for customer type Y
+	 */
+	public static double getYAsiakkaidenLapimenoaika() {
+		return Asiakas.getSummaY()/Asiakas.getLapimenneetY();
+		
+	}
+	
+	/**
+	 * @return lead time for both customer type
+	 */
+	public static double getAsiakkaidenLapimenoaikaYht () {
+		return Asiakas.getSummaXY()/(Asiakas.getLapimenneetX()+Asiakas.getLapimenneetY());
+	}
+	
+	/**
+	 * @return all customers that have arrived to system
+	 */
+	public static int getSaapuneetAsiakkaatYht() {
+		return saapuneetX+saapuneetY;
+		
+	}
+	
 
 	/**
 	 * 
