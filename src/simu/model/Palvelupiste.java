@@ -34,7 +34,6 @@ public class Palvelupiste {
 	private String palvelupisteenNimi;
 
 
-
 	/**
 	 * @param generator provides a double value according to the distribution it relies on, this is for generating service times.
 	 * @param tapahtumalista is a list that keeps track on all events that should executed and time that they will be executed.
@@ -121,13 +120,9 @@ public class Palvelupiste {
 		return kokonaisOleskeluaika;
 	}
 
-
-
-
 	public String getPalvelupisteenNimi() {
 		return palvelupisteenNimi;
 	}
-
 
 	/**
 	 * @return the status of queue, if there is still customers in line or not.
@@ -143,7 +138,35 @@ public class Palvelupiste {
 		return jono;
 	}
 	
-
+	/**
+	 * @return utilization % for service point.
+	 */
+	public double getPalvelupisteenKayttoaste() {
+		double kayttoaste = 0;
+		try {
+			kayttoaste = kokonaisPalveluaika/Kello.getInstance().getAika() *100;
+			
+		} catch (Exception e) {
+			System.out.println("Käyttöasteen laskenta epäonnistui, syy "+e);
+		}
+		return kayttoaste;
+	}
+	
+	/**
+	 * @return time customers use up to queue.
+	 */
+	public double getJononPituus() {
+		
+		double jononPituus = 0;
+		try {
+			jononPituus = getKokonaisOleskeluaika()/Kello.getInstance().getAika();
+			
+		} catch (Exception e) {
+			System.out.println("Jononpituuden laskenta epäonnistui, syy "+e);
+		}
+		return jononPituus;
+		
+	}
 
 	@Override
 	public String toString() {
