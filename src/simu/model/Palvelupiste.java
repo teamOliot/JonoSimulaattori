@@ -152,6 +152,9 @@ public class Palvelupiste {
 		return kayttoaste;
 	}
 	
+	/**
+	 * @return time customers use up to queue.
+	 */
 	public double getJononPituus() {
 		
 		double jononPituus = 0;
@@ -162,6 +165,7 @@ public class Palvelupiste {
 			System.out.println("Jononpituuden laskenta epäonnistui, syy "+e);
 		}
 		return jononPituus;
+		
 	}
 
 	@Override

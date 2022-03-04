@@ -126,7 +126,7 @@ public class OmaMoottori extends Moottori {
 	@Override
 	protected void tulokset() {
 		//
-		double simulaationSuoritusteho = palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika();
+		double simulaationSuoritusteho = palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika()*100;
 		
 		double jononPituusPP1 = palvelupisteet[0].getJononPituus();
 		double jononPituusPP2 = palvelupisteet[1].getJononPituus();
@@ -180,7 +180,7 @@ public class OmaMoottori extends Moottori {
 		
 		TietokantaRaportti[] raportit = tietokantaraporttiDAO.readRaportit();
 		for (TietokantaRaportti r : raportit) {
-			System.out.println("Omamoottori: tämä tulee tietokannasta" + r);
+			System.out.println("Omamoottori: tämä tulee tietokannasta " + r);
 		}
 		
 		
