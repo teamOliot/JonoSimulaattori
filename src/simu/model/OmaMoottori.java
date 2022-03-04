@@ -128,10 +128,10 @@ public class OmaMoottori extends Moottori {
 		//
 		double simulaationSuoritusteho = palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika();
 		
-		double jononPituusPP1 = palvelupisteet[0].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
-		double jononPituusPP2 = palvelupisteet[1].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
-		double jononPituusPP3 = palvelupisteet[2].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
-		double jononPituusPP4 = palvelupisteet[3].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
+		double jononPituusPP1 = palvelupisteet[0].getJononPituus();
+		double jononPituusPP2 = palvelupisteet[1].getJononPituus();
+		double jononPituusPP3 = palvelupisteet[2].getJononPituus();
+		double jononPituusPP4 = palvelupisteet[3].getJononPituus();
 		
 		//Simuloinnin kokonaisaika T
 		//System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
@@ -146,7 +146,9 @@ public class OmaMoottori extends Moottori {
 		for (Palvelupiste palvelupiste : palvelupisteet) {
 			System.out.println("Omamoottori: Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" kokonaisoleskeluaika on :"+palvelupiste.getKokonaisOleskeluaika());
 			// jononpituus
-			System.out.println(palvelupiste.getKokonaisOleskeluaika()/Kello.getInstance().getAika());
+			System.out.println("Omamoottori: Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" jonon pituus "+palvelupiste.getJononPituus());
+			// U=B/T
+			System.out.println("Omamoottori: Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" käyttöaste on: "+palvelupiste.getPalvelupisteenKayttoaste());
 			System.out.println(palvelupiste);
 		}
 		
@@ -174,7 +176,7 @@ public class OmaMoottori extends Moottori {
 		System.out.println("Omamoottori: "+raportti.toString());
 		kontrolleri.naytaLoppuraportti(raportti);
 		boolean res = tietokantaraporttiDAO.createRaportti(raportti);
-		//System.out.println("toteutuiko: " + res);
+		//System.out.println("Omamoottori: toteutuiko: " + res);
 		
 		TietokantaRaportti[] raportit = tietokantaraporttiDAO.readRaportit();
 		for (TietokantaRaportti r : raportit) {
