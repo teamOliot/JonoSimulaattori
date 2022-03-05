@@ -51,9 +51,9 @@ public class TietokantaRaporttiGUI extends Application {
 		cl2.setCellValueFactory(new PropertyValueFactory<>("paivamaara"));
 		TableColumn<Double, TietokantaRaportti> cl3 = new TableColumn<>("Kokonaisaika");
 		cl3.setCellValueFactory(new PropertyValueFactory<>("simulaationKokonaisaika"));
-		TableColumn<Double, TietokantaRaportti> cl4 = new TableColumn<>("Parametri X");
+		TableColumn<Double, TietokantaRaportti> cl4 = new TableColumn<>("X-asiakkaiden saapumisväliaikojen parametri");
 		cl4.setCellValueFactory(new PropertyValueFactory<>("xParam"));
-		TableColumn<Double, TietokantaRaportti> cl5 = new TableColumn<>("Parametri Y");
+		TableColumn<Double, TietokantaRaportti> cl5 = new TableColumn<>("Y-asiakkaiden saapumisväliaikojen parametri");
 		cl5.setCellValueFactory(new PropertyValueFactory<>("yParam"));
 		TableColumn<Double, TietokantaRaportti> cl6 = new TableColumn<>("Simulaation suoritusteho");
 		cl6.setCellValueFactory(new PropertyValueFactory<>("simulaationSuoritusteho"));
