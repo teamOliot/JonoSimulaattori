@@ -14,7 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import simu.model.ITietokantaRaporttiDAO;
 import simu.model.TietokantaRaportti;
+import simu.model.TietokantaRaporttiAO;
 
 
 /**
@@ -22,11 +24,12 @@ import simu.model.TietokantaRaportti;
  *
  */
 public class TietokantaRaporttiGUI extends Application {
+	static ITietokantaRaporttiDAO tietokantaraporttiDAO = new TietokantaRaporttiAO();
 
 
-	private static List<TietokantaRaportti> tietokantaRaportti = new ArrayList<TietokantaRaportti>();
-	TietokantaRaportti raportti = new TietokantaRaportti(500.0789207815674, 15, 25, 0.10,33.0, 22.0, 
-            				 12, 26, 17, 101.1,183.3 , 376.8, 300.1, 0.2, 0.3, 0.7, 0.6, 77, 44, 12.0,12.0,12.0,12.0);
+//	private static List<TietokantaRaportti> tietokantaRaportti = new ArrayList<TietokantaRaportti>();
+//	TietokantaRaportti raportti = new TietokantaRaportti(500.0789207815674, 15, 25, 0.10,33.0, 22.0, 
+//           				 12, 26, 17, 101.1,183.3 , 376.8, 300.1, 0.2, 0.3, 0.7, 0.6, 77, 44, 12.0,12.0,12.0,12.0);
 
 	public static void main(String[] args) {
 		launch(args);
@@ -51,52 +54,44 @@ public class TietokantaRaporttiGUI extends Application {
 		cl2.setCellValueFactory(new PropertyValueFactory<>("paivamaara"));
 		TableColumn<Double, TietokantaRaportti> cl3 = new TableColumn<>("Kokonaisaika");
 		cl3.setCellValueFactory(new PropertyValueFactory<>("simulaationKokonaisaika"));
-		TableColumn<Double, TietokantaRaportti> cl4 = new TableColumn<>("X-asiakkaiden saapumisväliaikojen parametri");
+		TableColumn<Double, TietokantaRaportti> cl4 = new TableColumn<>("Ei WC as. \nparametri");
 		cl4.setCellValueFactory(new PropertyValueFactory<>("xParam"));
-		TableColumn<Double, TietokantaRaportti> cl5 = new TableColumn<>("Y-asiakkaiden saapumisväliaikojen parametri");
+		TableColumn<Double, TietokantaRaportti> cl5 = new TableColumn<>("WC as. \nparametri");
 		cl5.setCellValueFactory(new PropertyValueFactory<>("yParam"));
-		TableColumn<Double, TietokantaRaportti> cl6 = new TableColumn<>("Simulaation suoritusteho");
+		TableColumn<Double, TietokantaRaportti> cl6 = new TableColumn<>("Simulaation \nsuoritusteho");
 		cl6.setCellValueFactory(new PropertyValueFactory<>("simulaationSuoritusteho"));
-		cl6.setMinWidth(150);
-		TableColumn<Double, TietokantaRaportti> cl7 = new TableColumn<>("Saapuneet X asiakkaat");
+		//cl6.setMinWidth(150);
+		TableColumn<Double, TietokantaRaportti> cl7 = new TableColumn<>("Saapuneet \nei WC as.");
 		cl7.setCellValueFactory(new PropertyValueFactory<>("asiakasMaaraX"));
-		cl7.setMinWidth(150);
-		TableColumn<Double, TietokantaRaportti> cl8 = new TableColumn<>("Saapuneet Y asiakkaat");
+		cl7.setMinWidth(80);
+		TableColumn<Double, TietokantaRaportti> cl8 = new TableColumn<>("Saapuneet \nWC as.");
 		cl8.setCellValueFactory(new PropertyValueFactory<>("asiakasMaaraY"));
-		cl8.setMinWidth(150);
-		TableColumn<Double, TietokantaRaportti> cl9 = new TableColumn<>("X as läpimenoaika");
+		cl8.setMinWidth(80);
+		TableColumn<Double, TietokantaRaportti> cl9 = new TableColumn<>("Ei WC as. \nläpimenoaika");
 		cl9.setCellValueFactory(new PropertyValueFactory<>("xAsiakkaidenLapimenoaika"));
-		cl9.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl10 = new TableColumn<>("Y as läpimenoaika");
+		cl9.setMinWidth(80);
+		TableColumn<Double, TietokantaRaportti> cl10 = new TableColumn<>("WC as. \nläpimenoaika");
 		cl10.setCellValueFactory(new PropertyValueFactory<>("yAsiakkaidenLapimenoaika"));
-		cl10.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl11 = new TableColumn<>("As läpimenoaika yht");
+		cl10.setMinWidth(80);
+		TableColumn<Double, TietokantaRaportti> cl11 = new TableColumn<>("Läpimenoaika \nyhteensä");
 		cl11.setCellValueFactory(new PropertyValueFactory<>("asiakkaidenLapimenoaikaYht"));
-		cl11.setMinWidth(150);
-		TableColumn<Double, TietokantaRaportti> cl13 = new TableColumn<>("PP1 oleskeluaika");
-		cl13.setCellValueFactory(new PropertyValueFactory<>("oleskeluaikaPP1"));
-		cl13.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl14 = new TableColumn<>("PP2 oleskeluaika");
-		cl14.setCellValueFactory(new PropertyValueFactory<>("oleskeluaikaPP2"));
-		cl14.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl15 = new TableColumn<>("PP3 oleskeluaika");
-		cl15.setCellValueFactory(new PropertyValueFactory<>("oleskeluaikaPP3"));
-		cl15.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl16 = new TableColumn<>("PP4 oleskeluaika");
-		cl16.setCellValueFactory(new PropertyValueFactory<>("oleskeluaikaPP4"));
-		cl16.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl17 = new TableColumn<>("PP1 jonon pituus");
+		cl11.setMinWidth(80);
+		TableColumn<Double, TietokantaRaportti> cl13 = new TableColumn<>("PP1 \nkäyttöaste");
+		cl13.setCellValueFactory(new PropertyValueFactory<>("kayttoastePP1"));
+		TableColumn<Double, TietokantaRaportti> cl14 = new TableColumn<>("PP2 \nkäyttöaste");
+		cl14.setCellValueFactory(new PropertyValueFactory<>("kayttoastePP2"));
+		TableColumn<Double, TietokantaRaportti> cl15 = new TableColumn<>("PP3 \nkäyttöaste");
+		cl15.setCellValueFactory(new PropertyValueFactory<>("kayttoastePP3"));
+		TableColumn<Double, TietokantaRaportti> cl16 = new TableColumn<>("PP4 \nkäyttöaste");
+		cl16.setCellValueFactory(new PropertyValueFactory<>("kayttoastePP4"));
+		TableColumn<Double, TietokantaRaportti> cl17 = new TableColumn<>("PP1 jonon \npituus");
 		cl17.setCellValueFactory(new PropertyValueFactory<>("jononPituusPP1"));
-		cl17.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl18 = new TableColumn<>("PP2 jonon pituus");
+		TableColumn<Double, TietokantaRaportti> cl18 = new TableColumn<>("PP2 jonon \npituus");
 		cl18.setCellValueFactory(new PropertyValueFactory<>("jononPituusPP2"));
-		cl18.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl19 = new TableColumn<>("PP3 jonon pituus");
+		TableColumn<Double, TietokantaRaportti> cl19 = new TableColumn<>("PP3 jonon \npituus");
 		cl19.setCellValueFactory(new PropertyValueFactory<>("jononPituusPP3"));
-		cl19.setMinWidth(120);
-		TableColumn<Double, TietokantaRaportti> cl20 = new TableColumn<>("PP4 jonon pituus");
+		TableColumn<Double, TietokantaRaportti> cl20 = new TableColumn<>("PP4 jonon \npituus");
 		cl20.setCellValueFactory(new PropertyValueFactory<>("jononPituusPP4"));
-		cl20.setMinWidth(120);
 		
 		//tbv.getColumns().add(cl1);
 		tbv.getColumns().add(cl2);
@@ -118,10 +113,16 @@ public class TietokantaRaporttiGUI extends Application {
 		tbv.getColumns().add(cl19);
 		tbv.getColumns().add(cl20);
 		
-		tietokantaRaportti.add(raportti);
-		for (TietokantaRaportti dbList : tietokantaRaportti) {
-			tbv.getItems().add(dbList);
+		TietokantaRaportti[] raportit = tietokantaraporttiDAO.readRaportit();
+		for (TietokantaRaportti r : raportit) {
+			System.out.println("Omamoottori: tämä tulee tietokannasta " + r);
+			tbv.getItems().add(r);
 		}
+//		
+//		tietokantaRaportti.add(raportti);
+//	for (TietokantaRaportti dbList : tietokantaRaportti) {
+//		tbv.getItems().add(dbList);
+//	}
 		
 		VBox vbox = new VBox();
 		vbox.getChildren().addAll(label,tbv);

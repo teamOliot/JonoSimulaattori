@@ -1,5 +1,6 @@
 package simu.model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
@@ -84,6 +85,9 @@ public class TietokantaRaportti {
 	
 	@Column(name = "KayttoastePP4")
 	double kayttoastePP4;
+	
+	@Transient
+	DecimalFormat formatter = new DecimalFormat("#0.00");
 
 	public TietokantaRaportti() {
 	}
@@ -309,7 +313,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getKayttoastePP4() {
-		return kayttoastePP4;
+		return Math.round(kayttoastePP4*100)/100;
 	}
 
 	public void setKayttoastePP4(double kayttoastePP4) {
