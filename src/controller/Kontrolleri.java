@@ -65,19 +65,19 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 				ui.getPP2Visualisointi().tyhjennaNaytto();
 				ui.getPP3Visualisointi().tyhjennaNaytto();
 				ui.getPP4Visualisointi().tyhjennaNaytto();
-				
+
 				for (Asiakas asiakas : palvelupisteet.get(0).getJono()) {
 					ui.getPP1Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
-				
+
 				for (Asiakas asiakas : palvelupisteet.get(1).getJono()) {
 					ui.getPP2Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
-				
+
 				for (Asiakas asiakas : palvelupisteet.get(2).getJono()) {
 					ui.getPP3Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
-				
+
 				for (Asiakas asiakas : palvelupisteet.get(3).getJono()) {
 					ui.getPP4Visualisointi().uusiAsiakas(asiakas.getTyyppi());
 				}
@@ -99,7 +99,7 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 	public void naytaAsiakasMaara(int asiakasMaara) {
 		Platform.runLater(() -> ui.setAsiakasMaaraYht(asiakasMaara));
 	}
-	
+
 	// Lisätäänkö metodin toteutus OmaMoottoriin
 	@Override
 	public void naytaPalvellutX(int asiakasMaaraX) {
@@ -119,16 +119,33 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 
 	@Override
 	public void naytaLoppuraportti(TietokantaRaportti raportti) {
-		//Platform.runLater(() -> loppuraporttiUi.setSimulaationKokonaisaika(raportti.getSimulaationKokonaisaika()));
-		Platform.runLater(() -> loppuraporttiUi.setxParam(10));
-		try {
-			Thread.sleep(1000);
-			Platform.runLater(() -> ui.kaynnistaLoppuraporttiGUI());
+		
+		Platform.runLater(new Runnable() {
+			public void run() {
+				try {
+					Thread.sleep(1000);
+					Platform.runLater(() -> ui.kaynnistaLoppuraporttiGUI());			
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				Platform.runLater(() -> loppuraporttiUi.setxParam(10));
+			}
+
+		});
+
+		// Platform.runLater(() ->
+		// loppuraporttiUi.setSimulaationKokonaisaika(raportti.getSimulaationKokonaisaika()));
+		
+	/*	try {
+			
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}*/
+
 	}
 
 }
