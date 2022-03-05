@@ -50,6 +50,7 @@ class PalvelupisteTest {
 
 	@Test
 	public void testLisaaJonoon() {
+		System.out.println(jono.getFirst());
 		assertEquals(asiakas, jono.getFirst(),"Listalle lisätty olio ei vastaa listalla olevaa oliota");
 	}
 
@@ -61,6 +62,11 @@ class PalvelupisteTest {
 	@Test
 	public void testOnJonossa() {
 		assertEquals(1, jono.size(), "Listan koko on eri kuin listalle lisättyjen olioiden määrä");
+	}
+	
+	@Test
+	public void testGetPalvelupisteenKayttoaste() {
+		assertEquals(0, servicepoint.getPalvelupisteenKayttoaste()," Käyttöaste ei ole oikein ");
 	}
 
 }

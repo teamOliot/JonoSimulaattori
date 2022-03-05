@@ -61,7 +61,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	private IVisualisointi pp2Naytto;
 	private IVisualisointi pp3Naytto;
 	private IVisualisointi pp4Naytto;
-	
+
 	private ProgressBar progressBar;
 
 	private Label xSaapuneetLabel;
@@ -86,15 +86,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	private Label simuKokonaisaikaTulos;
 
 	private TietokantaRaporttiGUI tietokantaraporttiGUI;
-	private LoppuraporttiGUI loppuraporttiGUI;
 
 	@Override
 	public void init() {
-
 		Trace.setTraceLevel(Level.INFO);
-		
-		loppuraporttiGUI = new LoppuraporttiGUI();
-		kontrolleri = new Kontrolleri(this, loppuraporttiGUI);
+		kontrolleri = new Kontrolleri(this);
 		tietokantaraporttiGUI = new TietokantaRaporttiGUI();
 	}
 
@@ -297,7 +293,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			pp4Naytto = new Visualisointi(200, 260, "graphics/PP4_WC.png");
 
 			progressBar = new ProgressBar(0);
-      
+
 			xSaapuneetLabel = new Label("Saapuneet X:");
 			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
@@ -448,8 +444,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			GridPane.setHalignment(simuKokonaisaikaTulos, HPos.CENTER);
 
 			// Käytettävissä olevat fontit
+
 			// System.out.println(javafx.scene.text.Font.getFamilies());
 			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -512,9 +510,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	public void setPalvellut(int asiakasMaara) {
 		this.yhtLapiSysteeminTulos.setText(asiakasMaara + "");
 	}
-	
+
 	public void setProgressBarAika() {
+
 		// System.out.println("SimulaattorinGUI setProgressBarAika" + Kello.getInstance().getAika() / getAika());
+
 		progressBar.setProgress(Kello.getInstance().getAika() / getAika());
 	}
 
@@ -537,21 +537,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	public IVisualisointi getPP4Visualisointi() {
 		return pp4Naytto;
 	}
-	
+
 	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
 	public static void main(String[] args) {
 		launch(args);
-	}
-
-	@Override
-	public void kaynnistaLoppuraporttiGUI() {
-		System.out.println("SimulaattorinGUI naytaLoppuraportti");
-		try {
-			Stage loppuraporttiStage = new Stage();
-			loppuraporttiGUI.start(loppuraporttiStage);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 }

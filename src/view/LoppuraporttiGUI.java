@@ -424,6 +424,11 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	public void setAsiakasMaaraY(double asiakasMaaraY) {
 		this.ySaapuneetTulos.setText(asiakasMaaraY + "");
 	}
+	
+	@Override
+	public void setAsiakasMaaraYht(double asiakasMaaraYht) {
+		this.yhtSaapuneetTulos.setText(asiakasMaaraYht + "");	
+	}
 
 	@Override
 	public void setxAsiakkaidenLapimenoaika(double xAsiakkaidenLapimenoaika) {
@@ -448,6 +453,11 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	@Override
 	public void setLapimenneetY(int lapimenneetY) {
 		this.yLapiSysteeminTulos.setText(lapimenneetY + "");
+	}
+	
+	@Override
+	public void setLapimenneetYht(int lapimenneetYht) {
+		this.yhtLapiSysteeminTulos.setText(lapimenneetYht + "");	
 	}
 
 	@Override
@@ -489,4 +499,5 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	public void setJononPituusPP4(double jononPituusPP4) {
 		this.jononPituusPP4Tulos.setText(jononPituusPP4 + "");
 	}
+
 }

@@ -126,37 +126,36 @@ public class OmaMoottori extends Moottori {
 	@Override
 	protected void tulokset() {
 		//
-		double simulaationSuoritusteho = palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika();
-		double xAsiakkaidenLapimenoaika = Asiakas.getSummaX()/Asiakas.getLapimenneetX();
-		double yAsiakkaidenLapimenoaika = Asiakas.getSummaY()/Asiakas.getLapimenneetY();
-		double asiakkaidenLapimenoaikaYht = Asiakas.getSummaXY()/(Asiakas.getLapimenneetX()+Asiakas.getLapimenneetY());
+		double simulaationSuoritusteho = palvelupisteet[2].getPalvellutAsiakkaat()/Kello.getInstance().getAika()*100;
 		
-		double jononPituusPP1 = palvelupisteet[0].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
-		double jononPituusPP2 = palvelupisteet[1].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
-		double jononPituusPP3 = palvelupisteet[2].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
-		double jononPituusPP4 = palvelupisteet[3].getKokonaisOleskeluaika()/Kello.getInstance().getAika();
+		double jononPituusPP1 = palvelupisteet[0].getJononPituus();
+		double jononPituusPP2 = palvelupisteet[1].getJononPituus();
+		double jononPituusPP3 = palvelupisteet[2].getJononPituus();
+		double jononPituusPP4 = palvelupisteet[3].getJononPituus();
 		
 		//Simuloinnin kokonaisaika T
 		//System.out.println("Simulointi päättyi kello " + Kello.getInstance().getAika());
-		System.out.println("Tulokset:");
-		System.out.println("Saapuneiden X asiakkaiden määrä on: " + asiakasMaaraX);
-		System.out.println("Saapuneiden Y asiakkaiden määrä on: " + asiakasMaaraY);
-		System.out.println("Saapuneiden asiakkaiden yht määrä on: " + (asiakasMaaraY + asiakasMaaraX));
-		System.out.println("Kaljapisteellä käyneet asiakkaat: " + palvelupisteet[2].getPalvellutAsiakkaat());
+		System.out.println("Tulokset omamoottori: ");
+		System.out.println("Omamoottori: Saapuneiden X asiakkaiden määrä "+Asiakas.getSaapuneetX());
+		System.out.println("Omamoottori: Saapuneiden Y asiakkaiden määrä "+Asiakas.getSaapuneetY());
+		System.out.println("Omamoottori: Saapuneiden asiakkaiden yht määrä on: " + Asiakas.getSaapuneetAsiakkaatYht());
+		System.out.println("Omamoottori: Kaljapisteellä käyneet asiakkaat: " + palvelupisteet[2].getPalvellutAsiakkaat());
 		//Koko simulaation suoritusteho X=C/T
-		System.out.println("Koko simulaation suoritusteho on: "+ simulaationSuoritusteho);
+		System.out.println("Omamoottori: Koko simulaation suoritusteho on: "+ simulaationSuoritusteho);
 		
 		for (Palvelupiste palvelupiste : palvelupisteet) {
-			System.out.println("Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" kokonaisoleskeluaika on :"+palvelupiste.getKokonaisOleskeluaika());
+			System.out.println("Omamoottori: Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" kokonaisoleskeluaika on :"+palvelupiste.getKokonaisOleskeluaika());
 			// jononpituus
-			System.out.println(palvelupiste.getKokonaisOleskeluaika()/Kello.getInstance().getAika());
+			System.out.println("Omamoottori: Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" jonon pituus "+palvelupiste.getJononPituus());
+			// U=B/T
+			System.out.println("Omamoottori: Palvelupisteen "+palvelupiste.getPalvelupisteenNimi()+" käyttöaste on: "+palvelupiste.getPalvelupisteenKayttoaste());
 			System.out.println(palvelupiste);
 		}
 		
 		//Keskimääräinen läpimenoaika R=W/C
-		System.out.println("X asiakkaiden keskimääräinen läpimenoaika"+ xAsiakkaidenLapimenoaika);
-		System.out.println("Y asiakkaiden keskimääräinen läpimenoaika"+ yAsiakkaidenLapimenoaika);
-		System.out.println("kaikkien keskmääräinen läpimeno aika: " + asiakkaidenLapimenoaikaYht);
+		System.out.println("Omamoottori: X asiakkaiden keskimääräinen läpimenoaika "+Asiakas.getXAsiakkaidenLapimenoaika());
+		System.out.println("Omamoottori: Y asiakkaiden keskimääräinen läpimenoaika "+Asiakas.getYAsiakkaidenLapimenoaika());
+		System.out.println("Omamoottori: kaikkien keskmääräinen läpimenoaika "+Asiakas.getAsiakkaidenLapimenoaikaYht());
 		
 		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
 		
@@ -164,24 +163,24 @@ public class OmaMoottori extends Moottori {
 		
 		//Keskimääräinen jononpituus N = W/T
 		
-		System.out.println("XParametri: " + xParam + " YParametri: " + yParam);
+		System.out.println("Omamoottori: XParametri: " + xParam + " YParametri: " + yParam);
 		
 		// raportin luonti
 		
-		TietokantaRaportti raportti = new TietokantaRaportti(Kello.getInstance().getAika(), xParam, yParam, simulaationSuoritusteho,asiakasMaaraX, asiakasMaaraY, 
-				xAsiakkaidenLapimenoaika, yAsiakkaidenLapimenoaika, asiakkaidenLapimenoaikaYht, 
+		TietokantaRaportti raportti = new TietokantaRaportti(Kello.getInstance().getAika(), xParam, yParam, simulaationSuoritusteho,Asiakas.getSaapuneetX(), Asiakas.getLapimenneetY(), 
+				Asiakas.getXAsiakkaidenLapimenoaika(), Asiakas.getYAsiakkaidenLapimenoaika(), Asiakas.getAsiakkaidenLapimenoaikaYht(), 
 				palvelupisteet[0].getKokonaisOleskeluaika(), palvelupisteet[1].getKokonaisOleskeluaika(), palvelupisteet[2].getKokonaisOleskeluaika(), palvelupisteet[3].getKokonaisOleskeluaika(),
 				jononPituusPP1, jononPituusPP2, jononPituusPP3, jononPituusPP4, Asiakas.getLapimenneetX(), Asiakas.getLapimenneetY());
 		
 		
-		System.out.println(raportti.toString());
+		System.out.println("Omamoottori: "+raportti.toString());
 		kontrolleri.naytaLoppuraportti(raportti);
 		boolean res = tietokantaraporttiDAO.createRaportti(raportti);
-		//System.out.println("toteutuiko: " + res);
+		//System.out.println("Omamoottori: toteutuiko: " + res);
 		
 		TietokantaRaportti[] raportit = tietokantaraporttiDAO.readRaportit();
 		for (TietokantaRaportti r : raportit) {
-			System.out.println("tämä tulee tietokannasta" + r);
+			System.out.println("Omamoottori: tämä tulee tietokannasta " + r);
 		}
 		
 		
