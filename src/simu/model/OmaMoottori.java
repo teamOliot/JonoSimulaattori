@@ -21,8 +21,6 @@ public class OmaMoottori extends Moottori {
 
 	private Saapumisprosessi saapumisprosessiX;
 	private Saapumisprosessi saapumisprosessiY;
-	private int asiakasMaaraX;
-	private int asiakasMaaraY;
 	private ArrayList<Palvelupiste> kaikkiPalvelupisteet;
 	private double xParam = 5;
 	private double yParam = 5;
@@ -73,17 +71,15 @@ public class OmaMoottori extends Moottori {
 		case XARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.X));
 			saapumisprosessiX.generoiSeuraava();
-			asiakasMaaraX++;
-			kontrolleri.naytaAsiakasMaaraX(asiakasMaaraX);
-			kontrolleri.naytaAsiakasMaara((asiakasMaaraX+asiakasMaaraY));
+			kontrolleri.naytaAsiakasMaaraX(Asiakas.getSaapuneetX());
+			kontrolleri.naytaAsiakasMaara((Asiakas.getSaapuneetAsiakkaatYht()));
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case YARR:
 			palvelupisteet[0].lisaaJonoon(new Asiakas(AsiakasTyyppi.Y));
 			saapumisprosessiY.generoiSeuraava();
-			asiakasMaaraY++;
-			kontrolleri.naytaAsiakasMaaraY(asiakasMaaraY);
-			kontrolleri.naytaAsiakasMaara((asiakasMaaraX+asiakasMaaraY));
+			kontrolleri.naytaAsiakasMaaraY(Asiakas.getSaapuneetY());
+			kontrolleri.naytaAsiakasMaara((Asiakas.getSaapuneetAsiakkaatYht()));
 			kontrolleri.visualisoiAsiakas(kaikkiPalvelupisteet);
 			break;
 		case PP1DEP:
@@ -170,7 +166,8 @@ public class OmaMoottori extends Moottori {
 		TietokantaRaportti raportti = new TietokantaRaportti(Kello.getInstance().getAika(), xParam, yParam, simulaationSuoritusteho,Asiakas.getSaapuneetX(), Asiakas.getLapimenneetY(), 
 				Asiakas.getXAsiakkaidenLapimenoaika(), Asiakas.getYAsiakkaidenLapimenoaika(), Asiakas.getAsiakkaidenLapimenoaikaYht(), 
 				palvelupisteet[0].getKokonaisOleskeluaika(), palvelupisteet[1].getKokonaisOleskeluaika(), palvelupisteet[2].getKokonaisOleskeluaika(), palvelupisteet[3].getKokonaisOleskeluaika(),
-				jononPituusPP1, jononPituusPP2, jononPituusPP3, jononPituusPP4, Asiakas.getLapimenneetX(), Asiakas.getLapimenneetY());
+				jononPituusPP1, jononPituusPP2, jononPituusPP3, jononPituusPP4, Asiakas.getLapimenneetX(), Asiakas.getLapimenneetY(), palvelupisteet[0].getPalvelupisteenKayttoaste(), palvelupisteet[1].getPalvelupisteenKayttoaste(),
+				palvelupisteet[2].getPalvelupisteenKayttoaste(), palvelupisteet[3].getPalvelupisteenKayttoaste());
 		
 		
 		System.out.println("Omamoottori: "+raportti.toString());

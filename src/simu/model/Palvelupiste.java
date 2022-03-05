@@ -88,7 +88,7 @@ public class Palvelupiste {
 			varattu = true;
 			double palveluaika = generator.sample(); // B busy time
 			tapahtumalista.lisaa(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+palveluaika));
-			kokonaisPalveluaika+=palveluaika;
+			kokonaisPalveluaika+=palveluaika; // B busy time
 
 	}
 

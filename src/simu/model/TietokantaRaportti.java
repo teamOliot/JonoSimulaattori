@@ -1,5 +1,6 @@
 package simu.model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
@@ -72,6 +73,21 @@ public class TietokantaRaportti {
 
 	@Column(name = "LapimenneetY")
 	int lapimenneetY;
+	
+	@Column(name = "KayttoastePP1")
+	double kayttoastePP1;
+	
+	@Column(name = "KayttoastePP2")
+	double kayttoastePP2;
+	
+	@Column(name = "KayttoastePP3")
+	double kayttoastePP3;
+	
+	@Column(name = "KayttoastePP4")
+	double kayttoastePP4;
+	
+	@Transient
+	DecimalFormat formatter = new DecimalFormat("#0.00");
 
 	public TietokantaRaportti() {
 	}
@@ -80,7 +96,8 @@ public class TietokantaRaportti {
 			double simulaationSuoritusteho, double asiakasMaaraX, double asiakasMaaraY, double xAsiakkaidenLapimenoaika,
 			double yAsiakkaidenLapimenoaika, double asiakkaidenLapimenoaikaYht, double oleskeluaikaPP1,
 			double oleskeluaikaPP2, double oleskeluaikaPP3, double oleskeluaikaPP4, double jononPituusPP1,
-			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4, int lapimenneetX, int lapimenneetY) {
+			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4, int lapimenneetX, int lapimenneetY, double kayttoastePP1,
+			double kayttoastePP2, double kayttoastePP3, double kayttoastePP4) {
 		super();
 		this.paivamaara = java.time.LocalDateTime.now();
 		this.simulaationKokonaisaika = simulaationKokonaisaika;
@@ -102,6 +119,10 @@ public class TietokantaRaportti {
 		this.jononPituusPP4 = jononPituusPP4;
 		this.lapimenneetX = lapimenneetX;
 		this.lapimenneetY = lapimenneetY;
+		this.kayttoastePP1 = kayttoastePP1;
+		this.kayttoastePP2 = kayttoastePP2;
+		this.kayttoastePP3= kayttoastePP3;
+		this.kayttoastePP4 = kayttoastePP4;
 	}
 
 	public LocalDateTime getPaivamaara() {
@@ -264,6 +285,40 @@ public class TietokantaRaportti {
 	public void setLapimenneetY(int lapimenneetY) {
 		this.lapimenneetY = lapimenneetY;
 	}
+	
+	
+
+	public double getKayttoastePP1() {
+		return kayttoastePP1;
+	}
+
+	public void setKayttoastePP1(double kayttoastePP1) {
+		this.kayttoastePP1 = kayttoastePP1;
+	}
+
+	public double getKayttoastePP2() {
+		return kayttoastePP2;
+	}
+
+	public void setKayttoastePP2(double kayttoastePP2) {
+		this.kayttoastePP2 = kayttoastePP2;
+	}
+
+	public double getKayttoastePP3() {
+		return kayttoastePP3;
+	}
+
+	public void setKayttoastePP3(double kayttoastePP3) {
+		this.kayttoastePP3 = kayttoastePP3;
+	}
+
+	public double getKayttoastePP4() {
+		return Math.round(kayttoastePP4*100)/100;
+	}
+
+	public void setKayttoastePP4(double kayttoastePP4) {
+		this.kayttoastePP4 = kayttoastePP4;
+	}
 
 	@Override
 	public String toString() {
@@ -275,7 +330,10 @@ public class TietokantaRaportti {
 				+ ", oleskeluaikaPP1=" + oleskeluaikaPP1 + ", oleskeluaikaPP2=" + oleskeluaikaPP2 + ", oleskeluaikaPP3="
 				+ oleskeluaikaPP3 + ", oleskeluaikaPP4=" + oleskeluaikaPP4 + ", jononPituusPP1=" + jononPituusPP1
 				+ ", jononPituusPP2=" + jononPituusPP2 + ", jononPituusPP3=" + jononPituusPP3 + ", jononPituusPP4="
-				+ jononPituusPP4 + ", lapimenneetX=" + lapimenneetX + ", lapimenneetY=" + lapimenneetY + "]";
+				+ jononPituusPP4 + ", lapimenneetX=" + lapimenneetX + ", lapimenneetY=" + lapimenneetY
+				+ ", kayttoastePP1=" + kayttoastePP1 + ", kayttoastePP2=" + kayttoastePP2 + ", kayttoastePP3="
+				+ kayttoastePP3 + ", kayttoastePP4=" + kayttoastePP4 + "]";
 	}
+
 
 }
