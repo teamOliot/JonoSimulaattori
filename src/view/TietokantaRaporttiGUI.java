@@ -26,7 +26,7 @@ public class TietokantaRaporttiGUI extends Application {
 
 	private static List<TietokantaRaportti> tietokantaRaportti = new ArrayList<TietokantaRaportti>();
 	TietokantaRaportti raportti = new TietokantaRaportti(500.0789207815674, 15, 25, 0.10,33.0, 22.0, 
-            				 12, 26, 17, 101.1,183.3 , 376.8, 300.1, 0.2, 0.3, 0.7, 0.6, 77, 44);
+            				 12, 26, 17, 101.1,183.3 , 376.8, 300.1, 0.2, 0.3, 0.7, 0.6, 77, 44, 12.0,12.0,12.0,12.0);
 
 	public static void main(String[] args) {
 		launch(args);
