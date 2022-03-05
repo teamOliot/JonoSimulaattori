@@ -202,21 +202,21 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			viive.setMaxWidth(100);
 			viive.setTooltip(new Tooltip("Viiveeksi tulee syöttää arvo, joka on suurempi kuin 0."));
 
-			xAsiakkaidenParamLabel = new Label("Kuinka usein X-tyyppisiä asiakkaita saapuu: ");
+			xAsiakkaidenParamLabel = new Label("Ei WC:ssä käyvät asiakkaat: ");
 			xAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xAsiakkaidenParam = new TextField("");
 			xAsiakkaidenParam.setPromptText("Syötä arvo");
 			xAsiakkaidenParam.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xAsiakkaidenParam.setMaxWidth(100);
-			xAsiakkaidenParam.setTooltip(new Tooltip("Parametri sille, kuinka usein X-tyyppisiä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
+			xAsiakkaidenParam.setTooltip(new Tooltip("Parametri sille, kuinka usein ei WC:n kautta kulkevia asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
 
-			yAsiakkaidenParamLabel = new Label("Kuinka usein Y-tyyppisiä asiakkaita saapuu: ");
+			yAsiakkaidenParamLabel = new Label("WC:ssä käyvät asiakkaat: ");
 			yAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			yAsiakkaidenParam = new TextField("");
 			yAsiakkaidenParam.setPromptText("Syötä arvo");
 			yAsiakkaidenParam.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			yAsiakkaidenParam.setMaxWidth(100);
-			yAsiakkaidenParam.setTooltip(new Tooltip("Parametri sille, kuinka usein Y-tyyppisiä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
+			yAsiakkaidenParam.setTooltip(new Tooltip("Parametri sille, kuinka usein WC:ssä käyviä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
 			
 			kaynnistaButton = new Button();
 			kaynnistaButton.setText("Käynnistä simulointi");
@@ -232,9 +232,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					
 					// Alla olevat tulevat tarkoituksella näkyviin vasta kun simulaatio ajetaan
 					
-					turkoosiSeliteLabel = new Label("X-asiakkaat turkoosi");
+					turkoosiSeliteLabel = new Label("Ei WC:ssä käyvät asiakkaat  ");
 					turkoosiSeliteLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-					turkoosiSeliteLabel.setTooltip(new Tooltip("X-tyyppiset asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - Baaritiski. \n X-tyyppiset asiakkaat on merkitty turkoosilla värillä."));
+					turkoosiSeliteLabel.setTooltip(new Tooltip("Ei WC:n kautta kulkevat asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - Baaritiski."));
 					grid.add(turkoosiSeliteLabel, 3, 3);
 					GridPane.setHalignment(turkoosiSeliteLabel, HPos.LEFT);
 					
@@ -246,9 +246,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					grid.add(turkoosiButton, 3, 3);
 					GridPane.setHalignment(turkoosiButton, HPos.RIGHT); // Muodon voi laittaa selitteen kanssa samaan sarakkeeseen
 					
-					punainenSeliteLabel = new Label("Y-asiakkaat punainen");
+					punainenSeliteLabel = new Label("WC:ssä käyvät asiakkaat");
 					punainenSeliteLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-					punainenSeliteLabel.setTooltip(new Tooltip("Y-tyyppiset asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - WC - Baaritiski. \n Y-tyyppiset asiakkaat on merkitty punaisella värillä."));
+					punainenSeliteLabel.setTooltip(new Tooltip("WC:ssä käyvät asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - WC - Baaritiski."));
 					grid.add(punainenSeliteLabel, 3, 4);
 					GridPane.setHalignment(punainenSeliteLabel, HPos.LEFT);
 					
@@ -294,14 +294,14 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			progressBar = new ProgressBar(0);
 
-			xSaapuneetLabel = new Label("Saapuneet X:");
+			xSaapuneetLabel = new Label("Saapuneet ei WC:");
 			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			xSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
 			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xSaapuneetTulos.setMaxWidth(100);
 
-			ySaapuneetLabel = new Label("Saapuneet Y:");
+			ySaapuneetLabel = new Label("Saapuneet WC:");
 			ySaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			ySaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
@@ -315,14 +315,14 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			yhtSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			yhtSaapuneetTulos.setMaxWidth(100);
 
-			xLapiSysteeminLabel = new Label("Systeemin läpi X:");
+			xLapiSysteeminLabel = new Label("Systeemin läpi ei WC:");
 			xLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			xLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
 			xLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xLapiSysteeminTulos.setMaxWidth(100);
 
-			yLapiSysteeminLabel = new Label("Systeemin läpi Y:");
+			yLapiSysteeminLabel = new Label("Systeemin läpi WC:");
 			yLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			yLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
