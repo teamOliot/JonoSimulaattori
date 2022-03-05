@@ -11,16 +11,17 @@ import simu.model.Palvelupiste;
 import simu.model.TietokantaRaportti;
 import view.ILoppuraporttiUI;
 import view.ISimulaattorinUI;
+import view.LoppuraporttiGUI;
 
 public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 
 	private IMoottori moottori;
 	private ISimulaattorinUI ui;
-	private ILoppuraporttiUI loppuraporttiUi;
+	private LoppuraporttiGUI loppuraporttiGUI;
 
-	public Kontrolleri(ISimulaattorinUI ui, ILoppuraporttiUI loppuraporttiUi) {
+	public Kontrolleri(ISimulaattorinUI ui) {
 		this.ui = ui;
-		this.loppuraporttiUi = loppuraporttiUi;
+		this.loppuraporttiGUI = new LoppuraporttiGUI();
 	}
 
 	// Moottorin ohjausta:
@@ -119,33 +120,42 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 
 	@Override
 	public void naytaLoppuraportti(TietokantaRaportti raportti) {
-		
 		Platform.runLater(new Runnable() {
 			public void run() {
+				// Avataan loppuraportti ikkuna
 				try {
 					Thread.sleep(1000);
-					Platform.runLater(() -> ui.kaynnistaLoppuraporttiGUI());			
+					Stage loppuraporttiStage = new Stage();
+					loppuraporttiGUI.start(loppuraporttiStage);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				Platform.runLater(() -> loppuraporttiUi.setxParam(10));
+				// Asetetaan loppuraportti näkymään simulaation tiedon TietokantaRaportti olion avulla
+				Platform.runLater(() -> loppuraporttiGUI.setSimulaationKokonaisaika(raportti.getSimulaationKokonaisaika()));			
+				Platform.runLater(() -> loppuraporttiGUI.setxParam(raportti.getXParam()));
+				Platform.runLater(() -> loppuraporttiGUI.setyParam(raportti.getYParam()));
+				Platform.runLater(() -> loppuraporttiGUI.setSimulaationSuoritusteho(raportti.getSimulaationSuoritusteho()));
+				Platform.runLater(() -> loppuraporttiGUI.setAsiakasMaaraX(raportti.getAsiakasMaaraX()));
+				Platform.runLater(() -> loppuraporttiGUI.setAsiakasMaaraY(raportti.getAsiakasMaaraY()));
+				Platform.runLater(() -> loppuraporttiGUI.setAsiakasMaaraYht(raportti.getAsiakasMaaraX() + raportti.getAsiakasMaaraY()));
+				Platform.runLater(() -> loppuraporttiGUI.setxAsiakkaidenLapimenoaika(raportti.getXAsiakkaidenLapimenoaika()));
+				Platform.runLater(() -> loppuraporttiGUI.setyAsiakkaidenLapimenoaika(raportti.getYAsiakkaidenLapimenoaika()));
+				Platform.runLater(() -> loppuraporttiGUI.setAsiakkaidenLapimenoaikaYht(raportti.getAsiakkaidenLapimenoaikaYht()));
+				Platform.runLater(() -> loppuraporttiGUI.setLapimenneetX(raportti.getLapimenneetX()));
+				Platform.runLater(() -> loppuraporttiGUI.setLapimenneetY(raportti.getLapimenneetY()));	
+				Platform.runLater(() -> loppuraporttiGUI.setLapimenneetYht(raportti.getLapimenneetX() + raportti.getLapimenneetY()));
+				Platform.runLater(() -> loppuraporttiGUI.setOleskeluaikaPP1(raportti.getOleskeluaikaPP1()));	
+				Platform.runLater(() -> loppuraporttiGUI.setOleskeluaikaPP2(raportti.getOleskeluaikaPP2()));	
+				Platform.runLater(() -> loppuraporttiGUI.setOleskeluaikaPP3(raportti.getOleskeluaikaPP3()));	
+				Platform.runLater(() -> loppuraporttiGUI.setOleskeluaikaPP4(raportti.getOleskeluaikaPP4()));	
+				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP1(raportti.getJononPituusPP1()));	
+				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP2(raportti.getJononPituusPP2()));
+				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP3(raportti.getJononPituusPP3()));
+				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP4(raportti.getJononPituusPP4()));
 			}
 
 		});
-
-		// Platform.runLater(() ->
-		// loppuraporttiUi.setSimulaationKokonaisaika(raportti.getSimulaationKokonaisaika()));
-		
-	/*	try {
-			
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-
 	}
 
 }

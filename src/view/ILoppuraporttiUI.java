@@ -23,6 +23,8 @@ public interface ILoppuraporttiUI {
 	
 	public void setAsiakasMaaraY(double asiakasMaaraY);
 	
+	public void setAsiakasMaaraYht(double asiakasMaaraYht);
+	
 	public void setxAsiakkaidenLapimenoaika(double xAsiakkaidenLapimenoaika);
 	
 	public void setyAsiakkaidenLapimenoaika(double yAsiakkaidenLapimenoaika);
@@ -32,6 +34,8 @@ public interface ILoppuraporttiUI {
 	public void setLapimenneetX(int lapimenneetX);
 	
 	public void setLapimenneetY(int lapimenneetY);
+	
+	public void setLapimenneetYht(int lapimenneetYht);
 	
 	public void setOleskeluaikaPP1(double oleskeluaikaPP1);
 	
