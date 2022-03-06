@@ -21,7 +21,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
+	
 
 	// Kontrollerin esittely (tarvitaan käyttöliittymässä)
 	private IKontrolleriVtoM kontrolleri;
@@ -144,6 +149,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					+ "-fx-max-width: 30px; " + "-fx-max-height: 30px;");
 
 			infoButton.setOnAction(new EventHandler<ActionEvent>() {
+
 				@Override
 				public void handle(ActionEvent event) {
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -162,6 +168,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 					alert.getDialogPane().setStyle("-fx-background-color: #d9feff;"); // Alert dialogin taustaväri
 					alert.showAndWait();
+					
 				}
 			});
 
@@ -225,6 +232,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen alueelle
 
 			kaynnistaButton.setOnAction(new EventHandler<ActionEvent>() {
+	
 				@Override
 				public void handle(ActionEvent event) {
 					kontrolleri.kaynnistaSimulointi();
@@ -259,7 +267,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					
 					grid.add(punainenButton, 3, 4);
 					GridPane.setHalignment(punainenButton, HPos.RIGHT); // Muodon voi laittaa selitteen kanssa samaan sarakkeeseen
-
+					
 				}
 			});
 
@@ -478,9 +486,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 		this.xSaapuneetTulos.setText(asiakasMaaraX + "");
 	}
 
+
 	@Override
 	public void setAsiakasMaaraY(int asiakasMaaraY) {
 		this.ySaapuneetTulos.setText(asiakasMaaraY + "");
+		
 	}
 
 	@Override
@@ -518,6 +528,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	@Override
 	public IVisualisointi getPP2Visualisointi() {
 		return pp2Naytto;
+		
 	}
 
 	@Override

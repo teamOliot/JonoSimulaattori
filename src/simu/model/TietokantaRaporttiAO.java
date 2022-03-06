@@ -8,7 +8,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
+	
 		SessionFactory sessionFactory = null;
 
 		public TietokantaRaporttiAO() {

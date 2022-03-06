@@ -27,12 +27,12 @@ import javafx.stage.WindowEvent;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
-
-	/*
-	// Kontrollerin esittely (tarvitaan käyttöliittymässä)
-	private IKontrolleriVtoM kontrolleri;
-	*/
+	
 
 	// Käyttöliittymäkomponentit:
 	private Label simuLoppuraporttiLabel;

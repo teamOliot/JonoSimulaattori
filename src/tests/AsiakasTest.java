@@ -12,7 +12,12 @@ import simu.framework.Trace.Level;
 import simu.model.Asiakas;
 import simu.model.AsiakasTyyppi;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 class AsiakasTest {
+	
 
 	private static Asiakas asiakasX;
 	private static Asiakas asiakasY;
