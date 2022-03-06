@@ -150,14 +150,14 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 					alert.setTitle("Simulaattorin käyttöohjeet");
 					alert.setHeaderText(null);
-					alert.setContentText("1. Syötä Simulointiaika-kenttään arvo, joka on vähintään 100. \n"
-							+ "2. Syötä Viive-kenttään arvo, joka on suurempi kuin 0. \n" 
-							+ "3. Syötä Kuinka usein X-tyyppisiä asiakkaita saapuu -kenttään arvo, joka määrittää, kuinka usein X-tyyppisiä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä. \n"
-							+ "4. Syötä Kuinka usein Y-tyyppisiä asiakkaita saapuu -kenttään arvo, joka määrittää, kuinka usein Y-tyyppisiä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä. \n"
-							+ "5. Klikkaa Käynnistä simulointi -painiketta. \n"
-							+ "6. Voit simuloinnin ollessa käynnissä nopeuttaa tai hidastaa simuloinnin viivettä Nopeuta- ja Hidasta-painikkeista. \n"
-							+ "7. Kun simulointiajo on valmis, simulaattorinäkymän päälle avautuu uusi näkymä, jossa on simulaation loppuraportti. \n"
-							+ "8. Simulaation loppuraportin sisältämät tiedot tallennetaan automaattisesti simulointiraportteihin. \n"
+					alert.setContentText("1. Syötä Simulointiaika-kenttään arvo, joka on vähintään 100. \n \n"
+							+ "2. Syötä Viive-kenttään arvo, joka on suurempi kuin 0. \n \n" 
+							+ "3. Syötä Ei WC:ssä käyvät asiakkaat -kenttään arvo, joka määrittää, kuinka usein ei WC:n kautta kulkevia asiakkaita saapuu. \n \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä. \n \n"
+							+ "4. Syötä WC:ssä käyvät asiakkaat -kenttään arvo, joka määrittää, kuinka usein WC:ssä käyviä asiakkaita saapuu. \n \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä. \n \n"
+							+ "5. Klikkaa Käynnistä simulointi -painiketta. \n \n"
+							+ "6. Voit simuloinnin ollessa käynnissä nopeuttaa tai hidastaa simuloinnin viivettä Nopeuta- ja Hidasta-painikkeista. \n \n"
+							+ "7. Kun simulointiajo on valmis, simulaattorinäkymän päälle avautuu uusi näkymä, jossa on simulaation loppuraportti. \n \n"
+							+ "8. Simulaation loppuraportin sisältämät tiedot tallennetaan automaattisesti simulointiraportteihin. \n \n"
 							+ "9. Voit tarkastella tallennettuja simulointiraportteja Tarkastele simulointiraportteja -painikkeesta.");
 
 					alert.getDialogPane().setStyle("-fx-background-color: #d9feff;"); // Alert dialogin taustaväri
@@ -294,52 +294,52 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			progressBar = new ProgressBar(0);
 
-			xSaapuneetLabel = new Label("Saapuneet ei WC:");
-			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xSaapuneetLabel = new Label("Saapuneet asiakkaat, ei WC-käyntiä:");
+			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			xSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xSaapuneetTulos.setMaxWidth(100);
 
-			ySaapuneetLabel = new Label("Saapuneet WC:");
-			ySaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			ySaapuneetLabel = new Label("Saapuneet asiakkaat, WC-käynti:");
+			ySaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			ySaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			ySaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			ySaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			ySaapuneetTulos.setMaxWidth(100);
 
-			yhtSaapuneetLabel = new Label("Saapuneet yhteensä:");
-			yhtSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yhtSaapuneetLabel = new Label("Saapuneet asiakkaat yhteensä:");
+			yhtSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			yhtSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simuloinnin loputtua
-			yhtSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yhtSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtSaapuneetTulos.setMaxWidth(100);
 
-			xLapiSysteeminLabel = new Label("Systeemin läpi ei WC:");
-			xLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi, ei WC-käyntiä:");
+			xLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			xLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			xLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xLapiSysteeminTulos.setMaxWidth(100);
 
-			yLapiSysteeminLabel = new Label("Systeemin läpi WC:");
-			yLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi, WC-käynti:");
+			yLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			yLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			yLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yLapiSysteeminTulos.setMaxWidth(100);
 
-			yhtLapiSysteeminLabel = new Label("Systeemin läpi yhteensä:");
-			yhtLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yhtLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi yhteensä:");
+			yhtLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			yhtLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simuloinnin loputtua
-			yhtLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yhtLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtLapiSysteeminTulos.setMaxWidth(100);
 
-			simuKokonaisaikaLabel = new Label("Kokonaisaika:");
-			simuKokonaisaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			simuKokonaisaikaLabel = new Label("Simulaation kokonaisaika:");
+			simuKokonaisaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuKokonaisaikaTulos = new Label();
-			simuKokonaisaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			simuKokonaisaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuKokonaisaikaTulos.setMaxWidth(100);
 
 			// Järjestele grid
@@ -356,18 +356,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			grid.add(xAsiakkaidenParamLabel, 0, 3, 2, 1);
 			GridPane.setHalignment(xAsiakkaidenParamLabel, HPos.RIGHT);
 			grid.add(xAsiakkaidenParam, 2, 3);
-			
-			/*
-			grid.add(xAsiakkaidenSeliteLabel, 3, 3, 2, 2);
-			*/
 
 			grid.add(yAsiakkaidenParamLabel, 0, 4, 2, 1);
 			GridPane.setHalignment(yAsiakkaidenParamLabel, HPos.RIGHT);
 			grid.add(yAsiakkaidenParam, 2, 4);
-			
-			/*
-			grid.add(yAsiakkaidenSeliteLabel, 3, 4, 2, 2);
-			*/
 
 			// Välissä tyhjä rivi 5
 
@@ -406,40 +398,40 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			grid.add(progressBar, 0, 11, 4, 1);
 
 			// Saapuneet, systeemin läpi ja kokonaisaika
-			grid.add(xSaapuneetLabel, 0, 12);
-			GridPane.setHalignment(xSaapuneetLabel, HPos.CENTER);
+			grid.add(xSaapuneetLabel, 0, 12, 2, 1);
+			GridPane.setHalignment(xSaapuneetLabel, HPos.LEFT);
 			grid.add(xSaapuneetTulos, 1, 12);
 			GridPane.setHalignment(xSaapuneetTulos, HPos.CENTER);
 
-			grid.add(ySaapuneetLabel, 0, 13);
-			GridPane.setHalignment(ySaapuneetLabel, HPos.CENTER);
+			grid.add(ySaapuneetLabel, 0, 13, 2, 1);
+			GridPane.setHalignment(ySaapuneetLabel, HPos.LEFT);
 			grid.add(ySaapuneetTulos, 1, 13);
 			GridPane.setHalignment(ySaapuneetTulos, HPos.CENTER);
 
-			grid.add(yhtSaapuneetLabel, 0, 14);
-			GridPane.setHalignment(yhtSaapuneetLabel, HPos.CENTER);
+			grid.add(yhtSaapuneetLabel, 0, 14, 2, 1);
+			GridPane.setHalignment(yhtSaapuneetLabel, HPos.LEFT);
 			grid.add(yhtSaapuneetTulos, 1, 14);
 			GridPane.setHalignment(yhtSaapuneetTulos, HPos.CENTER);
 
-			grid.add(xLapiSysteeminLabel, 2, 12);
-			GridPane.setHalignment(xLapiSysteeminLabel, HPos.CENTER);
+			grid.add(xLapiSysteeminLabel, 2, 12, 2, 1);
+			GridPane.setHalignment(xLapiSysteeminLabel, HPos.LEFT);
 			grid.add(xLapiSysteeminTulos, 3, 12);
 			GridPane.setHalignment(xLapiSysteeminTulos, HPos.CENTER);
 
-			grid.add(yLapiSysteeminLabel, 2, 13);
-			GridPane.setHalignment(yLapiSysteeminLabel, HPos.CENTER);
+			grid.add(yLapiSysteeminLabel, 2, 13, 2, 1);
+			GridPane.setHalignment(yLapiSysteeminLabel, HPos.LEFT);
 			grid.add(yLapiSysteeminTulos, 3, 13);
 			GridPane.setHalignment(yLapiSysteeminTulos, HPos.CENTER);
 
-			grid.add(yhtLapiSysteeminLabel, 2, 14);
-			GridPane.setHalignment(yhtLapiSysteeminLabel, HPos.CENTER);
+			grid.add(yhtLapiSysteeminLabel, 2, 14, 2, 1);
+			GridPane.setHalignment(yhtLapiSysteeminLabel, HPos.LEFT);
 			grid.add(yhtLapiSysteeminTulos, 3, 14);
 			GridPane.setHalignment(yhtLapiSysteeminTulos, HPos.CENTER);
 
 			// Välissä tyhjä rivi 15
 
 			grid.add(simuKokonaisaikaLabel, 0, 16);
-			GridPane.setHalignment(simuKokonaisaikaLabel, HPos.CENTER);
+			GridPane.setHalignment(simuKokonaisaikaLabel, HPos.LEFT);
 			grid.add(simuKokonaisaikaTulos, 1, 16);
 			GridPane.setHalignment(simuKokonaisaikaTulos, HPos.CENTER);
 

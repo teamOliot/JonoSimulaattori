@@ -76,6 +76,19 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	private Label asiakkaidenLapimenoaikaYhtLabel;
 	private Label asiakkaidenLapimenoaikaYhtTulos;
 	
+	// Käyttöasteet
+	private Label kayttoastePP1Label;
+	private Label kayttoastePP1Tulos;
+	
+	private Label kayttoastePP2Label;
+	private Label kayttoastePP2Tulos;
+	
+	private Label kayttoastePP3Label;
+	private Label kayttoastePP3Tulos;
+	
+	private Label kayttoastePP4Label;
+	private Label kayttoastePP4Tulos;
+	
 	private Label oleskeluaikaPP1Label;
 	private Label oleskeluaikaPP1Tulos;
 	
@@ -133,7 +146,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			BorderPane border = new BorderPane(); // Pohjana border
 			border.setStyle("-fx-background-color: #d9feff;"); // Koko GUI:n taustaväri
 
-			Scene scene = new Scene(border, 750, 750);
+			Scene scene = new Scene(border, 780, 780);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
@@ -148,161 +161,187 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			simuLoppuraporttiLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 20));
 			
 			simuKokonaisaikaLabel = new Label("Simulaation kokonaisaika:");
-			simuKokonaisaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			simuKokonaisaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuKokonaisaikaLabel.setTooltip(new Tooltip("Simulaation ajamiseen käytetty aika."));
 			simuKokonaisaikaTulos = new Label();
-			simuKokonaisaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			simuKokonaisaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuKokonaisaikaTulos.setMaxWidth(100);
 			
-			xAsiakkaidenParamLabel = new Label("X-asiakkaiden saapumisväliaikojen parametri:");
-			xAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			xAsiakkaidenParamLabel.setTooltip(new Tooltip("Parametri sille, kuinka usein X-tyyppisiä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
+			xAsiakkaidenParamLabel = new Label("Ei WC:ssä käyvien asiakkaiden parametri:");
+			xAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			xAsiakkaidenParamLabel.setTooltip(new Tooltip("Parametri sille, kuinka usein ei WC:n kautta kulkevia asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
 			xAsiakkaidenParamTulos = new Label();
-			xAsiakkaidenParamTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xAsiakkaidenParamTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xAsiakkaidenParamTulos.setMaxWidth(100);
 			
-			yAsiakkaidenParamLabel = new Label("Y-asiakkaiden saapumisväliaikojen parametri:");
-			yAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			yAsiakkaidenParamLabel.setTooltip(new Tooltip("Parametri sille, kuinka usein Y-tyyppisiä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
+			yAsiakkaidenParamLabel = new Label("WC:ssä käyvien asiakkaiden parametri:");
+			yAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			yAsiakkaidenParamLabel.setTooltip(new Tooltip("Parametri sille, kuinka usein WC:ssä käyviä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
 			yAsiakkaidenParamTulos = new Label();
-			yAsiakkaidenParamTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yAsiakkaidenParamTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yAsiakkaidenParamTulos.setMaxWidth(100);
 			
 			simuSuoritustehoLabel = new Label("Simulaation suoritusteho:");
-			simuSuoritustehoLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			simuSuoritustehoLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuSuoritustehoLabel.setTooltip(new Tooltip("Kuinka monta asiakasta simulaation aikana palvellaan simulaation kokonaisaikaa kohti."));
 			simuSuoritustehoTulos = new Label();
-			simuSuoritustehoTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			simuSuoritustehoTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuSuoritustehoTulos.setMaxWidth(100);
 			
-			xSaapuneetLabel = new Label("Saapuneet X-asiakkaat:");
-			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			xSaapuneetLabel.setTooltip(new Tooltip("Kuinka monta X-tyyppistä asiakasta on saapunut simulaatioon."));
+			xSaapuneetLabel = new Label("Saapuneet ei WC:ssä käyvät asiakkaat:");
+			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			xSaapuneetLabel.setTooltip(new Tooltip("Kuinka monta asiakasta, jotka eivät käy WC:ssä, on saapunut simulaatioon.")); // Muokkaa Tooltipit
 			xSaapuneetTulos = new Label();
-			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xSaapuneetTulos.setMaxWidth(100);
 			
-			ySaapuneetLabel = new Label("Saapuneet Y-asiakkaat:");
-			ySaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			ySaapuneetLabel.setTooltip(new Tooltip("Kuinka monta Y-tyyppistä asiakasta on saapunut simulaatioon."));
+			ySaapuneetLabel = new Label("Saapuneet WC:ssä käyvät asiakkaat:");
+			ySaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			ySaapuneetLabel.setTooltip(new Tooltip("Kuinka monta WC:ssä käyvää asiakasta on saapunut simulaatioon."));
 			ySaapuneetTulos = new Label();
-			ySaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			ySaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			ySaapuneetTulos.setMaxWidth(100);
 			
 			yhtSaapuneetLabel = new Label("Saapuneet asiakkaat yhteensä:");
-			yhtSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			yhtSaapuneetLabel.setTooltip(new Tooltip("Kuinka monta X- ja Y-tyyppistä asiakasta yhteensä on saapunut simulaatioon."));
+			yhtSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			yhtSaapuneetLabel.setTooltip(new Tooltip("Kuinka monta asiakasta yhteensä on saapunut simulaatioon."));
 			yhtSaapuneetTulos = new Label();
-			yhtSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yhtSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtSaapuneetTulos.setMaxWidth(100);
 			
-			xLapiSysteeminLabel = new Label("Systeemin läpi X-asiakkaita:");
-			xLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			xLapiSysteeminLabel.setTooltip(new Tooltip("Kuinka monta X-tyyppistä asiakasta on palveltu palvelupisteillä ja he ovat poistuneet keikalle."));
+			xLapiSysteeminLabel = new Label("Systeemin läpi ei WC:ssä käyneitä asiakkaita:");
+			xLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			xLapiSysteeminLabel.setTooltip(new Tooltip("Kuinka monta asiakasta, jotka käyvät WC:ssä, on palveltu palvelupisteillä ja he ovat poistuneet keikalle."));
 			xLapiSysteeminTulos = new Label();
-			xLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xLapiSysteeminTulos.setMaxWidth(100);
 
-			yLapiSysteeminLabel = new Label("Systeemin läpi Y-asiakkaita:");
-			yLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			yLapiSysteeminLabel.setTooltip(new Tooltip("Kuinka monta Y-tyyppistä asiakasta on palveltu palvelupisteillä ja he ovat poistuneet keikalle."));
+			yLapiSysteeminLabel = new Label("Systeemin läpi WC:ssä käyneitä asiakkaita:");
+			yLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			yLapiSysteeminLabel.setTooltip(new Tooltip("Kuinka monta WC:ssä käyvää asiakasta on palveltu palvelupisteillä ja he ovat poistuneet keikalle."));
 			yLapiSysteeminTulos = new Label();
-			yLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yLapiSysteeminTulos.setMaxWidth(100);
 
 			yhtLapiSysteeminLabel = new Label("Systeemin läpi asiakkaita yhteensä:");
-			yhtLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			yhtLapiSysteeminLabel.setTooltip(new Tooltip("Kuinka monta X- ja Y-tyyppistä asiakasta yhteensä on palveltu palvelupisteillä ja he ovat poistuneet keikalle."));
+			yhtLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			yhtLapiSysteeminLabel.setTooltip(new Tooltip("Kuinka monta asiakasta yhteensä on palveltu palvelupisteillä ja he ovat poistuneet keikalle."));
 			yhtLapiSysteeminTulos = new Label();
-			yhtLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yhtLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtLapiSysteeminTulos.setMaxWidth(100);
 			
 			// Läpimenoajat
-			xAsiakkaidenLapimenoaikaLabel = new Label("X-asiakkaiden keskim. läpimenoaika:");
-			xAsiakkaidenLapimenoaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			xAsiakkaidenLapimenoaikaLabel.setTooltip(new Tooltip("Kokonaisoleskeluaika jaettuna X-asiakkaiden määrällä."));
+			xAsiakkaidenLapimenoaikaLabel = new Label("Ei WC:ssä käyneiden asiakkaiden keskim. läpimenoaika:");
+			xAsiakkaidenLapimenoaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			xAsiakkaidenLapimenoaikaLabel.setTooltip(new Tooltip("Kokonaisoleskeluaika jaettuna ei WC:ssä käyneiden asiakkaiden määrällä."));
 			xAsiakkaidenLapimenoaikaTulos = new Label();
-			xAsiakkaidenLapimenoaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			xAsiakkaidenLapimenoaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xAsiakkaidenLapimenoaikaTulos.setMaxWidth(100);
 
-			yAsiakkaidenLapimenoaikaLabel = new Label("Y-asiakkaiden keskim. läpimenoaika:");
-			yAsiakkaidenLapimenoaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			yAsiakkaidenLapimenoaikaLabel.setTooltip(new Tooltip("Kokonaisoleskeluaika jaettuna Y-asiakkaiden määrällä."));
+			yAsiakkaidenLapimenoaikaLabel = new Label("WC:ssä käyneiden asiakkaiden keskim. läpimenoaika:");
+			yAsiakkaidenLapimenoaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			yAsiakkaidenLapimenoaikaLabel.setTooltip(new Tooltip("Kokonaisoleskeluaika jaettuna WC:ssä käyneiden asiakkaiden määrällä."));
 			yAsiakkaidenLapimenoaikaTulos = new Label();
-			yAsiakkaidenLapimenoaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			yAsiakkaidenLapimenoaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yAsiakkaidenLapimenoaikaTulos.setMaxWidth(100);
 
 			asiakkaidenLapimenoaikaYhtLabel = new Label("Kaikkien asiakkaiden keskim. läpimenoaika:");
-			asiakkaidenLapimenoaikaYhtLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			asiakkaidenLapimenoaikaYhtLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			asiakkaidenLapimenoaikaYhtLabel.setTooltip(new Tooltip("Kokonaisoleskeluaika jaettuna kaikkien asiakkaiden määrällä."));
 			asiakkaidenLapimenoaikaYhtTulos = new Label();
-			asiakkaidenLapimenoaikaYhtTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			asiakkaidenLapimenoaikaYhtTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			asiakkaidenLapimenoaikaYhtTulos.setMaxWidth(100);
+			
+			// Käyttöasteet
+			kayttoastePP1Label = new Label("Käyttöaste PP1:");
+			kayttoastePP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP1Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 1 (Lipuntarkastus) on ollut käytössä simuloinnin kokonaisajasta."));
+			kayttoastePP1Tulos = new Label();
+			kayttoastePP1Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP1Tulos.setMaxWidth(100);
+			
+			kayttoastePP2Label = new Label("Käyttöaste PP2:");
+			kayttoastePP2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP2Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 2 (Turvatarkastus) on ollut käytössä simuloinnin kokonaisajasta."));
+			kayttoastePP2Tulos = new Label();
+			kayttoastePP2Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP2Tulos.setMaxWidth(100);
+			
+			kayttoastePP3Label = new Label("Käyttöaste PP3:");
+			kayttoastePP3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP3Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 3 (Baaritiski) on ollut käytössä simuloinnin kokonaisajasta."));
+			kayttoastePP3Tulos = new Label();
+			kayttoastePP3Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP3Tulos.setMaxWidth(100);
+			
+			kayttoastePP4Label = new Label("Käyttöaste PP4:");
+			kayttoastePP4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP4Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 4 (WC) on ollut käytössä simuloinnin kokonaisajasta."));
+			kayttoastePP4Tulos = new Label();
+			kayttoastePP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			kayttoastePP4Tulos.setMaxWidth(100);
 			
 			// Oleskeluajat
 			oleskeluaikaPP1Label = new Label("Kaikki asiakkaat kokonaisoleskeluaika PP1:");
-			oleskeluaikaPP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			oleskeluaikaPP1Label.setTooltip(new Tooltip("Palvelupisteellä 1 kaikkien asiakkaiden yhteen lasketut jonotusajat ja palveluajat."));
+			oleskeluaikaPP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			oleskeluaikaPP1Label.setTooltip(new Tooltip("Palvelupisteellä 1 (Lipuntarkastus) kaikkien asiakkaiden yhteenlasketut jonotusajat ja palveluajat."));
 			oleskeluaikaPP1Tulos = new Label();
-			oleskeluaikaPP1Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			oleskeluaikaPP1Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			oleskeluaikaPP1Tulos.setMaxWidth(100);
 			
 			oleskeluaikaPP2Label = new Label("Kaikki asiakkaat kokonaisoleskeluaika PP2:");
-			oleskeluaikaPP2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			oleskeluaikaPP2Label.setTooltip(new Tooltip("Palvelupisteellä 2 kaikkien asiakkaiden yhteen lasketut jonotusajat ja palveluajat."));
+			oleskeluaikaPP2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			oleskeluaikaPP2Label.setTooltip(new Tooltip("Palvelupisteellä 2 (Turvatarkastus) kaikkien asiakkaiden yhteenlasketut jonotusajat ja palveluajat."));
 			oleskeluaikaPP2Tulos = new Label();
-			oleskeluaikaPP2Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			oleskeluaikaPP2Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			oleskeluaikaPP2Tulos.setMaxWidth(100);
 			
 			oleskeluaikaPP3Label = new Label("Kaikki asiakkaat kokonaisoleskeluaika PP3:");
-			oleskeluaikaPP3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			oleskeluaikaPP3Label.setTooltip(new Tooltip("Palvelupisteellä 3 kaikkien asiakkaiden yhteen lasketut jonotusajat ja palveluajat."));
+			oleskeluaikaPP3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			oleskeluaikaPP3Label.setTooltip(new Tooltip("Palvelupisteellä 3 (Baaritiski) kaikkien asiakkaiden yhteenlasketut jonotusajat ja palveluajat."));
 			oleskeluaikaPP3Tulos = new Label();
-			oleskeluaikaPP3Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			oleskeluaikaPP3Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			oleskeluaikaPP3Tulos.setMaxWidth(100);
 			
 			oleskeluaikaPP4Label = new Label("Kaikki asiakkaat kokonaisoleskeluaika PP4:");
-			oleskeluaikaPP4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			oleskeluaikaPP4Label.setTooltip(new Tooltip("Palvelupisteellä 4 kaikkien asiakkaiden yhteen lasketut jonotusajat ja palveluajat."));
+			oleskeluaikaPP4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			oleskeluaikaPP4Label.setTooltip(new Tooltip("Palvelupisteellä 4 (WC) kaikkien asiakkaiden yhteenlasketut jonotusajat ja palveluajat."));
 			oleskeluaikaPP4Tulos = new Label();
-			oleskeluaikaPP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			oleskeluaikaPP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			oleskeluaikaPP4Tulos.setMaxWidth(100);
 			
-			// Jononpituudet
+			// Jonon pituudet
 			jononPituusPP1Label = new Label("Keskimääräinen jonon pituus PP1:");
-			jononPituusPP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			jononPituusPP1Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 1."));
+			jononPituusPP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			jononPituusPP1Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 1 (Lipuntarkastus)."));
 			jononPituusPP1Tulos = new Label();
-			jononPituusPP1Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			jononPituusPP1Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			jononPituusPP1Tulos.setMaxWidth(100);
 			
 			jononPituusPP2Label = new Label("Keskimääräinen jonon pituus PP2:");
-			jononPituusPP2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			jononPituusPP2Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 2."));
+			jononPituusPP2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			jononPituusPP2Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 2 (Turvatarkastus)."));
 			jononPituusPP2Tulos = new Label();
-			jononPituusPP2Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			jononPituusPP2Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			jononPituusPP2Tulos.setMaxWidth(100);
 			
 			jononPituusPP3Label = new Label("Keskimääräinen jonon pituus PP3:");
-			jononPituusPP3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			jononPituusPP3Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 3."));
+			jononPituusPP3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			jononPituusPP3Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 3 (Baaritiski)."));
 			jononPituusPP3Tulos = new Label();
-			jononPituusPP3Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			jononPituusPP3Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			jononPituusPP3Tulos.setMaxWidth(100);
 			
 			jononPituusPP4Label = new Label("Keskimääräinen jonon pituus PP4:");
-			jononPituusPP4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-			jononPituusPP4Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 4."));
+			jononPituusPP4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
+			jononPituusPP4Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 4 (WC)."));
 			jononPituusPP4Tulos = new Label();
-			jononPituusPP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
+			jononPituusPP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			jononPituusPP4Tulos.setMaxWidth(100);
 			
 			tarkasteleRaporttejaButton = new Button("Tarkastele simulointiraportteja");
 			tarkasteleRaporttejaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			tarkasteleRaporttejaButton.setPrefWidth(220);
-
-			// Tsekkaa painikkeen OnAction
-			
 			
 			tarkasteleRaporttejaButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -312,12 +351,10 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 						Stage raporttiStage = new Stage();
 						tietokantaraporttiGUI.start(raporttiStage);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
 			});
-			
 			
 			// Järjestele grid
 			grid.add(simuLoppuraporttiLabel, 0, 0); // sarake, rivi, leveys, korkeus
@@ -362,31 +399,45 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			grid.add(asiakkaidenLapimenoaikaYhtLabel, 0, 13);
 			grid.add(asiakkaidenLapimenoaikaYhtTulos, 1, 13);
 			
-			grid.add(oleskeluaikaPP1Label, 0, 14);
-			grid.add(oleskeluaikaPP1Tulos, 1, 14);
+			// Käyttöasteet tähän väliin
+			grid.add(kayttoastePP1Label, 0, 14);
+			grid.add(kayttoastePP1Tulos, 1, 14);
 			
-			grid.add(oleskeluaikaPP2Label, 0, 15);
-			grid.add(oleskeluaikaPP2Tulos, 1, 15);
+			grid.add(kayttoastePP2Label, 0, 15);
+			grid.add(kayttoastePP2Tulos, 1, 15);
 			
-			grid.add(oleskeluaikaPP3Label, 0, 16);
-			grid.add(oleskeluaikaPP3Tulos, 1, 16);
+			grid.add(kayttoastePP3Label, 0, 16);
+			grid.add(kayttoastePP3Tulos, 1, 16);
 			
-			grid.add(oleskeluaikaPP4Label, 0, 17);
-			grid.add(oleskeluaikaPP4Tulos, 1, 17);
+			grid.add(kayttoastePP4Label, 0, 17);
+			grid.add(kayttoastePP4Tulos, 1, 17);
+			//
 			
-			grid.add(jononPituusPP1Label, 0, 18);
-			grid.add(jononPituusPP1Tulos, 1, 18);
+			grid.add(oleskeluaikaPP1Label, 0, 18);
+			grid.add(oleskeluaikaPP1Tulos, 1, 18);
 			
-			grid.add(jononPituusPP2Label, 0, 19);
-			grid.add(jononPituusPP2Tulos, 1, 19);
+			grid.add(oleskeluaikaPP2Label, 0, 19);
+			grid.add(oleskeluaikaPP2Tulos, 1, 19);
 			
-			grid.add(jononPituusPP3Label, 0, 20);
-			grid.add(jononPituusPP3Tulos, 1, 20);
+			grid.add(oleskeluaikaPP3Label, 0, 20);
+			grid.add(oleskeluaikaPP3Tulos, 1, 20);
 			
-			grid.add(jononPituusPP4Label, 0, 21);
-			grid.add(jononPituusPP4Tulos, 1, 21);
+			grid.add(oleskeluaikaPP4Label, 0, 21);
+			grid.add(oleskeluaikaPP4Tulos, 1, 21);
 			
-			grid.add(tarkasteleRaporttejaButton, 0, 23);
+			grid.add(jononPituusPP1Label, 0, 22);
+			grid.add(jononPituusPP1Tulos, 1, 22);
+			
+			grid.add(jononPituusPP2Label, 0, 23);
+			grid.add(jononPituusPP2Tulos, 1, 23);
+			
+			grid.add(jononPituusPP3Label, 0, 24);
+			grid.add(jononPituusPP3Tulos, 1, 24);
+			
+			grid.add(jononPituusPP4Label, 0, 25);
+			grid.add(jononPituusPP4Tulos, 1, 25);
+			
+			grid.add(tarkasteleRaporttejaButton, 0, 26);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -394,6 +445,8 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 	} // Käyttöliittymän rakentaminen päättyy
 
+	// METODIT KÄYTTÖASTEILLE PUUTTUVAT
+	
 	@Override
 	public void setSimulaationKokonaisaika(double simulaationKokonaisaika) {
 		DecimalFormat formatter = new DecimalFormat("#0.00");
