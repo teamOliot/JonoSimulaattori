@@ -183,7 +183,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getXAsiakkaidenLapimenoaika() {
-		return xAsiakkaidenLapimenoaika;
+		return pyoristaLuku(this.xAsiakkaidenLapimenoaika);
 	}
 
 	public void setXAsiakkaidenLapimenoaika(double xAsiakkaidenLapimenoaika) {
@@ -191,7 +191,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getYAsiakkaidenLapimenoaika() {
-		return yAsiakkaidenLapimenoaika;
+		return pyoristaLuku(this.yAsiakkaidenLapimenoaika);
 	}
 
 	public void setYAsiakkaidenLapimenoaika(double yAsiakkaidenLapimenoaika) {
@@ -199,7 +199,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getAsiakkaidenLapimenoaikaYht() {
-		return asiakkaidenLapimenoaikaYht;
+		return pyoristaLuku(this.asiakkaidenLapimenoaikaYht);
 	}
 
 	public void setAsiakkaidenLapimenoaikaYht(double asiakkaidenLapimenoaikaYht) {

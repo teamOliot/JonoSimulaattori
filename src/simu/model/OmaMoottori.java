@@ -33,12 +33,12 @@ public class OmaMoottori extends Moottori {
 
 		palvelupisteet = new Palvelupiste[4];
 
-		palvelupisteet[0] = new Palvelupiste(new Negexp(3, 5), tapahtumalista, TapahtumanTyyppi.PP1DEP,
+		palvelupisteet[0] = new Palvelupiste(new Negexp(1, 5), tapahtumalista, TapahtumanTyyppi.PP1DEP,
 				"Lipuntarkastus");
-		palvelupisteet[1] = new Palvelupiste(new Negexp(4, 5), tapahtumalista, TapahtumanTyyppi.PP2DEP,
+		palvelupisteet[1] = new Palvelupiste(new Negexp(2, 5), tapahtumalista, TapahtumanTyyppi.PP2DEP,
 				"Turvatarkastus");
-		palvelupisteet[2] = new Palvelupiste(new Negexp(8, 5), tapahtumalista, TapahtumanTyyppi.PP3DEP, "Kaljatiski");
-		palvelupisteet[3] = new Palvelupiste(new Negexp(12, 5), tapahtumalista, TapahtumanTyyppi.PP4DEP, "Vessa");
+		palvelupisteet[2] = new Palvelupiste(new Negexp(4, 5), tapahtumalista, TapahtumanTyyppi.PP3DEP, "Kaljatiski");
+		palvelupisteet[3] = new Palvelupiste(new Negexp(6, 5), tapahtumalista, TapahtumanTyyppi.PP4DEP, "Vessa");
 
 		kaikkiPalvelupisteet = new ArrayList<>();
 		for (Palvelupiste palvelupiste : palvelupisteet) {
@@ -122,18 +122,15 @@ public class OmaMoottori extends Moottori {
 
 	@Override
 	protected void tulokset() {
-		//
-		double simulaationSuoritusteho = palvelupisteet[2].getPalvellutAsiakkaat() / Kello.getInstance().getAika()
-				* 100;
+
+		double simulaationSuoritusteho = (Asiakas.getLapimenneetX()+Asiakas.getLapimenneetY())/Kello.getInstance().getAika()*100;
+		System.out.println("Omamoottori: simu2 "+simulaationSuoritusteho);
 
 		double jononPituusPP1 = palvelupisteet[0].getJononPituus();
 		double jononPituusPP2 = palvelupisteet[1].getJononPituus();
 		double jononPituusPP3 = palvelupisteet[2].getJononPituus();
 		double jononPituusPP4 = palvelupisteet[3].getJononPituus();
 
-		// Simuloinnin kokonaisaika T
-		// System.out.println("Simulointi päättyi kello " +
-		// Kello.getInstance().getAika());
 		System.out.println("Tulokset omamoottori: ");
 		System.out.println("Omamoottori: Saapuneiden X asiakkaiden määrä " + Asiakas.getSaapuneetX());
 		System.out.println("Omamoottori: Saapuneiden Y asiakkaiden määrä " + Asiakas.getSaapuneetY());
