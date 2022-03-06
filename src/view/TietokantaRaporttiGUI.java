@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -109,6 +110,8 @@ public class TietokantaRaporttiGUI extends Application {
 			tbv.getItems().add(r);
 		}
 
+		primaryStage.setTitle("Loppuraportti tietokannasta");
+		primaryStage.getIcons().add(new Image(TietokantaRaporttiGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 		
 		VBox vbox = new VBox();
 		vbox.getChildren().addAll(label,tbv);

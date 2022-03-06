@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -142,6 +143,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			});
 
 			primaryStage.setTitle("Simulaation loppuraportti");
+			primaryStage.getIcons().add(new Image(LoppuraporttiGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 
 			BorderPane border = new BorderPane(); // Pohjana border
 			border.setStyle("-fx-background-color: #d9feff;"); // Koko GUI:n taustaväri
@@ -253,28 +255,28 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			asiakkaidenLapimenoaikaYhtTulos.setMaxWidth(100);
 			
 			// Käyttöasteet
-			kayttoastePP1Label = new Label("Käyttöaste PP1:");
+			kayttoastePP1Label = new Label("Käyttöaste PP1 (Lipuntarkastus):");
 			kayttoastePP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP1Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 1 (Lipuntarkastus) on ollut käytössä simuloinnin kokonaisajasta."));
 			kayttoastePP1Tulos = new Label();
 			kayttoastePP1Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP1Tulos.setMaxWidth(100);
 			
-			kayttoastePP2Label = new Label("Käyttöaste PP2:");
+			kayttoastePP2Label = new Label("Käyttöaste PP2 (Turvatarkastus):");
 			kayttoastePP2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP2Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 2 (Turvatarkastus) on ollut käytössä simuloinnin kokonaisajasta."));
 			kayttoastePP2Tulos = new Label();
 			kayttoastePP2Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP2Tulos.setMaxWidth(100);
 			
-			kayttoastePP3Label = new Label("Käyttöaste PP3:");
+			kayttoastePP3Label = new Label("Käyttöaste PP3 (Baaritiski):");
 			kayttoastePP3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP3Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 3 (Baaritiski) on ollut käytössä simuloinnin kokonaisajasta."));
 			kayttoastePP3Tulos = new Label();
 			kayttoastePP3Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP3Tulos.setMaxWidth(100);
 			
-			kayttoastePP4Label = new Label("Käyttöaste PP4:");
+			kayttoastePP4Label = new Label("Käyttöaste PP4 (WC):");
 			kayttoastePP4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP4Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 4 (WC) on ollut käytössä simuloinnin kokonaisajasta."));
 			kayttoastePP4Tulos = new Label();
