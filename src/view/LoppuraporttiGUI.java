@@ -27,12 +27,12 @@ import javafx.stage.WindowEvent;
 import simu.framework.Trace;
 import simu.framework.Trace.Level;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
-
-	/*
-	// Kontrollerin esittely (tarvitaan käyttöliittymässä)
-	private IKontrolleriVtoM kontrolleri;
-	*/
+	
 
 	// Käyttöliittymäkomponentit:
 	private Label simuLoppuraporttiLabel;
@@ -445,7 +445,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 	} // Käyttöliittymän rakentaminen päättyy
 
-	// METODIT KÄYTTÖASTEILLE PUUTTUVAT
 	
 	@Override
 	public void setSimulaationKokonaisaika(double simulaationKokonaisaika) {
@@ -465,22 +464,22 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 	@Override
 	public void setSimulaationSuoritusteho(double simulaationSuoritusteho) {
-		this.simuSuoritustehoTulos.setText(simulaationSuoritusteho + "");
+		this.simuSuoritustehoTulos.setText(simulaationSuoritusteho + " %");
 	}
 
 	@Override
 	public void setAsiakasMaaraX(double asiakasMaaraX) {
-		this.xSaapuneetTulos.setText(asiakasMaaraX + "");
+		this.xSaapuneetTulos.setText(asiakasMaaraX + " kappaletta");
 	}
 
 	@Override
 	public void setAsiakasMaaraY(double asiakasMaaraY) {
-		this.ySaapuneetTulos.setText(asiakasMaaraY + "");
+		this.ySaapuneetTulos.setText(asiakasMaaraY + " kappaletta");
 	}
 	
 	@Override
 	public void setAsiakasMaaraYht(double asiakasMaaraYht) {
-		this.yhtSaapuneetTulos.setText(asiakasMaaraYht + "");	
+		this.yhtSaapuneetTulos.setText(asiakasMaaraYht + " kappaletta");	
 	}
 
 	@Override
@@ -500,17 +499,17 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 	@Override
 	public void setLapimenneetX(int lapimenneetX) {
-		this.xLapiSysteeminTulos.setText(lapimenneetX + "");
+		this.xLapiSysteeminTulos.setText(lapimenneetX + " kappaletta");
 	}
 
 	@Override
 	public void setLapimenneetY(int lapimenneetY) {
-		this.yLapiSysteeminTulos.setText(lapimenneetY + "");
+		this.yLapiSysteeminTulos.setText(lapimenneetY + " kappaletta");
 	}
 	
 	@Override
 	public void setLapimenneetYht(int lapimenneetYht) {
-		this.yhtLapiSysteeminTulos.setText(lapimenneetYht + "");	
+		this.yhtLapiSysteeminTulos.setText(lapimenneetYht + " kappaletta");	
 	}
 
 	@Override
@@ -525,7 +524,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 	@Override
 	public void setOleskeluaikaPP3(double oleskeluaikaPP3) {
-		this.oleskeluaikaPP3Tulos.setText(oleskeluaikaPP3 + "");
+		this.oleskeluaikaPP3Tulos.setText(oleskeluaikaPP3 + " ");
 	}
 
 	@Override
@@ -535,42 +534,42 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 
 	@Override
 	public void setJononPituusPP1(double jononPituusPP1) {
-		this.jononPituusPP1Tulos.setText(jononPituusPP1 + "");
+		this.jononPituusPP1Tulos.setText(jononPituusPP1 + " henkilöä");
 	}
 
 	@Override
 	public void setJononPituusPP2(double jononPituusPP2) {
-		this.jononPituusPP2Tulos.setText(jononPituusPP2 + "");
+		this.jononPituusPP2Tulos.setText(jononPituusPP2 + " henkilöä");
 	}
 
 	@Override
 	public void setJononPituusPP3(double jononPituusPP3) {
-		this.jononPituusPP3Tulos.setText(jononPituusPP3 + "");
+		this.jononPituusPP3Tulos.setText(jononPituusPP3 + " henkilöä");
 	}
 
 	@Override
 	public void setJononPituusPP4(double jononPituusPP4) {
-		this.jononPituusPP4Tulos.setText(jononPituusPP4 + "");
+		this.jononPituusPP4Tulos.setText(jononPituusPP4 + " henkilöä");
 	}
 
 	@Override
 	public void setKayttoastePP1(double kayttoastePP1) {
-		this.kayttoastePP1Tulos.setText(kayttoastePP1 + "");	
+		this.kayttoastePP1Tulos.setText(kayttoastePP1 + " %");	
 	}
 
 	@Override
 	public void setKayttoastePP2(double kayttoastePP2) {
-		this.kayttoastePP2Tulos.setText(kayttoastePP2 + "");	
+		this.kayttoastePP2Tulos.setText(kayttoastePP2 + " %");	
 	}
 
 	@Override
 	public void setKayttoastePP3(double kayttoastePP3) {
-		this.kayttoastePP3Tulos.setText(kayttoastePP3 + "");
+		this.kayttoastePP3Tulos.setText(kayttoastePP3 + " %");
 	}
 
 	@Override
 	public void setKayttoastePP4(double kayttoastePP4) {
-		this.kayttoastePP4Tulos.setText(kayttoastePP4 + "");	
+		this.kayttoastePP4Tulos.setText(kayttoastePP4 + " %");	
 	}
 
 }

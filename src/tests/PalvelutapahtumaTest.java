@@ -11,7 +11,7 @@ import simu.model.Palvelutapahtuma;
 
 
 /**
- * @author Dahlman
+ * @author Dahlman, Laamo, Lappi
  *
  */
 

@@ -14,7 +14,12 @@ import simu.framework.*;
 import simu.framework.Trace.Level;
 import simu.model.*;
 
+/**
+ * @author Dahlman, Laamo, Lappi
+ *
+ */
 class PalvelupisteTest {
+	
 	
 	Tapahtumalista tapahtumalista;
 
