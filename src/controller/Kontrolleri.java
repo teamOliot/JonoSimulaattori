@@ -152,7 +152,11 @@ public class Kontrolleri implements IKontrolleriVtoM, IKontrolleriMtoV { // UUSI
 				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP1(raportti.getJononPituusPP1()));	
 				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP2(raportti.getJononPituusPP2()));
 				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP3(raportti.getJononPituusPP3()));
-				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP4(raportti.getJononPituusPP4()));
+				Platform.runLater(() -> loppuraporttiGUI.setJononPituusPP4(raportti.getJononPituusPP4()));			
+				Platform.runLater(() -> loppuraporttiGUI.setKayttoastePP1(raportti.getKayttoastePP1()));
+				Platform.runLater(() -> loppuraporttiGUI.setKayttoastePP2(raportti.getKayttoastePP2()));
+				Platform.runLater(() -> loppuraporttiGUI.setKayttoastePP3(raportti.getKayttoastePP3()));
+				Platform.runLater(() -> loppuraporttiGUI.setKayttoastePP4(raportti.getKayttoastePP4()));
 			}
 
 		});
