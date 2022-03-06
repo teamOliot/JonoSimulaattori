@@ -553,4 +553,24 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 		this.jononPituusPP4Tulos.setText(jononPituusPP4 + "");
 	}
 
+	@Override
+	public void setKayttoastePP1(double kayttoastePP1) {
+		this.kayttoastePP1Tulos.setText(kayttoastePP1 + "");	
+	}
+
+	@Override
+	public void setKayttoastePP2(double kayttoastePP2) {
+		this.kayttoastePP2Tulos.setText(kayttoastePP2 + "");	
+	}
+
+	@Override
+	public void setKayttoastePP3(double kayttoastePP3) {
+		this.kayttoastePP3Tulos.setText(kayttoastePP3 + "");
+	}
+
+	@Override
+	public void setKayttoastePP4(double kayttoastePP4) {
+		this.kayttoastePP4Tulos.setText(kayttoastePP4 + "");	
+	}
+
 }

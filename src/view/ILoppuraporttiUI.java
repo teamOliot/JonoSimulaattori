@@ -53,6 +53,14 @@ public interface ILoppuraporttiUI {
 	
 	public void setJononPituusPP4(double jononPituusPP4);
 	
+	public void setKayttoastePP1(double kayttoastePP1);
+	
+	public void setKayttoastePP2(double kayttoastePP2);
+	
+	public void setKayttoastePP3(double kayttoastePP3);
+	
+	public void setKayttoastePP4(double kayttoastePP4);
+	
 
 	/*
 	private Label yhtSaapuneetLabel;

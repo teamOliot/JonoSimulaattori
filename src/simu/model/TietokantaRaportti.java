@@ -73,19 +73,19 @@ public class TietokantaRaportti {
 
 	@Column(name = "LapimenneetY")
 	int lapimenneetY;
-	
+
 	@Column(name = "KayttoastePP1")
 	double kayttoastePP1;
-	
+
 	@Column(name = "KayttoastePP2")
 	double kayttoastePP2;
-	
+
 	@Column(name = "KayttoastePP3")
 	double kayttoastePP3;
-	
+
 	@Column(name = "KayttoastePP4")
 	double kayttoastePP4;
-	
+
 	@Transient
 	DecimalFormat formatter = new DecimalFormat("#0.00");
 
@@ -96,8 +96,8 @@ public class TietokantaRaportti {
 			double simulaationSuoritusteho, double asiakasMaaraX, double asiakasMaaraY, double xAsiakkaidenLapimenoaika,
 			double yAsiakkaidenLapimenoaika, double asiakkaidenLapimenoaikaYht, double oleskeluaikaPP1,
 			double oleskeluaikaPP2, double oleskeluaikaPP3, double oleskeluaikaPP4, double jononPituusPP1,
-			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4, int lapimenneetX, int lapimenneetY, double kayttoastePP1,
-			double kayttoastePP2, double kayttoastePP3, double kayttoastePP4) {
+			double jononPituusPP2, double jononPituusPP3, double jononPituusPP4, int lapimenneetX, int lapimenneetY,
+			double kayttoastePP1, double kayttoastePP2, double kayttoastePP3, double kayttoastePP4) {
 		super();
 		this.paivamaara = java.time.LocalDateTime.now();
 		this.simulaationKokonaisaika = simulaationKokonaisaika;
@@ -121,7 +121,7 @@ public class TietokantaRaportti {
 		this.lapimenneetY = lapimenneetY;
 		this.kayttoastePP1 = kayttoastePP1;
 		this.kayttoastePP2 = kayttoastePP2;
-		this.kayttoastePP3= kayttoastePP3;
+		this.kayttoastePP3 = kayttoastePP3;
 		this.kayttoastePP4 = kayttoastePP4;
 	}
 
@@ -135,7 +135,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getSimulaationKokonaisaika() {
-		return simulaationKokonaisaika;
+		return pyoristaLuku(this.simulaationKokonaisaika);
 	}
 
 	public void setSimulaationKokonaisaika(double simulaationKokonaisaika) {
@@ -159,7 +159,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getSimulaationSuoritusteho() {
-		return simulaationSuoritusteho;
+		return pyoristaLuku(this.simulaationSuoritusteho);
 	}
 
 	public void setSimulaationSuoritusteho(double simulaationSuoritusteho) {
@@ -207,7 +207,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getOleskeluaikaPP1() {
-		return oleskeluaikaPP1;
+		return pyoristaLuku(this.oleskeluaikaPP1);
 	}
 
 	public void setOleskeluaikaPP1(double oleskeluaikaPP1) {
@@ -215,7 +215,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getOleskeluaikaPP2() {
-		return oleskeluaikaPP2;
+		return pyoristaLuku(this.oleskeluaikaPP2);
 	}
 
 	public void setOleskeluaikaPP2(double oleskeluaikaPP2) {
@@ -223,7 +223,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getOleskeluaikaPP3() {
-		return oleskeluaikaPP3;
+		return pyoristaLuku(this.oleskeluaikaPP3);
 	}
 
 	public void setOleskeluaikaPP3(double oleskeluaikaPP3) {
@@ -231,7 +231,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getOleskeluaikaPP4() {
-		return oleskeluaikaPP4;
+		return pyoristaLuku(this.oleskeluaikaPP4);
 	}
 
 	public void setOleskeluaikaPP4(double oleskeluaikaPP4) {
@@ -239,7 +239,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getJononPituusPP1() {
-		return jononPituusPP1;
+		return pyoristaLuku(this.jononPituusPP1);
 	}
 
 	public void setJononPituusPP1(double jononPituusPP1) {
@@ -247,7 +247,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getJononPituusPP2() {
-		return jononPituusPP2;
+		return pyoristaLuku(this.jononPituusPP2);
 	}
 
 	public void setJononPituusPP2(double jononPituusPP2) {
@@ -255,7 +255,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getJononPituusPP3() {
-		return jononPituusPP3;
+		return pyoristaLuku(this.jononPituusPP3);
 	}
 
 	public void setJononPituusPP3(double jononPituusPP3) {
@@ -263,7 +263,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getJononPituusPP4() {
-		return jononPituusPP4;
+		return pyoristaLuku(this.jononPituusPP4);
 	}
 
 	public void setJononPituusPP4(double jononPituusPP4) {
@@ -285,11 +285,9 @@ public class TietokantaRaportti {
 	public void setLapimenneetY(int lapimenneetY) {
 		this.lapimenneetY = lapimenneetY;
 	}
-	
-	
 
 	public double getKayttoastePP1() {
-		return kayttoastePP1;
+		return pyoristaLuku(this.kayttoastePP1);
 	}
 
 	public void setKayttoastePP1(double kayttoastePP1) {
@@ -297,7 +295,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getKayttoastePP2() {
-		return kayttoastePP2;
+		return pyoristaLuku(this.kayttoastePP2);
 	}
 
 	public void setKayttoastePP2(double kayttoastePP2) {
@@ -305,7 +303,7 @@ public class TietokantaRaportti {
 	}
 
 	public double getKayttoastePP3() {
-		return kayttoastePP3;
+		return pyoristaLuku(this.kayttoastePP3);
 	}
 
 	public void setKayttoastePP3(double kayttoastePP3) {
@@ -313,11 +311,18 @@ public class TietokantaRaportti {
 	}
 
 	public double getKayttoastePP4() {
-		return Math.round(kayttoastePP4*100)/100;
+		return pyoristaLuku(this.kayttoastePP4);
 	}
 
 	public void setKayttoastePP4(double kayttoastePP4) {
 		this.kayttoastePP4 = kayttoastePP4;
+	}
+
+	private double pyoristaLuku(double luku) {
+		double arvo = luku * 100;
+		arvo = Math.round(arvo);
+		arvo = arvo / 100;
+		return arvo;
 	}
 
 	@Override
@@ -334,6 +339,4 @@ public class TietokantaRaportti {
 				+ ", kayttoastePP1=" + kayttoastePP1 + ", kayttoastePP2=" + kayttoastePP2 + ", kayttoastePP3="
 				+ kayttoastePP3 + ", kayttoastePP4=" + kayttoastePP4 + "]";
 	}
-
-
 }
