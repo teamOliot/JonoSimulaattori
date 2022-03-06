@@ -16,6 +16,8 @@ class AsiakasTest {
 
 	private static Asiakas asiakasX;
 	private static Asiakas asiakasY;
+	
+	private final double DELTA = 0.001;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -80,6 +82,33 @@ class AsiakasTest {
 		assertEquals(20, Asiakas.getSummaXY(), "Summa XY on väärin.");
 		assertEquals(5, Asiakas.getSummaX(), "Summa X on väärin.");
 		assertEquals(15, Asiakas.getSummaY(), "Summa Y on väärin.");
+	}
+	
+	@Test
+	void testGetSaapuneetAsiakkaatYht() {
+		assertEquals(2, Asiakas.getSaapuneetAsiakkaatYht(), "Saapuneiden asiakkaiden määrä on väärin.");
+	}
+	
+	@Test
+	void testGetXAsiakkaidenLapimenoaika() {
+		Asiakas.setSummaX(10);
+		Asiakas.setLapimenneetX(3);	
+		assertEquals(3.333, Asiakas.getXAsiakkaidenLapimenoaika(), DELTA, "X asiakkaiden läpimenoaika on väärin.");
+	}
+	
+	@Test
+	void testGetYAsiakkaidenLapimenoaika() {
+		Asiakas.setSummaY(4);
+		Asiakas.setLapimenneetY(3);	
+		assertEquals(1.333, Asiakas.getYAsiakkaidenLapimenoaika(), DELTA, "Y asiakkaiden läpimenoaika on väärin.");
+	}
+	
+	@Test
+	void testGetAsiakkaidenLapimenoaikaYht() {
+		Asiakas.setSummaXY(15);
+		Asiakas.setLapimenneetX(2);
+		Asiakas.setLapimenneetY(2);	
+		assertEquals(3.75, Asiakas.getAsiakkaidenLapimenoaikaYht(), DELTA, "Kaikkien asiakkaiden läpimenoaika on väärin.");
 	}
 
 }

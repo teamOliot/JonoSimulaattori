@@ -20,7 +20,6 @@ public class Asiakas {
 	private static int lapimenneetY = 0;
 	private static int saapuneetX = 0;
 	private static int saapuneetY = 0;
-	@SuppressWarnings("unused")
 	private AsiakasTyyppi tyyppi;
 
 	/**
@@ -183,7 +182,7 @@ public class Asiakas {
 	public static double getXAsiakkaidenLapimenoaika() {
 		double lapimenoaika = 0;
 		try {
-			lapimenoaika = Asiakas.getSummaX() / Asiakas.getLapimenneetX();
+			lapimenoaika = 1.0 * Asiakas.getSummaX() / Asiakas.getLapimenneetX();
 
 		} catch (Exception e) {
 			System.out.println("Y asiakkaiden läpimenoajan laskenta epäonnistui, syy " + e);
@@ -199,7 +198,7 @@ public class Asiakas {
 
 		double lapimenoaika = 0;
 		try {
-			lapimenoaika = Asiakas.getSummaY() / Asiakas.getLapimenneetY();
+			lapimenoaika = 1.0 * Asiakas.getSummaY() / Asiakas.getLapimenneetY();
 
 		} catch (Exception e) {
 			System.out.println("Y asiakkaiden läpimenoajan laskenta epäonnistui, syy " + e);
@@ -214,13 +213,11 @@ public class Asiakas {
 	public static double getAsiakkaidenLapimenoaikaYht() {
 		double lapimenoaika = 0;
 		try {
-			lapimenoaika = Asiakas.getSummaXY() / (Asiakas.getLapimenneetX() + Asiakas.getLapimenneetY());
-
+			lapimenoaika = 1.0 * Asiakas.getSummaXY() / (Asiakas.getLapimenneetX() + Asiakas.getLapimenneetY());
 		} catch (Exception e) {
 			System.out.println("Läpimenoajan laskenta epäonnistui, syy " + e);
 		}
 		return lapimenoaika;
-
 	}
 
 	/**
