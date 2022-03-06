@@ -18,6 +18,7 @@ import javafx.scene.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 
@@ -113,6 +114,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			});
 
 			primaryStage.setTitle("Simulaattori");
+			primaryStage.getIcons().add(new Image(SimulaattorinGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 
 			BorderPane border = new BorderPane(); // Pohjana border
 			border.setStyle("-fx-background-color: #d9feff;"); // Koko GUI:n taustaväri
