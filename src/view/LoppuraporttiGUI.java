@@ -146,9 +146,10 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			primaryStage.getIcons().add(new Image(LoppuraporttiGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 
 			BorderPane border = new BorderPane(); // Pohjana border
-			border.setStyle("-fx-background-color: #d9feff;"); // Koko GUI:n taustaväri
+			border.setStyle("-fx-background-color: #363537;"); // Koko GUI:n taustaväri
 
-			Scene scene = new Scene(border, 780, 780);
+			Scene scene = new Scene(border, 850, 850);
+			scene.getStylesheets().add("view/loppuraporttiStyle.css");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			

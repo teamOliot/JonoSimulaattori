@@ -37,7 +37,7 @@ public class TietokantaRaporttiGUI extends Application {
 		// Created a table view
 		TableView tbv = new TableView();
         final Label label = new Label("Loppuraportti tietokannasta");
-        label.setFont(new Font("Arial", 20));
+        label.setId("tietokantaraporttiHeader");
 		
 		// Added all columns to table view
 //		TableColumn<Integer, TietokantaRaportti> cl1 = new TableColumn<>("Id");
@@ -117,7 +117,9 @@ public class TietokantaRaporttiGUI extends Application {
 		vbox.getChildren().addAll(label,tbv);
 		vbox.setSpacing(10);
 		vbox.setAlignment(Pos.CENTER);
-		Scene scene = new Scene(vbox, 1520,500);
+		vbox.setPrefHeight(600);
+		Scene scene = new Scene(vbox, 1550,850);
+		scene.getStylesheets().add("view/style.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
