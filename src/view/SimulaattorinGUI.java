@@ -117,9 +117,10 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			primaryStage.getIcons().add(new Image(SimulaattorinGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 
 			BorderPane border = new BorderPane(); // Pohjana border
-			border.setStyle("-fx-background-color: #d9feff;"); // Koko GUI:n taustaväri
 
-			Scene scene = new Scene(border, 1000, 780);
+			Scene scene = new Scene(border, 1100, 850);
+			// lisätään stylesheet:
+			scene.getStylesheets().add("view/style.css");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
@@ -130,7 +131,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			border.setTop(hBox); // Borderin yläreunassa hBox
 
 			tarkasteleRaporttejaButton = new Button("Tarkastele simulointiraportteja");
-			tarkasteleRaporttejaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			tarkasteleRaporttejaButton.setPrefWidth(260);
 			tarkasteleRaporttejaButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -145,13 +145,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			});
 
 			infoButton = new Button("i");
-			infoButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
-
-			infoButton.setStyle("-fx-background-radius: 5em; " + "-fx-min-width: 30px; " + "-fx-min-height: 30px; "
-					+ "-fx-max-width: 30px; " + "-fx-max-height: 30px;");
-
+			infoButton.setId("infoButton");
+			
 			infoButton.setOnAction(new EventHandler<ActionEvent>() {
-
 				@Override
 				public void handle(ActionEvent event) {
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -168,7 +164,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 							+ "8. Simulaation loppuraportin sisältämät tiedot tallennetaan automaattisesti simulointiraportteihin. \n \n"
 							+ "9. Voit tarkastella tallennettuja simulointiraportteja Tarkastele simulointiraportteja -painikkeesta.");
 
-					alert.getDialogPane().setStyle("-fx-background-color: #d9feff;"); // Alert dialogin taustaväri
+					alert.getDialogPane().getStylesheets().add("view/style.css");
 					alert.showAndWait();
 					
 				}
@@ -196,40 +192,31 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			border.setCenter(grid); // Borderin keskellä grid
 
 			aikaLabel = new Label("Simulointiaika: ");
-			aikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			aika = new TextField("");
 			aika.setPromptText("Syötä arvo");
-			aika.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			aika.setMaxWidth(100);
 			aika.setTooltip(new Tooltip("Simulointiajaksi tulee syöttää arvo, joka on vähintään 100."));
 
 			viiveLabel = new Label("Viive: ");
-			viiveLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			viive = new TextField("");
 			viive.setPromptText("Syötä arvo");
-			viive.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			viive.setMaxWidth(100);
 			viive.setTooltip(new Tooltip("Viiveeksi tulee syöttää arvo, joka on suurempi kuin 0."));
 
 			xAsiakkaidenParamLabel = new Label("Ei WC:ssä käyvät asiakkaat: ");
-			xAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xAsiakkaidenParam = new TextField("");
 			xAsiakkaidenParam.setPromptText("Syötä arvo");
-			xAsiakkaidenParam.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			xAsiakkaidenParam.setMaxWidth(100);
 			xAsiakkaidenParam.setTooltip(new Tooltip("Parametri sille, kuinka usein ei WC:n kautta kulkevia asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
 
 			yAsiakkaidenParamLabel = new Label("WC:ssä käyvät asiakkaat: ");
-			yAsiakkaidenParamLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			yAsiakkaidenParam = new TextField("");
 			yAsiakkaidenParam.setPromptText("Syötä arvo");
-			yAsiakkaidenParam.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 			yAsiakkaidenParam.setMaxWidth(100);
 			yAsiakkaidenParam.setTooltip(new Tooltip("Parametri sille, kuinka usein WC:ssä käyviä asiakkaita saapuu. \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä."));
 			
 			kaynnistaButton = new Button();
 			kaynnistaButton.setText("Käynnistä simulointi");
-			kaynnistaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kaynnistaButton.setMaxWidth(205.0);
 			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen alueelle
 
@@ -243,29 +230,22 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					// Alla olevat tulevat tarkoituksella näkyviin vasta kun simulaatio ajetaan
 					
 					turkoosiSeliteLabel = new Label("Ei WC:ssä käyvät asiakkaat  ");
-					turkoosiSeliteLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 					turkoosiSeliteLabel.setTooltip(new Tooltip("Ei WC:n kautta kulkevat asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - Baaritiski."));
 					grid.add(turkoosiSeliteLabel, 3, 3);
 					GridPane.setHalignment(turkoosiSeliteLabel, HPos.LEFT);
 					
 					turkoosiButton = new Button("");
-
-					turkoosiButton.setStyle("-fx-background-radius: 5em; " + "-fx-min-width: 20px; " + "-fx-min-height: 20px; "
-							+ "-fx-max-width: 20px; " + "-fx-max-height: 20px; " + "-fx-background-color: rgb(3, 244, 252); ");
-					
+					turkoosiButton.setId("turkoosiButton");					
 					grid.add(turkoosiButton, 3, 3);
 					GridPane.setHalignment(turkoosiButton, HPos.RIGHT); // Muodon voi laittaa selitteen kanssa samaan sarakkeeseen
 					
 					punainenSeliteLabel = new Label("WC:ssä käyvät asiakkaat");
-					punainenSeliteLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 					punainenSeliteLabel.setTooltip(new Tooltip("WC:ssä käyvät asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - WC - Baaritiski."));
 					grid.add(punainenSeliteLabel, 3, 4);
 					GridPane.setHalignment(punainenSeliteLabel, HPos.LEFT);
 					
 					punainenButton = new Button("");
-
-					punainenButton.setStyle("-fx-background-radius: 5em; " + "-fx-min-width: 20px; " + "-fx-min-height: 20px; "
-							+ "-fx-max-width: 20px; " + "-fx-max-height: 20px; " + "-fx-background-color: rgb(253, 0, 0); ");
+					punainenButton.setId("punainenButton");
 					
 					grid.add(punainenButton, 3, 4);
 					GridPane.setHalignment(punainenButton, HPos.RIGHT); // Muodon voi laittaa selitteen kanssa samaan sarakkeeseen
@@ -286,16 +266,12 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			hidastaButton.setOnAction(e -> kontrolleri.hidasta());
 
 			pp1Label = new Label("PP1 Lipuntarkastus");
-			pp1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			pp2Label = new Label("PP2 Turvatarkastus");
-			pp2Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			pp3Label = new Label("PP3 Baaritiski");
-			pp3Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			pp4Label = new Label("PP4 WC");
-			pp4Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 16));
 
 			pp1Naytto = new Visualisointi(200, 260, "graphics/PP1_L.png"); // leveys, korkeus
 			pp2Naytto = new Visualisointi(200, 260, "graphics/PP2_T.png");
@@ -347,9 +323,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			yhtLapiSysteeminTulos.setMaxWidth(100);
 
 			simuKokonaisaikaLabel = new Label("Simulaation kokonaisaika:");
-			simuKokonaisaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuKokonaisaikaTulos = new Label();
-			simuKokonaisaikaTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			simuKokonaisaikaTulos.setMaxWidth(100);
 
 			// Järjestele grid
@@ -444,11 +418,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			GridPane.setHalignment(simuKokonaisaikaLabel, HPos.LEFT);
 			grid.add(simuKokonaisaikaTulos, 1, 16);
 			GridPane.setHalignment(simuKokonaisaikaTulos, HPos.CENTER);
-
-			// Käytettävissä olevat fontit
-
-			// System.out.println(javafx.scene.text.Font.getFamilies());
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
