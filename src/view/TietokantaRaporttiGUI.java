@@ -118,7 +118,7 @@ public class TietokantaRaporttiGUI extends Application {
 		vbox.setSpacing(10);
 		vbox.setAlignment(Pos.CENTER);
 		vbox.setPrefHeight(600);
-		Scene scene = new Scene(vbox, 1550,850);
+		Scene scene = new Scene(vbox, 1540,780);
 		scene.getStylesheets().add("view/style.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();

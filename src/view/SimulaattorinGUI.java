@@ -118,7 +118,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			BorderPane border = new BorderPane(); // Pohjana border
 
-			Scene scene = new Scene(border, 1100, 850);
+			Scene scene = new Scene(border, 1100, 780);
 			// lisätään stylesheet:
 			scene.getStylesheets().add("view/style.css");
 			primaryStage.setScene(scene);
@@ -255,13 +255,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			nopeutaButton = new Button();
 			nopeutaButton.setText("Nopeuta");
-			nopeutaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			nopeutaButton.setPrefWidth(100);
 			nopeutaButton.setOnAction(e -> kontrolleri.nopeuta());
 
 			hidastaButton = new Button();
 			hidastaButton.setText("Hidasta");
-			hidastaButton.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			hidastaButton.setPrefWidth(100);
 			hidastaButton.setOnAction(e -> kontrolleri.hidasta());
 
@@ -281,45 +279,33 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			progressBar = new ProgressBar(0);
 
 			xSaapuneetLabel = new Label("Saapuneet asiakkaat, ei WC-käyntiä:");
-			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			xSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xSaapuneetTulos.setMaxWidth(100);
 
 			ySaapuneetLabel = new Label("Saapuneet asiakkaat, WC-käynti:");
-			ySaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			ySaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			ySaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			ySaapuneetTulos.setMaxWidth(100);
 
 			yhtSaapuneetLabel = new Label("Saapuneet asiakkaat yhteensä:");
-			yhtSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			yhtSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simuloinnin loputtua
-			yhtSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtSaapuneetTulos.setMaxWidth(100);
 
 			xLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi, ei WC-käyntiä:");
-			xLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			xLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			xLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xLapiSysteeminTulos.setMaxWidth(100);
 
 			yLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi, WC-käynti:");
-			yLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			yLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
-			yLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yLapiSysteeminTulos.setMaxWidth(100);
 
 			yhtLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi yhteensä:");
-			yhtLapiSysteeminLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 
 			yhtLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simuloinnin loputtua
-			yhtLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtLapiSysteeminTulos.setMaxWidth(100);
 
 			simuKokonaisaikaLabel = new Label("Simulaation kokonaisaika:");
