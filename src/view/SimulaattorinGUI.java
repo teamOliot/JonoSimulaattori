@@ -151,11 +151,11 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 				@Override
 				public void handle(ActionEvent event) {
 					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+					alert.getDialogPane().setMinHeight(780);
 					alert.setTitle("Simulaattorin käyttöohjeet");
 					alert.setHeaderText(null);
 					alert.setContentText("1. Syötä Simulointiaika-kenttään arvo, joka on vähintään 100. \n \n"
-							+ "2. Syötä Viive-kenttään arvo, joka on suurempi kuin 0. \n \n" 
+							+ "2. Syötä Viive-kenttään arvo, joka on vähintään 0. \n \n" 
 							+ "3. Syötä Ei WC:ssä käyvät asiakkaat -kenttään arvo, joka määrittää, kuinka usein ei WC:n kautta kulkevia asiakkaita saapuu. \n \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä. \n \n"
 							+ "4. Syötä WC:ssä käyvät asiakkaat -kenttään arvo, joka määrittää, kuinka usein WC:ssä käyviä asiakkaita saapuu. \n \n Pieni luku: asiakkaita saapuu usein, eli suuri määrä. \n Suuri luku: asiakkaita saapuu harvoin, eli pieni määrä. \n \n"
 							+ "5. Klikkaa Käynnistä simulointi -painiketta. \n \n"
@@ -201,7 +201,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			viive = new TextField("");
 			viive.setPromptText("Syötä arvo");
 			viive.setMaxWidth(100);
-			viive.setTooltip(new Tooltip("Viiveeksi tulee syöttää arvo, joka on suurempi kuin 0."));
+			viive.setTooltip(new Tooltip("Viiveeksi tulee syöttää arvo, joka on vähintään 0."));
 
 			xAsiakkaidenParamLabel = new Label("Ei WC:ssä käyvät asiakkaat: ");
 			xAsiakkaidenParam = new TextField("");

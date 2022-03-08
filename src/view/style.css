@@ -11,8 +11,7 @@
 	.label {
 	-fx-text-fill: white;
 	-fx-font-size: 14.0px;
-	-fx-font-style: Calibri;
-	
+	-fx-font-family: Calibri;
 	} 
 	
 	/*
@@ -27,7 +26,7 @@
     .button {
     	-fx-background-color: #379634;
     	-fx-font-size: 15.0px;
-		-fx-font-style: Calibri;
+		-fx-font-family: Calibri;
     }
     
     #infoButton {
@@ -37,7 +36,7 @@
 		-fx-max-width: 30.0px;
 		-fx-max-height: 30.0px;
 		-fx-font-size: 16.0px;
-		-fx-font-style: Calibri;
+		-fx-font-family: Calibri;
     }
     
     #turkoosiButton {
@@ -68,18 +67,18 @@
      	 -fx-background-color: #363537;
     	-fx-text-fill: white;
     	-fx-font-size: 12.0px;
-		-fx-font-style: Calibri;
+		-fx-font-family: Calibri;
      	 }
      	 
     .alert {
     	-fx-background-color: #363537;
     	-fx-text-fill: white;
-		-fx-font-style: Calibri;
+		-fx-font-family: Calibri;
     }
     
     .alert .label {
     	-fx-font-size: 14.0px;
-		-fx-font-style: Calibri;
+		-fx-font-family: Calibri;
     }
     
 /*
@@ -103,7 +102,7 @@
  
      #tietokantaraporttiHeader {
      	-fx-font-size: 32.0px;
-     	-fx-font-style: Calibri;
+     	-fx-font-family: Calibri;
      	-fx-fill: #818181;
      	-fx-effect: innershadow( three-pass-box , #379634 , 6.0, 0.0 , 0.0 , 2.0 );
      	-fx-text-weight: bold;
@@ -111,7 +110,7 @@
 
 	.table {
 		-fx-font-size: 14.0px;
-		-fx-font-style: Calibri;
+		-fx-font-family: Calibri;
 	} 
 
 
@@ -124,7 +123,7 @@
     -fx-text-fill: white;
     -fx-font-size: 14.0px;
     -fx-font-weight: normal;
-	-fx-font-style: Calibri;
+	-fx-font-family: Calibri;
 	}
 
 	.table-view .column-header {
