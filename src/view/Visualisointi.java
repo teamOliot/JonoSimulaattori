@@ -47,9 +47,8 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 		}	
 		gc.fillOval(i,j,size,size);
 		
-		//i = (i + 10 % this.getWidth());
 		i -= size;
-		//j = (j + 12) % this.getHeight();
+		
 		if (i <= 0) {
 			i = this.getWidth() - (2 * size);
 			j+=size;			
@@ -59,28 +58,5 @@ public class Visualisointi extends Canvas implements IVisualisointi{
 			j = size;
 		}
 	}
-
-	/*
-	 * public void uusiAsiakas(AsiakasTyyppi asiakasTyyppi) {
-		if (AsiakasTyyppi.X.equals(asiakasTyyppi)) {
-			gc.setFill(Color.GREEN);
-		} else {
-			gc.setFill(Color.RED);
-		}	
-		gc.fillOval(i,j,10,10);
-		
-		//i = (i + 10 % this.getWidth());
-		i += 10;
-		//j = (j + 12) % this.getHeight();
-		if (i >= this.getWidth()) {
-			i = 0;
-			j+=10;			
-		}
-		
-		if (j >= this.getHeight()) {
-			j = 10;
-		}
-	}
-	 */
 	
 }
