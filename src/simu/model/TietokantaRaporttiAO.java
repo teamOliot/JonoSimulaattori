@@ -68,21 +68,4 @@ public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
 			return false;
 		}
 
-		/*
-		@Override
-		public boolean deleteValuutta(String tunnus) {
-			Transaction transaktio = null;
-			try (Session istunto = istuntotehdas.openSession()) {
-				transaktio = istunto.beginTransaction();
-				Valuutta valuutta = readValuutta(tunnus);
-				istunto.delete(valuutta);
-				transaktio.commit();
-				return true;
-			} catch (Exception e) {
-				if (transaktio != null)
-					transaktio.rollback();
-				return false;
-			}
-		}*/
-
 }

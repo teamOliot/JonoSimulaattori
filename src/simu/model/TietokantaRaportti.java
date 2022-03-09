@@ -123,6 +123,7 @@ public class TietokantaRaportti {
 		this.kayttoastePP2 = kayttoastePP2;
 		this.kayttoastePP3 = kayttoastePP3;
 		this.kayttoastePP4 = kayttoastePP4;
+		
 	}
 
 	public LocalDateTime getPaivamaara() {
@@ -130,7 +131,6 @@ public class TietokantaRaportti {
 	}
 
 	public void setPaivamaara(LocalDateTime paivamaara) {
-		// java.time.LocalDateTime.now();
 		this.paivamaara = paivamaara;
 	}
 
