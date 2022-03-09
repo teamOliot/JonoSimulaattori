@@ -27,12 +27,9 @@ import javafx.scene.text.*;
  *
  */
 public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
-	
 
-	// Kontrollerin esittely (tarvitaan käyttöliittymässä)
 	private IKontrolleriVtoM kontrolleri;
 
-	// Käyttöliittymäkomponentit:
 	private Button tarkasteleRaporttejaButton;
 	private Button infoButton;
 
@@ -102,7 +99,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 	@Override
 	public void start(Stage primaryStage) {
-		// Käyttöliittymän rakentaminen
+	
 		try {
 
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -116,19 +113,18 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			primaryStage.setTitle("Simulaattori");
 			primaryStage.getIcons().add(new Image(SimulaattorinGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 
-			BorderPane border = new BorderPane(); // Pohjana border
+			BorderPane border = new BorderPane();
 
 			Scene scene = new Scene(border, 1100, 780);
-			// lisätään stylesheet:
 			scene.getStylesheets().add("view/style.css");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
 			HBox hBox = new HBox();
-			hBox.setPadding(new Insets(20, 10, 0, 10)); // marginaalit ylä, oikea, ala, vasen
+			hBox.setPadding(new Insets(20, 10, 0, 10));
 			hBox.setSpacing(10);
 			hBox.setAlignment(Pos.CENTER);
-			border.setTop(hBox); // Borderin yläreunassa hBox
+			border.setTop(hBox);
 
 			tarkasteleRaporttejaButton = new Button("Tarkastele simulointiraportteja");
 			tarkasteleRaporttejaButton.setPrefWidth(260);
@@ -166,14 +162,13 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 					alert.getDialogPane().getStylesheets().add("view/style.css");
 					alert.showAndWait();
-					
 				}
 			});
 
 			StackPane stack = new StackPane();
 			stack.getChildren().add(infoButton);
 			stack.setAlignment(Pos.CENTER_RIGHT);
-			StackPane.setMargin(infoButton, new Insets(0, 20, 0, 0)); // marginaalit ylä, oikea, ala, vasen
+			StackPane.setMargin(infoButton, new Insets(0, 20, 0, 0));
 
 			Region tyhjaTila1 = new Region();
 			HBox.setHgrow(tyhjaTila1, Priority.ALWAYS);
@@ -181,7 +176,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			Region tyhjaTila2 = new Region();
 			HBox.setHgrow(tyhjaTila2, Priority.ALWAYS);
 
-			// GUI:n ylimmän rivin järjestys: tyhjä tila, painike keskellä, tyhjä tila ja painike oikeassa reunassa
 			hBox.getChildren().addAll(tyhjaTila1, tarkasteleRaporttejaButton, tyhjaTila2, stack);
 
 			GridPane grid = new GridPane();
@@ -189,7 +183,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			grid.setVgap(10);
 			grid.setHgap(5);
 
-			border.setCenter(grid); // Borderin keskellä grid
+			border.setCenter(grid);
 
 			aikaLabel = new Label("Simulointiaika: ");
 			aika = new TextField("");
@@ -218,16 +212,13 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			kaynnistaButton = new Button();
 			kaynnistaButton.setText("Käynnistä simulointi");
 			kaynnistaButton.setMaxWidth(205.0);
-			GridPane.setFillWidth(kaynnistaButton, true); // Käynnistä simulointi -painike ulottuu kahden sarakkeen alueelle
+			GridPane.setFillWidth(kaynnistaButton, true);
 
 			kaynnistaButton.setOnAction(new EventHandler<ActionEvent>() {
-	
 				@Override
 				public void handle(ActionEvent event) {
 					kontrolleri.kaynnistaSimulointi();
 					kaynnistaButton.setDisable(true);
-					
-					// Alla olevat tulevat tarkoituksella näkyviin vasta kun simulaatio ajetaan
 					
 					turkoosiSeliteLabel = new Label("Ei WC:ssä käyvät asiakkaat  ");
 					turkoosiSeliteLabel.setTooltip(new Tooltip("Ei WC:n kautta kulkevat asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - Baaritiski."));
@@ -237,7 +228,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					turkoosiButton = new Button("");
 					turkoosiButton.setId("turkoosiButton");					
 					grid.add(turkoosiButton, 3, 3);
-					GridPane.setHalignment(turkoosiButton, HPos.RIGHT); // Muodon voi laittaa selitteen kanssa samaan sarakkeeseen
+					GridPane.setHalignment(turkoosiButton, HPos.RIGHT);
 					
 					punainenSeliteLabel = new Label("WC:ssä käyvät asiakkaat");
 					punainenSeliteLabel.setTooltip(new Tooltip("WC:ssä käyvät asiakkaat etenevät seuraavasti: Lipuntarkastus - Turvatarkastus - WC - Baaritiski."));
@@ -248,8 +239,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 					punainenButton.setId("punainenButton");
 					
 					grid.add(punainenButton, 3, 4);
-					GridPane.setHalignment(punainenButton, HPos.RIGHT); // Muodon voi laittaa selitteen kanssa samaan sarakkeeseen
-					
+					GridPane.setHalignment(punainenButton, HPos.RIGHT);
 				}
 			});
 
@@ -271,7 +261,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			pp4Label = new Label("PP4 WC");
 
-			pp1Naytto = new Visualisointi(200, 260, "graphics/PP1_L.png"); // leveys, korkeus
+			pp1Naytto = new Visualisointi(200, 260, "graphics/PP1_L.png");
 			pp2Naytto = new Visualisointi(200, 260, "graphics/PP2_T.png");
 			pp3Naytto = new Visualisointi(200, 260, "graphics/PP3_B.png");
 			pp4Naytto = new Visualisointi(200, 260, "graphics/PP4_WC.png");
@@ -280,42 +270,41 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 
 			xSaapuneetLabel = new Label("Saapuneet asiakkaat, ei WC-käyntiä:");
 
-			xSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
+			xSaapuneetTulos = new Label();
 			xSaapuneetTulos.setMaxWidth(100);
 
 			ySaapuneetLabel = new Label("Saapuneet asiakkaat, WC-käynti:");
 
-			ySaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
+			ySaapuneetTulos = new Label();
 			ySaapuneetTulos.setMaxWidth(100);
 
 			yhtSaapuneetLabel = new Label("Saapuneet asiakkaat yhteensä:");
 
-			yhtSaapuneetTulos = new Label(); // Tähän tulee näkyviin tulos simuloinnin loputtua
+			yhtSaapuneetTulos = new Label();
 			yhtSaapuneetTulos.setMaxWidth(100);
 
 			xLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi, ei WC-käyntiä:");
 
-			xLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
+			xLapiSysteeminTulos = new Label();
 			xLapiSysteeminTulos.setMaxWidth(100);
 
 			yLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi, WC-käynti:");
 
-			yLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simulaattoria ajettaessa
+			yLapiSysteeminTulos = new Label();
 			yLapiSysteeminTulos.setMaxWidth(100);
 
 			yhtLapiSysteeminLabel = new Label("Asiakkaita systeemin läpi yhteensä:");
 
-			yhtLapiSysteeminTulos = new Label(); // Tähän tulee näkyviin tulos simuloinnin loputtua
+			yhtLapiSysteeminTulos = new Label();
 			yhtLapiSysteeminTulos.setMaxWidth(100);
 
 			simuKokonaisaikaLabel = new Label("Simulaation kokonaisaika:");
 			simuKokonaisaikaTulos = new Label();
 			simuKokonaisaikaTulos.setMaxWidth(100);
 
-			// Järjestele grid
-			// Välissä tyhjä rivi 0
+			// Grid alkaa tyhjällä rivillä 0
 			
-			grid.add(aikaLabel, 1, 1); // sarake, rivi, leveys, korkeus
+			grid.add(aikaLabel, 1, 1);
 			GridPane.setHalignment(aikaLabel, HPos.RIGHT);
 			grid.add(aika, 2, 1);
 
@@ -363,11 +352,9 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 			grid.add((Canvas) pp4Naytto, 2, 10);
 			grid.add((Canvas) pp3Naytto, 3, 10);
 
-			// ProgressBar
 			progressBar.setMaxWidth(Double.MAX_VALUE);
 			grid.add(progressBar, 0, 11, 4, 1);
 
-			// Saapuneet, systeemin läpi ja kokonaisaika
 			grid.add(xSaapuneetLabel, 0, 12, 2, 1);
 			GridPane.setHalignment(xSaapuneetLabel, HPos.LEFT);
 			grid.add(xSaapuneetTulos, 1, 12);
@@ -408,9 +395,7 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	} // Käyttöliittymän rakentaminen päättyy
-
-	// Käyttöliittymän rajapintametodit (kutsutaan kontrollerista)
+	}
 
 	@Override
 	public double getAika() {
@@ -471,9 +456,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 	}
 
 	public void setProgressBarAika() {
-
-		// System.out.println("SimulaattorinGUI setProgressBarAika" + Kello.getInstance().getAika() / getAika());
-
 		progressBar.setProgress(Kello.getInstance().getAika() / getAika());
 	}
 
@@ -498,7 +480,6 @@ public class SimulaattorinGUI extends Application implements ISimulaattorinUI {
 		return pp4Naytto;
 	}
 
-	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
 	public static void main(String[] args) {
 		launch(args);
 	}
