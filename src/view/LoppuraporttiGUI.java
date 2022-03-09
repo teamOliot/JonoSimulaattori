@@ -34,8 +34,6 @@ import simu.framework.Trace.Level;
  */
 public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	
-
-	// Käyttöliittymäkomponentit:
 	private Label simuLoppuraporttiLabel;
 	
 	private Label simuKokonaisaikaLabel;
@@ -77,7 +75,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	private Label asiakkaidenLapimenoaikaYhtLabel;
 	private Label asiakkaidenLapimenoaikaYhtTulos;
 	
-	// Käyttöasteet
 	private Label kayttoastePP1Label;
 	private Label kayttoastePP1Tulos;
 	
@@ -118,20 +115,13 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 	
 	private TietokantaRaporttiGUI tietokantaraporttiGUI;
 	
-	/*
-	@Override
-	public void init() {
-		tietokantaraporttiGUI = new TietokantaRaporttiGUI();
-	}*/
-	
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
-		// Käyttöliittymän rakentaminen
+	
 		try {
 
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -145,8 +135,8 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			primaryStage.setTitle("Simulaation loppuraportti");
 			primaryStage.getIcons().add(new Image(LoppuraporttiGUI.class.getResourceAsStream("graphics/gui_ikoni.png")));
 
-			BorderPane border = new BorderPane(); // Pohjana border
-			border.setStyle("-fx-background-color: #363537;"); // Koko GUI:n taustaväri
+			BorderPane border = new BorderPane();
+			border.setStyle("-fx-background-color: #363537;");
 
 			Scene scene = new Scene(border, 850, 780);
 			scene.getStylesheets().add("view/loppuraporttiStyle.css");
@@ -158,7 +148,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			grid.setVgap(10);
 			grid.setHgap(5);
 
-			border.setCenter(grid); // Borderin keskellä grid
+			border.setCenter(grid);
 			
 			simuLoppuraporttiLabel = new Label("Simulaation loppuraportti");
 			simuLoppuraporttiLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 20));
@@ -193,7 +183,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			
 			xSaapuneetLabel = new Label("Saapuneet ei WC:ssä käyvät asiakkaat:");
 			xSaapuneetLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
-			xSaapuneetLabel.setTooltip(new Tooltip("Kuinka monta asiakasta, jotka eivät käy WC:ssä, on saapunut simulaatioon.")); // Muokkaa Tooltipit
+			xSaapuneetLabel.setTooltip(new Tooltip("Kuinka monta asiakasta, jotka eivät käy WC:ssä, on saapunut simulaatioon."));
 			xSaapuneetTulos = new Label();
 			xSaapuneetTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xSaapuneetTulos.setMaxWidth(100);
@@ -233,7 +223,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			yhtLapiSysteeminTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			yhtLapiSysteeminTulos.setMaxWidth(100);
 			
-			// Läpimenoajat
 			xAsiakkaidenLapimenoaikaLabel = new Label("Ei WC:ssä käyneiden asiakkaiden keskim. läpimenoaika:");
 			xAsiakkaidenLapimenoaikaLabel.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			xAsiakkaidenLapimenoaikaLabel.setTooltip(new Tooltip("Kokonaisoleskeluaika jaettuna ei WC:ssä käyneiden asiakkaiden määrällä."));
@@ -255,7 +244,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			asiakkaidenLapimenoaikaYhtTulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			asiakkaidenLapimenoaikaYhtTulos.setMaxWidth(100);
 			
-			// Käyttöasteet
 			kayttoastePP1Label = new Label("Käyttöaste PP1 (Lipuntarkastus):");
 			kayttoastePP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP1Label.setTooltip(new Tooltip("Kuinka suurella prosenttiosuudella Palvelupiste 1 (Lipuntarkastus) on ollut käytössä simuloinnin kokonaisajasta."));
@@ -284,7 +272,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			kayttoastePP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			kayttoastePP4Tulos.setMaxWidth(100);
 			
-			// Oleskeluajat
 			oleskeluaikaPP1Label = new Label("Kaikki asiakkaat kokonaisoleskeluaika PP1:");
 			oleskeluaikaPP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			oleskeluaikaPP1Label.setTooltip(new Tooltip("Palvelupisteellä 1 (Lipuntarkastus) kaikkien asiakkaiden yhteenlasketut jonotusajat ja palveluajat."));
@@ -313,7 +300,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			oleskeluaikaPP4Tulos.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			oleskeluaikaPP4Tulos.setMaxWidth(100);
 			
-			// Jonon pituudet
 			jononPituusPP1Label = new Label("Keskimääräinen jonon pituus PP1:");
 			jononPituusPP1Label.setFont(Font.font("Calibri", FontWeight.NORMAL, 14));
 			jononPituusPP1Label.setTooltip(new Tooltip("Kuinka monta asiakasta on keskimäärin jonossa Palvelupisteelle 1 (Lipuntarkastus)."));
@@ -359,8 +345,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 				}
 			});
 			
-			// Järjestele grid
-			grid.add(simuLoppuraporttiLabel, 0, 0); // sarake, rivi, leveys, korkeus
+			grid.add(simuLoppuraporttiLabel, 0, 0);
 			GridPane.setHalignment(simuLoppuraporttiLabel, HPos.CENTER);
 			
 			grid.add(simuKokonaisaikaLabel, 0, 1);
@@ -402,7 +387,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			grid.add(asiakkaidenLapimenoaikaYhtLabel, 0, 13);
 			grid.add(asiakkaidenLapimenoaikaYhtTulos, 1, 13);
 			
-			// Käyttöasteet tähän väliin
 			grid.add(kayttoastePP1Label, 0, 14);
 			grid.add(kayttoastePP1Tulos, 1, 14);
 			
@@ -414,7 +398,6 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			
 			grid.add(kayttoastePP4Label, 0, 17);
 			grid.add(kayttoastePP4Tulos, 1, 17);
-			//
 			
 			grid.add(oleskeluaikaPP1Label, 0, 18);
 			grid.add(oleskeluaikaPP1Tulos, 1, 18);
@@ -446,8 +429,7 @@ public class LoppuraporttiGUI extends Application implements ILoppuraporttiUI {
 			e.printStackTrace();
 		}
 
-	} // Käyttöliittymän rakentaminen päättyy
-
+	}
 	
 	@Override
 	public void setSimulaationKokonaisaika(double simulaationKokonaisaika) {
