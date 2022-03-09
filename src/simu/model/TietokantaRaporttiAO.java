@@ -64,7 +64,6 @@ public class TietokantaRaporttiAO implements ITietokantaRaporttiDAO {
 		
 		@Override
 		public boolean deleteRaportti(int id) {
-			// TODO Auto-generated method stub
 			return false;
 		}
 

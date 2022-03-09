@@ -9,24 +9,18 @@ import simu.framework.Tapahtuma;
 import simu.framework.Tapahtumalista;
 import simu.framework.Trace;
 
-// TODO:
-// Palvelupistekohtaiset toiminnallisuudet, laskutoimitukset (+ tarvittavat muuttujat) ja raportointi koodattava
-
-
 /**
  * @author Dahlman, Laamo, Lappi
  *
  */
 public class Palvelupiste {
 
-	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>(); // Tietorakennetoteutus
+	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>();
 	private ArrayList<Palvelutapahtuma> palvelutapahtumat = new ArrayList<Palvelutapahtuma>();
 	
 	private ContinuousGenerator generator;
 	private Tapahtumalista tapahtumalista;
-	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi; 
-	
-	//JonoStartegia strategia; //optio: asiakkaiden järjestys
+	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
 	
 	private boolean varattu = false;
 	private int palvellutAsiakkaat;
@@ -51,7 +45,7 @@ public class Palvelupiste {
 	/**
 	 * @param a is customer that will be added to list. First from list will be given a service next.
 	 */
-	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
+	public void lisaaJonoon(Asiakas a){
 		jono.add(a);
 		palvelutapahtumat.add(new Palvelutapahtuma(a.getId()));
 	}
@@ -83,7 +77,7 @@ public class Palvelupiste {
 	/**
 	 * method aloitaPalvelu() starts a new service. Customer stays in queue while been served.
 	 */
-	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
+	public void aloitaPalvelu(){
 			Trace.out(Trace.Level.INFO, "Aloitetaan uusi palvelu asiakkaalle " + jono.peek().getId());
 			varattu = true;
 			double palveluaika = generator.sample(); // B busy time
@@ -113,7 +107,7 @@ public class Palvelupiste {
 	 * @return time  which all customers have spent in service point.
 	 */
 	public double getKokonaisOleskeluaika() {
-		double kokonaisOleskeluaika = 0; // W
+		double kokonaisOleskeluaika = 0;
 		for(Palvelutapahtuma palvelutapahtuma : palvelutapahtumat) {
 			kokonaisOleskeluaika+=palvelutapahtuma.asiakkaanKokonaisoleskeluaika();
 		}
