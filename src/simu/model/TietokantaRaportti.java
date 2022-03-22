@@ -92,6 +92,31 @@ public class TietokantaRaportti {
 	public TietokantaRaportti() {
 	}
 
+	/**
+	 * @param simulaationKokonaisaika 
+	 * @param xParam parameter for X-type customers
+	 * @param yParam parameter for Y-type customers
+	 * @param simulaationSuoritusteho is throughput
+	 * @param asiakasMaaraX amount of X-type customer into simulation
+	 * @param asiakasMaaraY amount of Y-type customer into simulation
+	 * @param xAsiakkaidenLapimenoaika lead time for customer type X
+	 * @param yAsiakkaidenLapimenoaika lead time for customer type Y
+	 * @param asiakkaidenLapimenoaikaYht lead time for all customer type
+	 * @param oleskeluaikaPP1 service point 1 time that customers has spent
+	 * @param oleskeluaikaPP2 service point 2 time that customers has spent
+	 * @param oleskeluaikaPP3 service point 3 time that customers has spent
+	 * @param oleskeluaikaPP4 service point 4 time that customers has spent
+	 * @param jononPituusPP1 size of line on service point 1
+	 * @param jononPituusPP2 size of line on service point 2
+	 * @param jononPituusPP3 size of line on service point 3
+	 * @param jononPituusPP4 size of line on service point 4
+	 * @param lapimenneetX amount of X-type customers that have gone through system
+	 * @param lapimenneetY amount of Y-type customers that have gone through system
+	 * @param kayttoastePP1 utilization % for service point 1
+	 * @param kayttoastePP2 utilization % for service point 1
+	 * @param kayttoastePP3 utilization % for service point 1
+	 * @param kayttoastePP4 utilization % for service point 1
+	 */
 	public TietokantaRaportti(double simulaationKokonaisaika, double xParam, double yParam,
 			double simulaationSuoritusteho, double asiakasMaaraX, double asiakasMaaraY, double xAsiakkaidenLapimenoaika,
 			double yAsiakkaidenLapimenoaika, double asiakkaidenLapimenoaikaYht, double oleskeluaikaPP1,
